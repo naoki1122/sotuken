@@ -1,0 +1,20 @@
+Webフォルダ内にあるファイルの説明
+HTML.php(メインページ)とcss_ver 1.00.cssがセット。
+
+↓４つはセット
+signUp.php（入力フォーム）・・・新規登録+ログイン
+login.php(登録済みの情報をもとにログイン処理)
+entry.php(新規登録処理)
+logout.php(ログイン済みのユーザーとセッションを切る)
+
+↓３つはセット
+input.php(新規登録。データ追加)
+confirm.php(確認画面)
+submit.php(確定処理)
+
+search.php(検索フォーム　入力画面)
+index_search.php(確認画面)
+
+
+
+
