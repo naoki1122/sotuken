@@ -1,0 +1,74 @@
+@charset "utf-8";
+/*ページ背景色*/
+
+body{
+    background-color: rgb(161, 216, 164);
+}
+
+input{
+    width: 180px;
+    padding: auto auto;
+}
+
+/*タイトル配置設定*/
+h1 {
+    margin: 40px;
+    padding: 30px;
+    border: 5px double #3d72e6;
+    background-color: cyan;
+    color: white;
+    text-align: center;
+}
+
+/*ユーザー名表示場所*/
+ .user {
+    background-color: magenta;
+    float: right;
+    clear: both;
+}
+
+/*ログアウト部分のあれこれ*/
+ .logout {
+    background-color: cyan;
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: white;/*ボタン色*/
+    color: black;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+
+/*ボタンを押したとき*/
+.logout:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+/*設定および登録のあれこれ*/
+.option {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-align: right;
+    text-decoration: none;
+    background: black;/*ボタン色*/
+    color: white;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+
+/*ボタンを押したとき*/
+.option:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+/*テーブル詳細*/
+table{
+    width: 1000px;
+    height: 300px;
+    margin-left:auto;
+    margin-right:auto;
+}
