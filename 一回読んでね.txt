@@ -13,6 +13,7 @@ input.php(新規登録。データ追加)
 confirm.php(確認画面)
 submit.php(確定処理)
 
+↓2つはセット
 search.php(検索フォーム　入力画面)
 index_search.php(確認画面)
 
