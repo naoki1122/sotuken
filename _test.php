@@ -51,7 +51,7 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // SQL文を作る
     if(!empty($_POST['No'])){
-        $sql = "SELECT * FROM number where No LIKE(:no)";
+        $sql = "SELECT * FROM number where No =(:no)";
         $stm = $pdo->prepare($sql);
         // プレースホルダに値をバインドする
         $stm->bindValue(':no', "{$no}", PDO::PARAM_STR);
@@ -60,7 +60,7 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
       // 結果の取得（連想配列で受け取る）
                 $result = $stm->fetchAll(PDO::FETCH_ASSOC);
                 if(count($result)>0){
-                  $sql = "UPDATE number where SET time = '2019-11-8'";
+                  $sql = "INSERT INTO `number`(`No`, `name`, `time`) VALUES ('18N066','奈良 ゆうすけ', )";
                   $stm->bindValue(':no', "{$no}", PDO::PARAM_STR);
                   $stm = $pdo->prepare($sql);
                   $stm->execute();
