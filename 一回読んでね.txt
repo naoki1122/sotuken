@@ -17,6 +17,7 @@ submit.php(確定処理)
 search.php(検索フォーム　入力画面)
 index_search.php(確認画面)
 
+わからないことがあったらお気軽にお声かけください。
 
 
 
