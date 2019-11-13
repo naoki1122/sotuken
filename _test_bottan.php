@@ -1,5 +1,5 @@
 <?php
-require_once("php7note\chap13\lib\util.php");
+// require_once("php7note\chap13\lib\util.php");
 // データベースユーザ
 $user = 'root';
 $password = '';
@@ -16,8 +16,8 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 <head>
 <meta charset="utf-8">
 <title>名前検索</title>
-<link href="php7note\chap13\css\style.css" rel="stylesheet">
-<link href="php7note\chap13\css\tablestyle.css" rel="stylesheet">
+<!-- <link href="php7note\chap13\css\style.css" rel="stylesheet">
+<link href="php7note\chap13\css\tablestyle.css" rel="stylesheet"> -->
 </head>
 <body>
 <div>
@@ -50,8 +50,7 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
       // １行ずつテーブルに入れる
       echo "<tr>";
       echo "<tr>";
-      echo "<td>", es($row['No']), "</td>";
-      echo "<td>", es($row['name']), "</td>";
+      echo "<td>", $row['No'], "</td>";
       echo "</tr>";
   }
     echo "</tbody>";
@@ -65,7 +64,7 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 
   <!-- 入力フォームを作る -->
   <form method="POST" action="_test.php">
-        <label>学籍番号を入力（読み取る）例18N000</label><br>
+        <label>学籍番号を入力（読み取る）例18n000</label><br>
         <input type="text" name="No" placeholder="バーコード" autocomplete="on"><br>
         
       <input type="submit" value="検索" >

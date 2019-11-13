@@ -67,12 +67,12 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
     //$stm->bindValue(':name', "%{$name}%", PDO::PARAM_STR);
     // SQL文を実行する
     $stm->execute();
-    echo "入力した名前  ";
-    var_dump($name);echo "<br>";
-    echo "入力した学籍番号  ";
-    var_dump($no);echo "<br>";
-    echo "<br>";
-    var_dump($sql);echo "<br>";
+    // echo "入力した名前  ";
+    // var_dump($name);echo "<br>";
+    // echo "入力した学籍番号  ";
+    // var_dump($no);echo "<br>";
+    // echo "<br>";
+    // var_dump($sql);echo "<br>";
     // 結果の取得（連想配列で受け取る）
     $result = $stm->fetchAll(PDO::FETCH_ASSOC);
     if(count($result)>0){
