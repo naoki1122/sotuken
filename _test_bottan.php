@@ -4,7 +4,7 @@
 $user = 'root';
 $password = '';
 // 利用するデータベース
-$dbName = 'test';
+$dbName = 'management';
 // MySQLサーバ
 $host = 'localhost';
 // MySQLのDSN文字列
@@ -31,7 +31,7 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "データベース{$dbName}に接続しました。", "<br>";
     // SQL文を作る（全レコード）
-    $sql = "SELECT * FROM number";
+    $sql = "SELECT * FROM student";
     // プリペアドステートメントを作る
     $stm = $pdo->prepare($sql);
     // SQL文を実行する
@@ -50,7 +50,8 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
       // １行ずつテーブルに入れる
       echo "<tr>";
       echo "<tr>";
-      echo "<td>", $row['No'], "</td>";
+      echo "<td>", $row['学籍番号'], "</td>";
+      echo "<td>", $row['名前'], "</td>";
       echo "</tr>";
   }
     echo "</tbody>";
@@ -65,7 +66,7 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
   <!-- 入力フォームを作る -->
   <form method="POST" action="_test.php">
         <label>学籍番号を入力（読み取る）例18n000</label><br>
-        <input type="text" name="No" placeholder="バーコード" autocomplete="on"><br>
+        <input type="text" name="学籍番号" placeholder="バーコード" autocomplete="on"><br>
         
       <input type="submit" value="検索" >
   </form>

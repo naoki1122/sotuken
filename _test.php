@@ -13,7 +13,7 @@ if (empty($_POST)){
   
   header("Location:_test_bottan.php");
   exit();
-} else if((!isset($_POST["No"])||($_POST["No"]===""))){
+} else if((!isset($_POST["学籍番号"])||($_POST["学籍番号"]===""))){
   header("Location:{$gobackURL}");
 exit();
 }
@@ -22,7 +22,7 @@ exit();
 $user = 'root';
 $password = '';
 // 利用するデータベース
-$dbName = 'test';
+$dbName = 'management';
 // MySQLサーバ
 $host = 'localhost';
 // MySQLのDSN文字列
@@ -41,7 +41,7 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 <body>
 <div>
   <?php
-  $no = $_POST['No'];
+  $no = $_POST['学籍番号'];
   $timestamp = '';
   //MySQLデータベースに接続する
   try {
@@ -51,8 +51,8 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
     // 例外がスローされる設定にする
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // SQL文を作る
-    if(!empty($_POST['No'])){
-        $sql = "SELECT * FROM number where No =(:no)";
+    if(!empty($_POST['学籍番号'])){
+        $sql = "SELECT * FROM student where 学籍番号 =(:no)";
         $stm = $pdo->prepare($sql);
         // プレースホルダに値をバインドする
         $stm->bindValue(':no', "{$no}", PDO::PARAM_STR);
@@ -63,15 +63,14 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
                  if(count($result)>0){ 
                    $timestamp = new DateTime();
                    $timestamp = $timestamp->format('Y年m月d日H時i分s秒');
-                   $sql = "insert into number(No,time) value('".$no."','".$timestamp."')";
-                   var_dump($sql);
+                   $sql = "insert into attend(学籍番号,出席時刻) value('".$no."','".$timestamp."')";
+                   //var_dump($sql);
                    //$stm->bindValue(':no', "{$no}", PDO::PARAM_STR);
                    $stm = $pdo->prepare($sql);
                    $stm->execute();
                    echo "登録完了";
-                   var_dump($timestamp);
+                   //var_dump($timestamp);
          }
-          echo "学籍番号「{$no}」<br>";
           // テーブルのタイトル行
           echo "<table>";
           echo "<thead><tr>";
@@ -83,7 +82,8 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
           foreach ($result as $row){
             // １行ずつテーブルに入れる
             echo "<tr>";
-            echo "<td>", $row['No'], "</td>";
+            echo "<td>", $row['学籍番号'], "</td>";
+            echo "<td>", $row['名前'], "</td>";
             echo "</tr>";
           }
           echo "</tbody>";
