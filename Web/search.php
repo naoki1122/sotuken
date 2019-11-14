@@ -1,19 +1,19 @@
 <?php
-require_once("php7note\chap13\lib\util.php");
+//require_once("php7note\chap13\lib\util.php");
 $gobackURL = "index_search.php";
 
 // 文字エンコードの検証
-if (!cken($_POST)){
-  header("Location:{$gobackURL}");
-  exit();
-}
+// if (!cken($_POST)){
+//   header("Location:{$gobackURL}");
+//   exit();
+// }
 
 // nameが未設定、空のときはエラー
 if (empty($_POST)){
   
   header("Location:index_search.php");
   exit();
-} else if((!isset($_POST["name"])||($_POST["name"]==="")) && (!isset($_POST["No"])||($_POST["No"]===""))){
+} else if((!isset($_POST["名前"])||($_POST["名前"]==="")) && (!isset($_POST["学籍番号"])||($_POST["学籍番号"]===""))){
   header("Location:{$gobackURL}");
 exit();
 }
@@ -22,7 +22,7 @@ exit();
 $user = 'root';
 $password = '';
 // 利用するデータベース
-$dbName = 'test';
+$dbName = 'management';
 // MySQLサーバ
 $host = 'localhost';
 // MySQLのDSN文字列
@@ -34,15 +34,15 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 <head>
 <meta charset="utf-8">
 <title>名前検索</title>
-<link href="php7note\chap13\css\style.css" rel="stylesheet">
-<!-- テーブル用のスタイルシート -->
-<link href="php7note\chap13\css\tablestyle.css" rel="stylesheet">
+<!-- <link href="php7note\chap13\css\style.css" rel="stylesheet">
+     テーブル用のスタイルシート 
+<link href="php7note\chap13\css\tablestyle.css" rel="stylesheet"> -->
 </head>
 <body>
 <div>
   <?php
-  $name = $_POST["name"];
-  $no = $_POST['No'];
+  $name = $_POST["名前"];
+  $no = $_POST['学籍番号'];
   //MySQLデータベースに接続する
   try {
     $pdo = new PDO($dsn, $user, $password);
@@ -51,16 +51,16 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
     // 例外がスローされる設定にする
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // SQL文を作る
-    if((!empty($_POST['name'])) and (!empty($_POST['No']))){
-      $sql_add = " WHERE name LIKE '%".$_POST['name']."%' and No LIKE '%".$_POST['No']."%'";   
+    if((!empty($_POST['学籍番号'])) and (!empty($_POST['名前']))){
+      $sql_add = " WHERE 名前 LIKE '%".$_POST['名前']."%' and 学籍番号 LIKE '%".$_POST['学籍番号']."%'";   
     }
-    elseif(!empty($_POST['name'])){
-      $sql_add = " WHERE name LIKE '%".$_POST['name']."%'";
+    elseif(!empty($_POST['名前'])){
+      $sql_add = " WHERE 名前 LIKE '%".$_POST['名前']."%'";
     }
-    elseif(!empty($_POST['No'])){
-      $sql_add = " WHERE No LIKE '%".$_POST['No']."%'";
+    elseif(!empty($_POST['学籍番号'])){
+      $sql_add = " WHERE 学籍番号 LIKE '%".$_POST['学籍番号']."%'";
     }
-    $sql = "SELECT * FROM member".$sql_add;
+    $sql = "SELECT * FROM student".$sql_add;
     // プリペアドステートメントを作る
     $stm = $pdo->prepare($sql);
     // プレースホルダに値をバインドする
@@ -82,21 +82,27 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
       echo "<table>";
       echo "<thead><tr>";
       echo "<th>", "学籍番号", "</th>";
-      echo "<th>", "名前", "</th>";
-      echo "<th>", "ふりがな", "</th>";
+      echo "<th>", "学科", "</th>";
+      echo "<th>", "学年", "</th>";
       echo "<th>", "クラス", "</th>";
+      echo "<th>", "名前", "</th>";
+      echo "<th>", "フリガナ", "</th>";
       echo "<th>", "メールアドレス", "</th>";
+      echo "<th>", "学籍番号", "</th>";
       echo "</tr></thead>";
       // 値を取り出して行に表示する
       echo "<tbody>";
       foreach ($result as $row){
         // １行ずつテーブルに入れる
         echo "<tr>";
-        echo "<td>", es($row['No']), "</td>";
-        echo "<td>", es($row['name']), "</td>";
-        echo "<td>", es($row['hurigana']), "</td>";
-        echo "<td>", es($row['kurasu']), "</td>";
-        echo "<td>", es($row['mail']), "</td>";
+        echo "<td>", $row['学籍番号'], "</td>";
+        echo "<td>", $row['学科'], "</td>";
+        echo "<td>", $row['学年'], "</td>";
+        echo "<td>", $row['クラス'], "</td>";
+        echo "<td>", $row['名前'], "</td>";
+        echo "<td>", $row['フリガナ'], "</td>";
+        echo "<td>", $row['メールアドレス'], "</td>";
+        echo "<td>", $row['電話番号'], "</td>";
         echo "</tr>";
       }
       echo "</tbody>";
