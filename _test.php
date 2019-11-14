@@ -7,7 +7,6 @@ $gobackURL = "_test_bottan.php";
 //   header("Location:{$gobackURL}");
 //   exit();
 // }
-
 // nameが未設定、空のときはエラー
 if (empty($_POST)){
   
