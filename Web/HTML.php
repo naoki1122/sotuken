@@ -18,32 +18,38 @@
     <p class="user">ユーザー名 朝賀</p>
 
     <?php
-      $dsn = 'mysql:dbname=test;host=localhost;charset=utf8';
+      $dsn = 'mysql:dbname=management;host=localhost;charset=utf8';
       $user = 'root';
       $password = '';
       try{
         $dbh = new PDO($dsn, $user, $password);
       
-        $sql = 'select * from member';
+        $sql = 'select * from student';
 ?>
 
 <div id='style table'>
 <table border="1">
   <tr>
   <th>学籍番号</th>
-  <th>名前</th>
-  <th>ふりがな</th>
+  <th>学科</th>
+  <th>学年</th>
   <th>クラス</th>
+  <th>名前</th>
+  <th>フリガナ</th>
   <th>メールアドレス</th>
+  <th>電話番号</th>
   </tr>
   
     <section id="print"><?php foreach ($dbh->query($sql) as $row){?>
           <tr>
-            <td><?php echo ($row['No']);?></td>
-            <td><?php echo ($row['name']);?></td>
-            <td><?php echo ($row['hurigana']);?></td>
-            <td><?php echo ($row['kurasu']);?></td>
-            <td><?php echo ($row['mail']);?></td>
+            <td><?php echo ($row['学籍番号']);?></td>
+            <td><?php echo ($row['学科']);?></td>
+            <td><?php echo ($row['学年']);?></td>
+            <td><?php echo ($row['クラス']);?></td>
+            <td><?php echo ($row['名前']);?></td>
+            <td><?php echo ($row['フリガナ']);?></td>
+            <td><?php echo ($row['メールアドレス']);?></td>
+            <td><?php echo ($row['電話番号']);?></td>
       </tr>
       <?php
     }
