@@ -1,3 +1,31 @@
+<?php
+$user = 'root';
+$password = '';
+// 利用するデータベース
+$dbName = 'management';
+// MySQLサーバ
+$host = 'localhost';
+// MySQLのDSN文字列
+$dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
+
+$stm = $pdo->prepare($sql);
+$stm->execute();
+$result = $stm->fetchAll(PDO::FETCH_ASSOC);
+try {
+    $pdo = new PDO($dsn, $user, $password);
+    // プリペアドステートメントのエミュレーションを無効にする
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    // 例外がスローされる設定にする
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if(isset($_POST['name'])){
+        
+    }
+} catch (Exception $e) {
+    echo '<span class="error">エラーがありました。</span><br>';
+    echo $e->getMessage();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="jp">
 <head>
