@@ -30,7 +30,7 @@ try {
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="addteacher.css" rel="stylesheet" media="all">
+    <link href="contents.css" rel="stylesheet" media="all">
     <title>教員登録</title>
 </head>
 <body>
@@ -50,6 +50,7 @@ try {
     <input type="submit" value="登録">
     <input type="reset" value="リセット">
 </form>
+<small>© チームコリジョン2019</small>
 </body>
 </html>
 
