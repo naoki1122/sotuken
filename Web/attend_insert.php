@@ -65,6 +65,6 @@ else{
     <input id="button" type="reset" value="リセット">
 </form>
 <!--copyright-->
-<footer>© チームコリジョン2019</footer>
+<footer>copyright チームコリジョン</footer>
 </body>
 </html>

@@ -50,5 +50,6 @@ span.font1{
 /*フッターの設定*/
 footer{
     text-align: right;
+    font-style: oblique;
 }
     
