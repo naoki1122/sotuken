@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION["EMAIL"])) {
+if (isset($_SESSION["名前"])) {
   echo 'Logoutしました。';
 } else {
   echo 'SessionがTimeoutしました。';

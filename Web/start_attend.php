@@ -64,9 +64,9 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
   ?>
 
   <!-- 入力フォームを作る -->
-  <form method="POST" action="_test.php">
+  <form method="POST" action="attend.php">
         <label>学籍番号を入力（読み取る）例18n000</label><br>
-        <input type="text" name="学籍番号" placeholder="バーコード" autocomplete="on"><br>
+        <input type="text" name="学籍番号" placeholder="バーコード" autocomplete="on" autofocus><br>
         
       <input type="submit" value="検索" >
   </form>

@@ -1,6 +1,6 @@
 <?php
 //require_once("php7note\chap13\lib\util.php"); 
-$gobackURL = "_test_bottan.php";
+$gobackURL = "start_attend.php";
 
 // 文字エンコードの検証
 // if (!cken($_POST)){
@@ -11,7 +11,7 @@ $gobackURL = "_test_bottan.php";
 // nameが未設定、空のときはエラー
 if (empty($_POST)){
   
-  header("Location:_test_bottan.php");
+  header("Location:start_attend.php");
   exit();
 } else if((!isset($_POST["学籍番号"])||($_POST["学籍番号"]===""))){
   header("Location:{$gobackURL}");
@@ -62,7 +62,7 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
                  $result = $stm->fetchAll(PDO::FETCH_ASSOC);
                  if(count($result)>0){ 
                    $timestamp = new DateTime();
-                   $timestamp = $timestamp->format('Y年m月d日H時i分s秒');
+                   $timestamp = $timestamp->format('H時i分s秒');
                    $sql = "insert into attend(学籍番号,出席時刻) value('".$no."','".$timestamp."')";
                    //var_dump($sql);
                    //$stm->bindValue(':no', "{$no}", PDO::PARAM_STR);

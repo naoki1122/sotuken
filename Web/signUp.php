@@ -23,13 +23,13 @@ if (isset($_SESSION['EMAIL'])) {
  <body>
    <h1>ようこそ、ログインしてください。</h1>
    <form  action="login.php" method="post">
-     <label for="email">email</label>
-     <input type="email" name="email">
-     <label for="password">password</label>
-     <input type="password" name="password">
+     <label for="name">名前</label>
+     <input type="text" name="名前">
+     <label for="password">パスワード</label>
+     <input type="password" name="パスワード">
      <button type="submit">Sign In!</button>
    </form>
-   <h1>初めての方はこちら</h1>
+   <!-- <h1>初めての方はこちら</h1>
    <form action="entry.php" method="post">
      <label for="email">email</label>
      <input type="email" name="email">
@@ -37,6 +37,6 @@ if (isset($_SESSION['EMAIL'])) {
      <input type="password" name="password">
      <button type="submit">Sign Up!</button>
      <p>※パスワードは半角英数字をそれぞれ１文字以上含んだ、８文字以上で設定してください。</p>
-   </form>
+   </form> -->
  </body>
 </html>
