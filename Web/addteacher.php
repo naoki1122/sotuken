@@ -1,10 +1,10 @@
 <?php
-$user = 'root';
-$password = '';
+$user = 'user';
+$password = 'marioff3';
 // 利用するデータベース
 $dbName = 'management';
 // MySQLサーバ
-$host = 'localhost';
+$host = '192.168.1.2';
 // MySQLのDSN文字列
 $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 
@@ -44,8 +44,8 @@ else{
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="teacherlist.html">戻る</a>
-<H1 id="top">教員登録</H1>
+<a href="teacherlist.html">戻る</a><br>
+<H1>教員登録</H1><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post">
     <span class="font1">*必須</span>　お名前　　　
