@@ -14,9 +14,26 @@ h1{
     margin: 0px auto;
     text-align: center;
 }
+#search{
+    position: relative;
+	width: 30%;
+    margin: 0px auto;
+    text-align: left;
+}
 /*必須の部分に対して適用*/
 span.font1{
     color: red;
+}
+#input1{
+    font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 50%;
+	margin: 8px 0;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 2px solid black;
+	border-radius: 4px;
+    outline: none;;
 }
 /*各項目に対して適用*/
 #input {
