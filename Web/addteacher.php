@@ -47,7 +47,7 @@ else{
 <a href="teacherlist.html">戻る</a>
 <!--入力フォーム-->
 <form id="addteacher" action="" method="post">
-    ・<input type="text" name="name" required autofocus placeholder="名前"><br>
+    ・<input id="name" type="text" name="name" required autofocus placeholder="名前"><br>
     ・<input type="text" name="no" required placeholder="教員番号"><br>
     ・<input type="password" name="password" required placeholder="パスワード"><br>
     ・<select name="authority" required>
