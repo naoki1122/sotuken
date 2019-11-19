@@ -59,6 +59,7 @@ else{
     <input type="submit" value="登録">
     <input type="reset" value="リセット">
 </form>
+<!--copyright-->
 <small>© チームコリジョン2019</small>
 </body>
 </html>
