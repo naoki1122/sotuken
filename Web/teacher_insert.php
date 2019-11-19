@@ -47,13 +47,17 @@ else{
 <a href="teacherlist.html">戻る</a><br>
 <H1>教員登録</H1><br>
 <!--入力フォーム-->
-<form id="formmain" action="" method="post">
+<form id="formmain" action="" method="post" onSubmit="return checksubmit()">
+    <!--名前-->
     <span class="font1">*必須</span>　お名前　　　
     <input id="input" type="text" name="name" required autofocus placeholder="例：山田太郎"><br>
+    <!--教員番号-->
     <span class="font1">*必須</span>　教員番号　　
     <input id="input" type="text" name="no" required placeholder="例：t00x000"><br>
+    <!--パスワード-->
     <span class="font1">*必須</span>　パスワード　
     <input id="input" type="password" name="password" required placeholder="例：abedefg"><br>
+    <!--権限-->
     <span class="font1">*必須</span>　権限　　　　
     <select id="input" name="authority" required>
         <option value="" selected>権限を選択してください</option>
@@ -61,10 +65,23 @@ else{
         <option value="1">一般教員</option>
         <option value="2">アシスタント</option>
     </select><br>
-    <input id="button" type="submit" value="登録">
-    <input id="button" type="reset" value="リセット">
+    <!--登録ボタン-->
+    <input id="button" type="submit" value="登録" >
+    <!--リセットボタン-->
+    <input id="button" type="reset" value="リセット" onclick="return resetcheck()">
 </form>
+<!--確認ポップアップ用javascript-->
+<script>
+    //リセット確認
+    function resetcheck(){
+        return confirm('リセットしてもよろしいですか？');
+    }
+    //登録確認
+    function checksubmit(){
+        return confirm('この内容で登録してもよろしいですか？');
+    }
+</script>
 <!--copyright-->
-<footer>copyright チームコリジョン</footer>
+<footer>copyright© チームコリジョン</footer>
 </body>
 </html>

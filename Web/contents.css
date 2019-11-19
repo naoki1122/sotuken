@@ -14,10 +14,10 @@ h1{
     margin: 0px auto;
     text-align: center;
 }
+/*検索条件フォーム*/
 #search{
-    position: relative;
+    /*position: relative;*/
 	width: 30%;
-    margin: 0px auto;
     text-align: left;
 }
 /*必須の部分に対して適用*/
@@ -46,6 +46,7 @@ span.font1{
 	border: 2px solid black;
 	border-radius: 4px;
     outline: none;;
+    -webkit-appearance: none;
 /*選択された時の動作*/
 }#input:focus {
     border: 2px solid skyblue;   
@@ -53,20 +54,26 @@ span.font1{
 }
 /*送信、リセットボタン*/
 #button{
-        font-size: 1.4em;
-        font-weight: bold;
-        padding: 10px 30px;
-        background-color: #248;
-        color: #fff;
-        border-style: none;
+        width: 200px;
+        margin: 0 10px;
+        padding: 10px;
+        background: #fff;
+        border: 2px solid #f6bb9e;
+        border-radius: 10px;
+        font-size: 1em;
+        -webkit-appearance: none;
 }
 /*カーソルを上に乗せた時の動作*/
 #button:hover {
-        background-color: #24d;
-        color: #fff;}
+        background-color:#f6bb9e;
+        color: #fff;
+}
 /*フッターの設定*/
 footer{
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 99%;
     text-align: right;
-    font-style: oblique;
 }
     
