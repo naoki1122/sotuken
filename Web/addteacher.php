@@ -48,9 +48,13 @@ else{
 <H1 id="top">教員登録</H1>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post">
-    <input id="input" type="text" name="name" required autofocus placeholder="名前"><br>
-    <input id="input" type="text" name="no" required placeholder="教員番号"><br>
-    <input id="input" type="password" name="password" required placeholder="パスワード"><br>
+    <span class="font1">*必須</span>　お名前　　　
+    <input id="input" type="text" name="name" required autofocus placeholder="例：山田太郎"><br>
+    <span class="font1">*必須</span>　教員番号　　
+    <input id="input" type="text" name="no" required placeholder="例：t00x000"><br>
+    <span class="font1">*必須</span>　パスワード　
+    <input id="input" type="password" name="password" required placeholder="例：abedefg"><br>
+    <span class="font1">*必須</span>　権限　　　　
     <select id="input" name="authority" required>
         <option value="" selected>権限を選択してください</option>
         <option value="0">管理者</option>
@@ -61,6 +65,6 @@ else{
     <input id="button" type="reset" value="リセット">
 </form>
 <!--copyright-->
-<small>© チームコリジョン2019</small>
+<footer>© チームコリジョン2019</footer>
 </body>
 </html>
