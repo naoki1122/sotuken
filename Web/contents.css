@@ -1,14 +1,24 @@
 @charset "utf-8";
-#top{        
-    margin: 0px auto;
-    text-align: center;
+body{
+    background-color: cornsilk;
 }
-#addteacher{
+/*トップ*/
+h1{
+    text-align: center;
+    font-size: 250%;
+}
+/*フォーム全体に対して適用*/
+#formmain{
     position: relative;
 	width: 80%;
     margin: 0px auto;
     text-align: center;
 }
+/*必須の部分に対して適用*/
+span.font1{
+    color: red;
+}
+/*各項目に対して適用*/
 #input {
     font: 15px/24px sans-serif;
 	box-sizing: border-box;
@@ -16,10 +26,29 @@
 	margin: 8px 0;
 	padding: 0.3em;
 	transition: 0.3s;
-	border: 1px solid #1b2538;
+	border: 2px solid black;
 	border-radius: 4px;
-	outline: none;;
+    outline: none;;
+/*選択された時の動作*/
+}#input:focus {
+    border: 2px solid skyblue;   
+    outline: none;      
 }
+/*送信、リセットボタン*/
 #button{
-    
+        font-size: 1.4em;
+        font-weight: bold;
+        padding: 10px 30px;
+        background-color: #248;
+        color: #fff;
+        border-style: none;
 }
+/*カーソルを上に乗せた時の動作*/
+#button:hover {
+        background-color: #24d;
+        color: #fff;}
+/*フッターの設定*/
+footer{
+    text-align: right;
+}
+    
