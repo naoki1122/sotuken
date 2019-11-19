@@ -45,19 +45,20 @@ else{
 <body>
 <!--戻るのリンク-->
 <a href="teacherlist.html">戻る</a>
+<H1 id="top">教員登録</H1>
 <!--入力フォーム-->
 <form id="addteacher" action="" method="post">
-    ・<input id="name" type="text" name="name" required autofocus placeholder="名前"><br>
-    ・<input type="text" name="no" required placeholder="教員番号"><br>
-    ・<input type="password" name="password" required placeholder="パスワード"><br>
-    ・<select name="authority" required>
+    <input id="input" type="text" name="name" required autofocus placeholder="名前"><br>
+    <input id="input" type="text" name="no" required placeholder="教員番号"><br>
+    <input id="input" type="password" name="password" required placeholder="パスワード"><br>
+    <select id="input" name="authority" required>
         <option value="" selected>権限を選択してください</option>
         <option value="0">管理者</option>
         <option value="1">一般教員</option>
         <option value="2">アシスタント</option>
     </select><br>
-    <input type="submit" value="登録">
-    <input type="reset" value="リセット">
+    <input id="button" type="submit" value="登録">
+    <input id="button" type="reset" value="リセット">
 </form>
 <!--copyright-->
 <small>© チームコリジョン2019</small>
