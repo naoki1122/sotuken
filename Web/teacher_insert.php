@@ -1,4 +1,5 @@
 <?php
+require_once("server_config.php");
 $user = 'user';
 $password = 'marioff3';
 // 利用するデータベース
