@@ -1,8 +1,8 @@
 <?php
 //sotukenサーバー用のDB情報
-require_once("server_config.php");
+//require_once("server_config.php");
 //ローカル用のサーバー情報
-//require_once("localhost_config.php");
+require_once("localhost_config.php");
 
 try {
     $pdo = new PDO($dsn, $user, $password);
@@ -16,19 +16,20 @@ try {
     echo $e->getMessage();
   }
 
-  if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'])){
-      $name = $_POST['name'];
-      $no = $_POST['no'];
-      $password = $_POST['password'];
-      $authority = $_POST['authority'];
-      
-    $stmt = $pdo->prepare("insert  into management.teacher(名前,教員番号,パスワード,権限) VALUES (?,?,?,?)");
-    $stmt->execute([$name, $no,$password,$authority]);
-  echo '登録完了';
+  if(isset($_POST['検索'])){
+    if(isset($_POST['word']) && $_POST['検索'] == "名前"){
+    $word = $_POST['word'];
+    $sql = "select * from management.teacher where 名前 = ?"
+
+    }else if(isset($_POST['word']) && $_POST['検索'] == "教員番号"){
+        $word = $_POST['word'];
+        $sql = "select * from management.teacher where 教員番号 = ?"
+    }
+}else{
+    $cmd = "なし";
 }
-else{
-    $word = "NO";
-}
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$word]);
 ?>
 
 <!DOCTYPE html>
@@ -47,11 +48,11 @@ else{
     <!--検索条件指定-->
     <select id="input1" name="if" required >
         <option value="" selected>条件を指定してください</option>
-        <option value="0">名前</option>
-        <option value="1">教員番号</option>
+        <option value="名前">名前</option>
+        <option value="教員番号">教員番号</option>
     </select><br>
     <!--検索条件入力-->
-    <input id="input1" type="text" name="ifname" autofocus>
+    <input id="input1" type="text" name="word" autofocus>
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索"><br>
 </form><br>
