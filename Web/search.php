@@ -19,14 +19,11 @@ exit();
 }
 
 // データベースユーザ
-$user = 'root';
-$password = '';
-// 利用するデータベース
-$dbName = 'management';
-// MySQLサーバ
-$host = 'localhost';
-// MySQLのDSN文字列
-$dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
+//sotukenサーバー用のDB情報
+require_once("server_config.php");
+//ローカル用のサーバー情報
+//require_once("localhost_config.php");
+
 ?>
 
 <!DOCTYPE html>

@@ -1,13 +1,8 @@
 <?php
+//sotukenサーバー用のDB情報
 require_once("server_config.php");
-$user = 'user';
-$password = 'marioff3';
-// 利用するデータベース
-$dbName = 'management';
-// MySQLサーバ
-$host = '192.168.1.2';
-// MySQLのDSN文字列
-$dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
+//ローカル用のサーバー情報
+//require_once("localhost_config.php");
 
 try {
     $pdo = new PDO($dsn, $user, $password);
