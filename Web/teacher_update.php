@@ -60,7 +60,7 @@ else{
     <input id="button" type="submit" value="検索"><br>
 </form><br>
 <!--入力フォーム-->
-<form id="formmain" action="" method="post">
+<form id="formmain" action="" method="post" >
     <!--名前-->お名前　　　
     <input id="input" type="text" name="name" required ><br>
     <!--教員番号-->教員番号　　
@@ -74,8 +74,13 @@ else{
         <option value="1">一般教員</option>
         <option value="2">アシスタント</option>
     </select><br>
-    <input id="button" type="submit" value="変更">
+    <input id="button" type="submit" value="変更" onclick="return checkupdate()">
 </form>
+<script>
+    function checkupdate(){
+        return confirm('この内容で登録してもよろしいですか？');
+    }
+</script>
 <!--copyright-->
 <footer>copyright© チームコリジョン</footer>
 </body>

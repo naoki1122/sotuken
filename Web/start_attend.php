@@ -1,12 +1,12 @@
 <?php
 // require_once("php7note\chap13\lib\util.php");
 // データベースユーザ
-$user = 'root';
-$password = '';
+$user = 'user';
+$password = 'marioff3';
 // 利用するデータベース
 $dbName = 'management';
 // MySQLサーバ
-$host = 'localhost';
+$host = '192.168.1.2';
 // MySQLのDSN文字列
 $dsn = "mysql:host={$host};dbname={$dbName};charset=utf8";
 ?>
