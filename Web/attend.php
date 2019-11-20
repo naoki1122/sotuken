@@ -1,6 +1,6 @@
 <?php
 //require_once("php7note\chap13\lib\util.php"); 
-$gobackURL = "start_attend.php";
+$gobackURL = "start_attend.html";
 
 // 文字エンコードの検証
 // if (!cken($_POST)){
@@ -11,7 +11,7 @@ $gobackURL = "start_attend.php";
 // nameが未設定、空のときはエラー
 if (empty($_POST)){
   
-  header("Location:start_attend.php");
+  header("Location:start_attend.html");
   exit();
 } else if((!isset($_POST["学籍番号"])||($_POST["学籍番号"]===""))){
   header("Location:{$gobackURL}");
