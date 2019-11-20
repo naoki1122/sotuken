@@ -5,7 +5,7 @@
 require_once("localhost_config.php");
 
 try {
-    $pdo = new PDO($dsn, $user, $password);
+    $pdo = new PDO(DSN, DB_USER, DB_PASS);
     // プリペアドステートメントのエミュレーションを無効にする
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     // 例外がスローされる設定にする
@@ -16,20 +16,59 @@ try {
     echo $e->getMessage();
   }
 
-  if(isset($_POST['検索'])){
-    if(isset($_POST['word']) && $_POST['検索'] == "名前"){
+  $name = "";
+  $no = "";
+  $password = "";
+  $authority = "";
+  $sql = "";
+  if(isset($_POST['word'])){
     $word = $_POST['word'];
-    $sql = "select * from management.teacher where 名前 = ?"
+  }
+  else{
+      $word = "";
+  }
+  
 
-    }else if(isset($_POST['word']) && $_POST['検索'] == "教員番号"){
-        $word = $_POST['word'];
-        $sql = "select * from management.teacher where 教員番号 = ?"
+  if(isset($_POST['検索'])){
+    if(isset($_POST['word']) && $_POST['if'] == "名前"){
+        $ifname = $_POST['if'];
+    $sql = "select * from management.teacher where 名前 = ?";
+    var_dump($sql);
+    }else if(isset($_POST['word']) && $_POST['if'] == "教員番号"){
+        $ifno = $_POST['if'];
+        $sql = "select * from management.teacher where 教員番号 = ?";
+        var_dump($sql);
+    }
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$word]);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result as $row){
+       $name  = $row["名前"];
+       $no = $row["教員番号"];
+       $password = $row["教員番号"];
+       $authority = $row["権限"];
     }
 }else{
     $cmd = "なし";
 }
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$word]);
+
+if(isset($_POST['変更'])){
+    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'],$ifname)){
+        $name = $_POST['name'];
+        $no = $_POST['no'];
+        $password = $_POST['password'];
+        $authority = $_POST['authority'];
+        $sql = "update management.teacher set 名前 = ${name} and 教員番号 = ${no}
+                and パスワード = ${password} and 権限 = ${authority}
+                where 名前 = ${word}";
+    var_dump($sql);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    echo "できた";
+    }
+    
+    //$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,24 +93,24 @@ try {
     <!--検索条件入力-->
     <input id="input1" type="text" name="word" autofocus>
     <!--検索ボタン-->
-    <input id="button" type="submit" value="検索"><br>
+    <input id="button" type="submit" value="検索" name="検索"><br>
 </form><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" >
     <!--名前-->お名前　　　
-    <input id="input" type="text" name="name" required ><br>
+    <input id="input" type="text" value="<?=$name?>"name="name" required ><br>
     <!--教員番号-->教員番号　　
-    <input id="input" type="text" name="no" required ><br>
+    <input id="input" type="text" value="<?=$no?>" name="no" required ><br>
     <!--パスワード-->パスワード　
-    <input id="input" type="password" name="password" ><br>
+    <input id="input" type="password" value="<?=$password?>" name="password" ><br>
     <!--権限選択-->権限　　　　
-    <select id="input" name="authority" required>
+    <select id="input" name="authority" value="<?=$authority?>" required>
         <option value="" selected>権限を選択してください</option>
-        <option value="0">管理者</option>
+        <option value="">管理者</option>
         <option value="1">一般教員</option>
         <option value="2">アシスタント</option>
     </select><br>
-    <input id="button" type="submit" value="変更" onclick="return checkupdate()">
+    <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
 </form>
 <script>
     function checkupdate(){
