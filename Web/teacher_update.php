@@ -28,7 +28,7 @@ try {
   $password = "";
   $authority = "";
   $sql = "";
-  $cookie = setcookie("word",$word);
+  setcookie()
   
   
 
