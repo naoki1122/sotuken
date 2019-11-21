@@ -18,25 +18,17 @@ if (isset($_SESSION['EMAIL'])) {
 <html lang="ja">
  <head>
    <meta charset="utf-8">
-   <title>Login</title>
+   <link href="contents.css" rel="stylesheet" media="all">
+   <title>教員ログイン</title>
  </head>
  <body>
    <h1>ようこそ、ログインしてください。</h1>
    <form  action="login.php" method="post">
-     <label for="name">名前</label>
-     <input type="text" name="名前">
+     <label for="name">教員番号</label>
+     <input type="text" name="教員番号">
      <label for="password">パスワード</label>
      <input type="password" name="パスワード">
-     <button type="submit">Sign In!</button>
+     <button id="login" type="submit" value="ログイン"></button>
    </form>
-   <!-- <h1>初めての方はこちら</h1>
-   <form action="entry.php" method="post">
-     <label for="email">email</label>
-     <input type="email" name="email">
-     <label for="password">password</label>
-     <input type="password" name="password">
-     <button type="submit">Sign Up!</button>
-     <p>※パスワードは半角英数字をそれぞれ１文字以上含んだ、８文字以上で設定してください。</p>
-   </form> -->
  </body>
 </html>
