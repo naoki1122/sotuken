@@ -1,0 +1,79 @@
+@charset "utf-8";
+body{
+    background-color: cornsilk;
+}
+/*トップ*/
+h1{
+    text-align: center;
+    font-size: 250%;
+}
+/*フォーム全体に対して適用*/
+#formmain{
+    position: relative;
+	width: 80%;
+    margin: 0px auto;
+    text-align: center;
+}
+/*検索条件フォーム*/
+#search{
+    /*position: relative;*/
+	width: 30%;
+    text-align: left;
+}
+/*必須の部分に対して適用*/
+span.font1{
+    color: red;
+}
+#input1{
+    font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 50%;
+	margin: 8px 0;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 2px solid black;
+	border-radius: 4px;
+    outline: none;;
+}
+/*各項目に対して適用*/
+#input {
+    font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 50%;
+	margin: 8px 0;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 2px solid black;
+	border-radius: 4px;
+    outline: none;;
+    -webkit-appearance: none;
+/*選択された時の動作*/
+}#input:focus {
+    border: 2px solid skyblue;   
+    outline: none;      
+}
+/*送信、リセットボタン*/
+#button{
+        width: 200px;
+        margin: 0 10px;
+        padding: 10px;
+        background: #fff;
+        border: 2px solid #f6bb9e;
+        border-radius: 10px;
+        font-size: 1em;
+        -webkit-appearance: none;
+}
+/*カーソルを上に乗せた時の動作*/
+#button:hover {
+        background-color:#f6bb9e;
+        color: #fff;
+}
+/*フッターの設定*/
+footer{
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 99%;
+    text-align: right;
+}
+    

@@ -1,0 +1,34 @@
+@charset "utf-8";
+body{
+    background-color: cornsilk;
+    width: 100%;
+    text-align: center;
+}
+h1{
+    text-align: center;
+    font-size: 250%;
+    margin: 0 auto;
+}
+#main{
+    position: relative;
+	width: 80%;
+    margin: 0px auto;
+    text-align: center;
+}
+#no{
+    font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 50%;
+	margin: 8px auto;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 2px solid black;
+	border-radius: 4px;
+    outline: none;
+    display: table-cell;
+	vertical-align: middle;
+}
+#button{
+    padding: 0;
+    border:0;
+}
