@@ -107,7 +107,7 @@ if(isset($_POST['変更'])){
 </form>
 <script>
     function checkdelete(){
-        return confirm('本当に削除してもよいですか？\tこの操作は取り消せません。');
+        return confirm('本当に削除してもよいですか？\nこの操作は取り消せません。');
     }
 </script>
 <!--copyright-->
