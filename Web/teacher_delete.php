@@ -91,7 +91,7 @@ if(isset($_POST['変更'])){
         <option value="教員番号">教員番号</option>
     </select><br>
     <!--検索条件入力-->
-    <input id="input1" type="text" name="word" autofocus autocomplete="no">
+    <input id="input1" type="text" name="word" autofocus autocomplete="off">
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索" name="検索"><br>
 </form><br>
