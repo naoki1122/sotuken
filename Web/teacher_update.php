@@ -4,6 +4,13 @@
 //ローカル用のサーバー情報
 require_once("localhost_config.php");
 
+if(isset($_POST['word'])){
+    $word = $_POST['word'];
+  }
+  else{
+      $word = "";
+  }
+
 try {
     $pdo = new PDO(DSN, DB_USER, DB_PASS);
     // プリペアドステートメントのエミュレーションを無効にする
@@ -21,21 +28,19 @@ try {
   $password = "";
   $authority = "";
   $sql = "";
-  if(isset($_POST['word'])){
-    $word = $_POST['word'];
-  }
-  else{
-      $word = "";
-  }
+  $cookie = setcookie("word",$word);
+  
   
 
   if(isset($_POST['検索'])){
     if(isset($_POST['word']) && $_POST['if'] == "名前"){
-        $ifname = $_POST['if'];
+        $if = "名前";
+        $word = $_POST['word'];
     $sql = "select * from management.teacher where 名前 = ?";
     var_dump($sql);
     }else if(isset($_POST['word']) && $_POST['if'] == "教員番号"){
-        $ifno = $_POST['if'];
+        $if = "教員番号";
+        $word = $_POST['word'];
         $sql = "select * from management.teacher where 教員番号 = ?";
         var_dump($sql);
     }
@@ -45,23 +50,23 @@ try {
     foreach ($result as $row){
        $name  = $row["名前"];
        $no = $row["教員番号"];
-       $password = $row["教員番号"];
+       $password = $row["パスワード"];
        $authority = $row["権限"];
     }
 }else{
     $cmd = "なし";
 }
-
+var_dump($cookie);
 if(isset($_POST['変更'])){
-    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'],$ifname)){
+    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $if = "名前"){
         $name = $_POST['name'];
         $no = $_POST['no'];
         $password = $_POST['password'];
         $authority = $_POST['authority'];
-        $sql = "update management.teacher set 名前 = ${name} and 教員番号 = ${no}
-                and パスワード = ${password} and 権限 = ${authority}
-                where 名前 = ${word}";
-    var_dump($sql);
+        $sql = "update management.teacher set 名前 = '${name}' and 教員番号 = '${no}'
+                and パスワード = '${password}' and 権限 = ${authority}
+                where 名前 = ${cookie}";
+    
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     echo "できた";
@@ -105,7 +110,7 @@ if(isset($_POST['変更'])){
     <input id="input" type="password" value="<?=$password?>" name="password" ><br>
     <!--権限選択-->権限　　　　
     <select id="input" name="authority" value="<?=$authority?>" required>
-        <option value="" selected>権限を選択してください</option>
+        <option value="" selected>権限を選択し直してください</option>
         <option value="">管理者</option>
         <option value="1">一般教員</option>
         <option value="2">アシスタント</option>
