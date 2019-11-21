@@ -103,7 +103,7 @@ if(isset($_POST['変更'])){
     <input id="input" type="text" disabled value="<?=$no?>" name="no" required><br>
     <!--パスワード-->パスワード　
     <input id="input" type="password" disabled value="<?=$password?>" name="password"><br>
-    <!--権限-->権限　　　
+    <!--権限-->権限　　　　
     <input id="input" type="text" disabled value="<?=$authority?>" name="authority"><br>
     <input id="button" type="submit" value="削除" name="削除"onclick="return checkdelete()">
 </form>
