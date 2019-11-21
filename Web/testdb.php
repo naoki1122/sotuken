@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
@@ -7,29 +7,34 @@
 
 <body>
     <?php
-
-$dsn = 'mysql:dbname=management;host=192.168.1.3;charset=utf8';
-$user = 'user';
-$password = 'marioff3';
+//require_once('main_config.php');
+require_once('localhost_config.php');
 try{
-  $dbh = new PDO($dsn, $user, $password);
-
+  $dbh = new PDO(DSN, DB_USER, DB_PASS);
+ var_dump($dbh);
   $sql = 'select * from student';
 ?>
 <div id='style table'>
 <table border="1">
   <tr>
   <th>学籍番号</th>
-  <th>名前</th>
-  <th>ふりがな</th>
+  <th>学科</th>
+  <th>学年</th>
   <th>クラス</th>
+  <th>名前</th>
+  <th>フリガナ</th>
   <th>メールアドレス</th>
+  <th>電話番号</th>
+  <th>パスワード</th>
+  <th>路線１</th>
+  <th>路線２</th>
+  <th>路線３</th>
   </tr>
 
   <?php
   foreach ($dbh->query($sql) as $row) { ?>
     <tr>
-    <td><?php print($row['学生番号']);?>
+    <td><?php print($row['学籍番号']);?>
     <td><?php print($row['学科']);?>
     <td><?php print($row['学年']);?>
     <td><?php print($row['クラス']);?>
@@ -46,6 +51,7 @@ try{
     }
     ?>
     </table>
+    <?php
 }catch (PDOException $e){
   print('Error:'.$e->getMessage());
   die();
