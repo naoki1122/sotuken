@@ -4,13 +4,6 @@
 //ローカル用のサーバー情報
 require_once("localhost_config.php");
 
-if(isset($_POST['word'])){
-    $word = $_POST['word'];
-  }
-  else{
-      $word = "";
-  }
-
 try {
     $pdo = new PDO(DSN, DB_USER, DB_PASS);
     // プリペアドステートメントのエミュレーションを無効にする
@@ -28,19 +21,21 @@ try {
   $password = "";
   $authority = "";
   $sql = "";
-  $cookie = setcookie("word",$word);
-  
+  if(isset($_POST['word'])){
+    $word = $_POST['word'];
+  }
+  else{
+      $word = "";
+  }
   
 
   if(isset($_POST['検索'])){
     if(isset($_POST['word']) && $_POST['if'] == "名前"){
-        $if = "名前";
-        $word = $_POST['word'];
+        $ifname = $_POST['if'];
     $sql = "select * from management.teacher where 名前 = ?";
     var_dump($sql);
     }else if(isset($_POST['word']) && $_POST['if'] == "教員番号"){
-        $if = "教員番号";
-        $word = $_POST['word'];
+        $ifno = $_POST['if'];
         $sql = "select * from management.teacher where 教員番号 = ?";
         var_dump($sql);
     }
@@ -50,29 +45,37 @@ try {
     foreach ($result as $row){
        $name  = $row["名前"];
        $no = $row["教員番号"];
-       $password = $row["パスワード"];
+       $password = $row["教員番号"];
        $authority = $row["権限"];
     }
 }else{
     $cmd = "なし";
 }
-var_dump($cookie);
-if(isset($_POST['変更'])){
-    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $if = "名前"){
+
+if(isset($_POST['削除'])){
+    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'],$ifname)){
         $name = $_POST['name'];
         $no = $_POST['no'];
         $password = $_POST['password'];
         $authority = $_POST['authority'];
-        $sql = "update management.teacher set 名前 = '${name}' and 教員番号 = '${no}'
-                and パスワード = '${password}' and 権限 = ${authority}
-                where 名前 = ${cookie}";
-    
+        $sql = "update management.teacher set 名前 = ${name} and 教員番号 = ${no}
+                and パスワード = ${password} and 権限 = ${authority}
+                where 名前 = ${word}";
+    var_dump($sql);
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     echo "できた";
     }
     
     //$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+//出来てない！！！権限を数値から名前に変えるやつ
+if($authority == 0){
+    $rename = str_replace('0','管理者',$authority)
+        }elseif($authority == 1){
+            $rename = str_replace('1','教員',$authority)
+                }else{
+                    $rename = str_replace('2','アシスタント',$authority)
 }
 ?>
 
@@ -81,12 +84,12 @@ if(isset($_POST['変更'])){
 <head>
     <meta charset="UTF-8">
     <link href="contents.css" rel="stylesheet" media="all">
-    <title>教員情報変更</title>
+    <title>教員削除</title>
 </head>
 <body>
 <!--戻るのリンク-->
 <a href="teacherlist.html">戻る</a><br>
-<H1>教員情報変更</H1><br>
+<H1>教員削除</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
     <!--検索条件指定-->
@@ -103,23 +106,18 @@ if(isset($_POST['変更'])){
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" >
     <!--名前-->お名前　　　
-    <input id="input" type="text" value="<?=$name?>"name="name" required ><br>
+    <input id="input" type="text" disabled value="<?=$name?>" name="name" required><br>
     <!--教員番号-->教員番号　　
-    <input id="input" type="text" value="<?=$no?>" name="no" required ><br>
+    <input id="input" type="text" disabled value="<?=$no?>" name="no" required><br>
     <!--パスワード-->パスワード　
-    <input id="input" type="password" value="<?=$password?>" name="password" ><br>
-    <!--権限選択-->権限　　　　
-    <select id="input" name="authority" value="<?=$authority?>" required>
-        <option value="" selected>権限を選択し直してください</option>
-        <option value="">管理者</option>
-        <option value="1">一般教員</option>
-        <option value="2">アシスタント</option>
-    </select><br>
-    <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
+    <input id="input" type="password" disabled value="<?=$password?>" name="password"><br>
+    <!--権限-->権限　　　　
+    <input id="input" type="text" disabled value="<?=$rename?>" name="authority"><br>
+    <input id="button" type="submit" value="削除" name="削除"onclick="return checkdelete()">
 </form>
 <script>
-    function checkupdate(){
-        return confirm('この内容で登録してもよろしいですか？');
+    function checkdelete(){
+        return confirm('本当に削除してもよいですか？\nこの操作は取り消せません。');
     }
 </script>
 <!--copyright-->
