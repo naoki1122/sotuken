@@ -1,3 +1,8 @@
+<?php//sotukenサーバー用のDB情報
+//require_once("server_config.php");
+//ローカル用のサーバー情報
+require_once("localhost_config.php");
+?>
 <!DOCTYPE html>
 
 <head>
@@ -7,14 +12,12 @@
 
 <body>
     <?php
-
-$dsn = 'mysql:dbname=management;host=192.168.1.3;charset=utf8';
-$user = 'user';
-$password = 'marioff3';
+//require_once('main_config.php');
+require_once('localhost_config.php');
 try{
-  $dbh = new PDO($dsn, $user, $password);
-
-  $sql = 'select * from student';
+  $dbh = new PDO(DSN, DB_USER, DB_PASS);
+ var_dump($dbh);
+  $sql = 'select * from teacher';
 ?>
 <div id='style table'>
 <table border="1">
@@ -37,6 +40,7 @@ try{
     }
     ?>
     </table>
+    <?php
 }catch (PDOException $e){
   print('Error:'.$e->getMessage());
   die();
