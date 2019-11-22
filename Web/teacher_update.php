@@ -3,7 +3,7 @@
 //require_once("server_config.php");
 //ローカル用のサーバー情報
 require_once("localhost_config.php");
-
+$gobackURL = "teacher_update.php";
 if(isset($_POST['word'])){
     $word = $_POST['word'];
   }
@@ -28,22 +28,26 @@ try {
   $password = "";
   $authority = "";
   $sql = "";
-  setcookie()
-  
-  
 
   if(isset($_POST['検索'])){
-    if(isset($_POST['word']) && $_POST['if'] == "名前"){
-        $if = "名前";
+    if(isset($_POST['word']) && $_POST['mode'] == "名前"){
+        $mode = "名前";
         $word = $_POST['word'];
-    $sql = "select * from management.teacher where 名前 = ?";
-    var_dump($sql);
-    }else if(isset($_POST['word']) && $_POST['if'] == "教員番号"){
-        $if = "教員番号";
+        setcookie("word",$_POST['word']);
+        setcookie("mode",$_POST['mode']);
+        $sql = "select * from management.teacher where 名前 = ?";
+        var_dump($sql);
+    }else if(isset($_POST['word']) && $_POST['mode'] == "教員番号"){
+        $mode = "教員番号";
         $word = $_POST['word'];
+        setcookie("word",$_POST['word']);
+        setcookie("mode",$_POST['mode']);
         $sql = "select * from management.teacher where 教員番号 = ?";
         var_dump($sql);
+    }else{
+        header("Location:{$gobackURL}");
     }
+
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$word]);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -56,24 +60,37 @@ try {
 }else{
     $cmd = "なし";
 }
-var_dump($cookie);
+
 if(isset($_POST['変更'])){
-    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $if = "名前"){
+    $mode = $_COOKIE['mode'];
+    var_dump($mode);
+    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $mode == "名前"){
         $name = $_POST['name'];
         $no = $_POST['no'];
         $password = $_POST['password'];
         $authority = $_POST['authority'];
-        $sql = "update management.teacher set 名前 = '${name}' and 教員番号 = '${no}'
-                and パスワード = '${password}' and 権限 = ${authority}
-                where 名前 = ${cookie}";
-    
+        $word = $_COOKIE['word'];
+        $sql = "update management.teacher set 名前 = ?,教員番号 = ?,
+                パスワード = ?,権限 = ? where 名前 = ?";
+    }
+    else if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $mode == "教員番号"){
+        $name = $_POST['name'];
+        $no = $_POST['no'];
+        $password = $_POST['password'];
+        $authority = $_POST['authority'];
+        $word = $_COOKIE['word'];
+        var_dump($mode);
+        $sql = "update management.teacher set 名前 = ?,教員番号 = ?,
+                パスワード = ?,権限 = ? where 教員番号 = ?";
+    }
+    echo $sql;
     $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+    $stmt->execute(array($name,$no,$password,$authority,$word));
     echo "できた";
     }
     
     //$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +107,7 @@ if(isset($_POST['変更'])){
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
     <!--検索条件指定-->
-    <select id="input1" name="if" required >
+    <select id="input1" name="mode" required >
         <option value="" selected>条件を指定してください</option>
         <option value="名前">名前</option>
         <option value="教員番号">教員番号</option>
