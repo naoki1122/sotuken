@@ -17,7 +17,7 @@ require_once('localhost_config.php');
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
  var_dump($dbh);
-  $sql = 'select * from student';
+  $sql = 'select * from teacher';
 ?>
 <div id='style table'>
 <table border="1">
