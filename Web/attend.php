@@ -13,7 +13,6 @@ $gobackURL = "start_attend.html";
 //   header("Location:{$gobackURL}");
 //   exit();
 // }
-
 // nameが未設定、空のときはエラー
 if (empty($_POST)){
   

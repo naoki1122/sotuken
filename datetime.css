@@ -1,0 +1,18 @@
+@charset "utf-8";
+/*背景色*/
+body{
+    background-color: aqua;
+}
+/*時刻表示*/
+#dat{
+    width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    font-size: 300%;
+    text-align: center;
+}
+div{
+    width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+}

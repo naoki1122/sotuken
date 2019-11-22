@@ -52,7 +52,7 @@ try {
     $cmd = "なし";
 }
 
-if(isset($_POST['変更'])){
+if(isset($_POST['削除'])){
     if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'],$ifname)){
         $name = $_POST['name'];
         $no = $_POST['no'];
@@ -68,6 +68,14 @@ if(isset($_POST['変更'])){
     }
     
     //$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+//出来てない！！！権限を数値から名前に変えるやつ
+if($authority == 0){
+    $rename = str_replace('0','管理者',$authority)
+        }elseif($authority == 1){
+            $rename = str_replace('1','教員',$authority)
+                }else{
+                    $rename = str_replace('2','アシスタント',$authority)
 }
 ?>
 
@@ -104,7 +112,7 @@ if(isset($_POST['変更'])){
     <!--パスワード-->パスワード　
     <input id="input" type="password" disabled value="<?=$password?>" name="password"><br>
     <!--権限-->権限　　　　
-    <input id="input" type="text" disabled value="<?=$authority?>" name="authority"><br>
+    <input id="input" type="text" disabled value="<?=$rename?>" name="authority"><br>
     <input id="button" type="submit" value="削除" name="削除"onclick="return checkdelete()">
 </form>
 <script>
