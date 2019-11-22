@@ -7,10 +7,12 @@ require_once("localhost_config.php");
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link href="contents.css" rel="stylesheet" media="all">
     <title>MariaDBへの接続テスト</title>
 </head>
 
 <body>
+<H1>教員一覧</H1><br>
     <?php
 //require_once('main_config.php');
 require_once('localhost_config.php');
