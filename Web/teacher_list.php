@@ -22,8 +22,8 @@ try{
 <div id='style table'>
 <table border="1">
   <tr>
-  <th>名前</th>
   <th>教員番号</th>
+  <th>名前</th>
   <th>パスワード</th>
   <th>権限</th>
   </tr>
@@ -31,8 +31,8 @@ try{
   <?php
   foreach ($dbh->query($sql) as $row) { ?>
     <tr>
-    <td><?php print($row['名前']);?>
     <td><?php print($row['教員番号']);?>
+    <td><?php print($row['名前']);?>
     <td><?php print($row['パスワード']);?>
     <td><?php print($row['権限']);?>
     </tr>
