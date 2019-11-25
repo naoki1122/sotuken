@@ -53,6 +53,7 @@ try {
 }
 
 if(isset($_POST['削除'])){
+    
     if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'])){
         $name = $_POST['name'];
         $no = $_POST['no'];
@@ -112,7 +113,7 @@ if(isset($_POST['削除'])){
     <input id="input" type="password" disabled value="<?=$password?>" name="password"><br>
     <!--権限-->権限　　　　
     <input id="input" type="text" disabled value="<?=$authority?>" name="authority"><br>
-    <input id="button" type="submit" value="削除" name="削除" onclick="return checkupdate()>
+    <input id="button" type="submit" value="削除" name="削除" onclick="return checkupdate()">
 </form>
 <script>
     function checkdelete(){
