@@ -1,8 +1,8 @@
 <?php
 //sotukenサーバー用のDB情報
-require_once("server_config.php");
+//require_once("server_config.php");
 //ローカル用のサーバー情報
-//require_once("localhost_config.php");
+require_once("localhost_config.php");
 
 //require_once("php7note\chap13\lib\util.php"); 
 
@@ -15,7 +15,6 @@ $gobackURL = "start_attend.html";
 // }
 // nameが未設定、空のときはエラー
 if (empty($_POST)){
-  
   header("Location:start_attend.html");
   exit();
 } else if((!isset($_POST["学籍番号"])||($_POST["学籍番号"]===""))){
@@ -68,6 +67,7 @@ exit();
                    //var_dump($timestamp);
          }
           // テーブルのタイトル行
+          if(count($result)>0){
           echo "<table>";
           echo "<thead><tr>";
           echo "<th>", "学籍番号", "</th>";
@@ -84,12 +84,13 @@ exit();
           }
           echo "</tbody>";
           echo "</table>";
-        }else{
-          echo "検索結果0件";
         }
-    }
+        else{
+          header("Location:{$gobackURL}");
+        }
+      }
     // プリペアドステートメントを作る
-   catch (Exception $e) {
+      }catch (Exception $e) {
     echo '<span class="error">エラーがありました。</span><br>';
     echo $e->getMessage();
   }
