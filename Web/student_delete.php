@@ -81,7 +81,7 @@ if(isset($_POST['削除'])){
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="teacherlist.html">戻る</a><br>
+<a href="student_list.html">戻る</a><br>
 <H1>学生削除</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">

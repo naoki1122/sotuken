@@ -40,17 +40,17 @@ else{
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="teacherlist.html">戻る</a><br>
-<H1>教員登録</H1><br>
+<a href="student_list.html">戻る</a><br>
+<H1>生徒登録</H1><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
     <!--名前-->
     <span class="font1">*必須</span>　お名前　　　
     <input id="input" type="text" name="name" required autofocus placeholder="例：山田太郎"><br>
     <!--フリガナ-->
-    <span class="font1">*必須</span>　フリガナ　　　
+    <span class="font1">*必須</span>　フリガナ　　
     <input id="input" type="text" name="name" required autofocus placeholder="例：ヤマダタロウ"><br>
-    <!--教員番号-->
+    <!--学籍番号-->
     <span class="font1">*必須</span>　学籍番号　　
     <input id="input" type="text" name="no" required placeholder="例：x00n000"><br>
     <!--パスワード-->
