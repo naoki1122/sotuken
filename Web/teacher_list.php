@@ -45,7 +45,7 @@ try{
     ?>
     </table>
     <div class="float-sample-4">
-      <p>4番目のボックス</p>
+      <p>　　　　　</p>
     </div>
 <!--教員登録リンク-->
 <a href="teacher_insert.php">教員登録</a><br>
