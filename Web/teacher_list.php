@@ -7,14 +7,14 @@ require_once("localhost_config.php");
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <link href="contents.css" rel="stylesheet" media="all">
+    <link href="list.css" rel="stylesheet" media="all">
     <title>MariaDBへの接続テスト</title>
 </head>
 
 <body>
 <!--戻るのリンク-->
 <a href="teacher_list.html">戻る</a><br>
-<H1 align="left">教員一覧</H1><br>
+<H1>教員一覧</H1><br>
     <?php
 //require_once('main_config.php');
 require_once('localhost_config.php');
@@ -24,7 +24,7 @@ try{
   $sql = 'select * from teacher';
 ?>
 <div id='style table'>
-<table border="1" align="center">
+<table border="1">
   <tr>
   <th>教員番号</th>
   <th>名前</th>
@@ -51,6 +51,6 @@ try{
 }
 $dbh = null;
 ?>
+<footer>copyright© チームコリジョン</footer>
 </body>
-
 </html>
