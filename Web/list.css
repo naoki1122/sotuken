@@ -16,6 +16,12 @@ th{
     background-color: black;
     color: white;
 }
+/*テーブルの次のボックス配置*/
+div.float-sample-4{
+    width:200px;
+    height:300px;
+    float: left;
+}
 /*フッターの設定*/
 footer{
     height: 50px;
