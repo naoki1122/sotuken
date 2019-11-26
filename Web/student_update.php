@@ -98,19 +98,19 @@ if(isset($_POST['変更'])){
 <head>
     <meta charset="UTF-8">
     <link href="contents.css" rel="stylesheet" media="all">
-    <title>教員情報変更</title>
+    <title>生徒情報変更</title>
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="teacher_list.html">戻る</a><br>
-<H1>教員情報変更</H1><br>
+<a href="student_list.html">戻る</a><br>
+<H1>生徒情報変更</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
     <!--検索条件指定-->
     <select id="input1" name="mode" required >
         <option value="" selected>条件を指定してください</option>
         <option value="名前">名前</option>
-        <option value="教員番号">教員番号</option>
+        <option value="学籍番号">学籍番号</option>
     </select><br>
     <!--検索条件入力-->
     <input id="input1" type="text" name="word" autofocus autocomplete="off">
@@ -121,22 +121,29 @@ if(isset($_POST['変更'])){
 <form id="formmain" action="" method="post" >
     <!--名前-->お名前　　　
     <input id="input" type="text" value="<?=$name?>"name="name" required ><br>
-    <!--教員番号-->教員番号　　
+    <!--教員番号-->学籍番号　　
     <input id="input" type="text" value="<?=$no?>" name="no" required ><br>
-    <!--パスワード-->パスワード　
-    <input id="input" type="password" value="<?=$password?>" name="password" ><br>
-    <!--権限選択-->権限　　　　
-    <select id="input" name="authority" value="<?=$authority?>" required>
-        <option value="" selected>権限を選択し直してください</option>
-        <option value="">管理者</option>
-        <option value="1">一般教員</option>
-        <option value="2">アシスタント</option>
+    <span class="font1">*必須</span>　学籍番号　　
+    <input id="input" type="text" name="no" required placeholder="例：x00n000"><br>
+    <!--パスワード-->
+    <span class="font1">*必須</span>　パスワード　
+    <input id="input" type="password" name="password" required placeholder="例：abedefg"><br>
+    <!--学科-->
+    <span class="font1">*必須</span>　学科　　　　
+    <select id="input" name="subject" required>
+        <option value="" selected>学科を選択し直してください</option>
+        <option value="0">ITエンジニア科4年制</option>
+        <option value="1">ITエンジニア化3年制</option>
+        <option value="2">情報処理科</option>
+        <option value="3">情報ネットワーク科</option>
+        <option value="4">WEBクリエーター科</option>
+        <option value="5">こども学科</option>
     </select><br>
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
 </form>
 <script>
     function checkupdate(){
-        return confirm('この内容で登録してもよろしいですか？');
+        return confirm('この内容で登録変更してもよろしいですか？');
     }
 </script>
 <!--copyright-->

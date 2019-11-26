@@ -36,30 +36,36 @@ else{
 <head>
     <meta charset="UTF-8">
     <link href="contents.css" rel="stylesheet" media="all">
-    <title>教員登録</title>
+    <title>生徒登録</title>
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="teacher_list.html">戻る</a><br>
-<H1>教員登録</H1><br>
+<a href="student_list.html">戻る</a><br>
+<H1>生徒登録</H1><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
     <!--名前-->
     <span class="font1">*必須</span>　お名前　　　
     <input id="input" type="text" name="name" required autofocus placeholder="例：山田太郎"><br>
-    <!--教員番号-->
-    <span class="font1">*必須</span>　教員番号　　
-    <input id="input" type="text" name="no" required placeholder="例：t00x000"><br>
+    <!--フリガナ-->
+    <span class="font1">*必須</span>　フリガナ　　
+    <input id="input" type="text" name="name" required autofocus placeholder="例：ヤマダタロウ"><br>
+    <!--学籍番号-->
+    <span class="font1">*必須</span>　学籍番号　　
+    <input id="input" type="text" name="no" required placeholder="例：x00n000"><br>
     <!--パスワード-->
     <span class="font1">*必須</span>　パスワード　
     <input id="input" type="password" name="password" required placeholder="例：abedefg"><br>
-    <!--権限-->
-    <span class="font1">*必須</span>　権限　　　　
-    <select id="input" name="authority" required>
-        <option value="" selected>権限を選択してください</option>
-        <option value="0">管理者</option>
-        <option value="1">一般教員</option>
-        <option value="2">アシスタント</option>
+    <!--学科-->
+    <span class="font1">*必須</span>　学科　　　　
+    <select id="input" name="subject" required>
+        <option value="" selected>学科を選択してください</option>
+        <option value="0">ITエンジニア科4年制</option>
+        <option value="1">ITエンジニア化3年制</option>
+        <option value="2">情報処理科</option>
+        <option value="3">情報ネットワーク科</option>
+        <option value="4">WEBクリエーター科</option>
+        <option value="5">こども学科</option>
     </select><br>
     <!--登録ボタン-->
     <input id="button" type="submit" value="登録" >

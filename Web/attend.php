@@ -1,8 +1,8 @@
 <?php
 //sotukenサーバー用のDB情報
-require_once("server_config.php");
+//require_once("server_config.php");
 //ローカル用のサーバー情報
-//require_once("localhost_config.php");
+require_once("localhost_config.php");
 
 //require_once("php7note\chap13\lib\util.php"); 
 
@@ -15,7 +15,6 @@ $gobackURL = "start_attend.html";
 // }
 // nameが未設定、空のときはエラー
 if (empty($_POST)){
-  
   header("Location:start_attend.html");
   exit();
 } else if((!isset($_POST["学籍番号"])||($_POST["学籍番号"]===""))){
@@ -39,6 +38,7 @@ exit();
   <?php
   $no = $_POST['学籍番号'];
   $timestamp = '';
+  $timestamp2 = '';
   //MySQLデータベースに接続する
   try {
     $pdo = new PDO(DSN, DB_USER, DB_PASS);
@@ -57,17 +57,20 @@ exit();
       // 結果の取得（連想配列で受け取る）
                  $result = $stm->fetchAll(PDO::FETCH_ASSOC);
                  if(count($result)>0){ 
+                   date_default_timezone_set('Asia/Tokyo');
                    $timestamp = new DateTime();
-                   $timestamp = $timestamp->format('H時i分s秒');
-                   $sql = "insert into attend(学籍番号,出席時刻) value('".$no."','".$timestamp."')";
+                   $timestamp2 = $timestamp->format('Y-m-d');
+                   $timestamp = $timestamp->format('H:i:s');
+                   $sql = "insert into attend(学籍番号,登校日,登校時間) value(?,?,?)";
                    //var_dump($sql);
                    //$stm->bindValue(':no', "{$no}", PDO::PARAM_STR);
                    $stm = $pdo->prepare($sql);
-                   $stm->execute();
+                   $stm->execute(array($no,$timestamp2,$timestamp));
                    echo "登録完了";
-                   //var_dump($timestamp);
+                   var_dump($timestamp,$timestamp2);
          }
           // テーブルのタイトル行
+          if(count($result)>0){
           echo "<table>";
           echo "<thead><tr>";
           echo "<th>", "学籍番号", "</th>";
@@ -84,12 +87,13 @@ exit();
           }
           echo "</tbody>";
           echo "</table>";
-        }else{
-          echo "検索結果0件";
         }
-    }
+        else{
+          header("Location:{$gobackURL}");
+        }
+      }
     // プリペアドステートメントを作る
-   catch (Exception $e) {
+      }catch (Exception $e) {
     echo '<span class="error">エラーがありました。</span><br>';
     echo $e->getMessage();
   }
