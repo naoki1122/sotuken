@@ -1,0 +1,26 @@
+@charset "utf-8";
+/*全体の背景*/
+body{
+    background-color: cornsilk;
+}
+/*トップ*/
+h1{
+    text-align: left;
+    font-size: 250%;
+}
+/*テーブル関連*/
+table{
+    float: left;
+}
+th{
+    background-color: black;
+    color: white;
+}
+/*フッターの設定*/
+footer{
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 99%;
+    text-align: right;
+}
