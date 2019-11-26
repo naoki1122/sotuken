@@ -41,9 +41,16 @@ try{
     <td><?php print($row['権限']);?>
     </tr>
       <?php
-    }
+  }
     ?>
     </table>
+<!--教員登録リンク-->
+<a href="teacher_insert.php">教員登録</a><br>
+<!--教員情報変更リンク-->
+<a href="teacher_update.php">教員情報変更</a><br>
+<!--教員削除リンク-->
+<a href="teacher_delete.php">教員削除</a><br>
+
     <?php
 }catch (PDOException $e){
   print('Error:'.$e->getMessage());
