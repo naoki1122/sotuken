@@ -44,13 +44,18 @@ try{
   }
     ?>
     </table>
+    <div class="float-sample-4">
+      <p>　　　　　</p>
+    </div>
+<!--リスト黒四角つけるタグ-->
+<ul style="list-style-type: disc">
 <!--教員登録リンク-->
-<a href="teacher_insert.php">教員登録</a><br>
+<li><a href="teacher_insert.php">教員登録</li><br>
 <!--教員情報変更リンク-->
-<a href="teacher_update.php">教員情報変更</a><br>
+<li><a href="teacher_update.php">教員情報変更</li><br>
 <!--教員削除リンク-->
-<a href="teacher_delete.php">教員削除</a><br>
-
+<li><a href="teacher_delete.php">教員削除</li><br>
+</ul>
     <?php
 }catch (PDOException $e){
   print('Error:'.$e->getMessage());
