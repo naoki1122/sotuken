@@ -119,14 +119,23 @@ if(isset($_POST['変更'])){
 </form><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" >
-    <!--名前-->お名前　　　
+    <!--名前-->
+    <span class="font1">*必須</span>　お名前　
     <input id="input" type="text" value="<?=$name?>"name="name" required ><br>
-    <!--教員番号-->学籍番号　　
-    <input id="input" type="text" value="<?=$no?>" name="no" required ><br>
-    <span class="font1">*必須</span>　学籍番号　　
-    <input id="input" type="text" name="no" required placeholder="例：x00n000"><br>
+    <!--学籍番号-->　
+    <span class="font1">*必須</span>　学籍番号
+    <input id="input" type="text" name="no" value="<?=$no?>"　required placeholder="例：x00n000"><br>
+    <!-- 学年 -->
+    <span class="font1">*必須</span>　学年
+    <input id="input" type="text" name="" value="<?=$?>"　required><br>
+    <!-- クラス -->
+    <span class="font1">*必須</span>　クラス
+    <input id="input" type="text" name="" value="<?=$?>"　required><br>
+    <!-- フリガナ -->
+    <span class="font1">*必須</span>　フリガナ
+    <input id="input" type="text" name="" value="<?=$?>"　required placeholder="例：ヤマダタロウ"><br>
     <!--パスワード-->
-    <span class="font1">*必須</span>　パスワード　
+    <span class="font1">*必須</span>　パスワード
     <input id="input" type="password" name="password" required placeholder="例：abedefg"><br>
     <!--学科-->
     <span class="font1">*必須</span>　学科　　　　
