@@ -102,7 +102,7 @@ if(isset($_POST['変更'])){
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="teacherlist.html">戻る</a><br>
+<a href="teacher_list.html">戻る</a><br>
 <H1>教員情報変更</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
