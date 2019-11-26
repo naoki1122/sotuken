@@ -22,7 +22,7 @@ try{
   $sql = 'select * from teacher';
 ?>
 <div id='style table'>
-<table border="1">
+<table border="1" align="center">
   <tr>
   <th>教員番号</th>
   <th>名前</th>
