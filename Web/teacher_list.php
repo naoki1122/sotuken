@@ -12,7 +12,9 @@ require_once("localhost_config.php");
 </head>
 
 <body>
-<H1>教員一覧</H1><br>
+<!--戻るのリンク-->
+<a href="teacher_list.html">戻る</a><br>
+<H1 align="left">教員一覧</H1><br>
     <?php
 //require_once('main_config.php');
 require_once('localhost_config.php');
@@ -22,7 +24,7 @@ try{
   $sql = 'select * from teacher';
 ?>
 <div id='style table'>
-<table border="1">
+<table border="1" align="center">
   <tr>
   <th>教員番号</th>
   <th>名前</th>
