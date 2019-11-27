@@ -76,12 +76,26 @@ exit();
             $stm = $pdo->prepare($sql);
             $stm->execute(array($no,$timestamp2,$timestamp));
             echo "登録完了";
+            ?>
+            <meta http-equiv="refresh" content=" 1; url=start_attend.html">
+            <?php
             }else{
               header("Location:{$gobackURL}");
+              ?>
+              <meta http-equiv="refresh" content=" 1; url=start_attend.html">
+              <?php
             }
-            }
+            }else{
+              header("Location:{$gobackURL}");
+      ?>
+      <meta http-equiv="refresh" content=" 1; url=start_attend.html">
+      <?php
+     }
      }else{
       header("Location:{$gobackURL}");
+      ?>
+      <meta http-equiv="refresh" content=" 1; url=start_attend.html">
+      <?php
      }
   ?>
   <hr>
