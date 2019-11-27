@@ -22,6 +22,22 @@ div.float-sample-4{
     height:300px;
     float: left;
 }
+/*ログアウトボタン*/
+#button{
+    width: 200px;
+    margin: 0 10px;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #f6bb9e;
+    border-radius: 10px;
+    font-size: 1em;
+    -webkit-appearance: none;
+}
+/*カーソルを上に乗せた時の動作*/
+#button:hover {
+    background-color:#f6bb9e;
+    color: #fff;
+}
 /*フッターの設定*/
 footer{
     height: 50px;
