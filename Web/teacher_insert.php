@@ -47,7 +47,7 @@ try {
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="teacher_list.html">戻る</a><br>
+<a href="teacher_list.php">戻る</a><br>
 <H1>教員登録</H1><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
