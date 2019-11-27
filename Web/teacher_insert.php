@@ -1,11 +1,11 @@
 <?php
 //sotukenサーバー用のDB情報
-require_once("server_config.php");
+//require_once("server_config.php");
 //ローカル用のサーバー情報
-//require_once("localhost_config.php");
+require_once("localhost_config.php");
 
 try {
-    $pdo = new PDO($dsn, $user, $password);
+    $pdo = new PDO(DSN,DB_USER,DB_PASS);
     // プリペアドステートメントのエミュレーションを無効にする
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     // 例外がスローされる設定にする
@@ -16,20 +16,30 @@ try {
     echo $e->getMessage();
   }
 
+
+if(isset($_POST['登録'])){
   if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'])){
       $name = $_POST['name'];
       $no = $_POST['no'];
-      $password = $_POST['password'];
       $authority = $_POST['authority'];
+      if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,15}+\z/i', $_POST['password'])) {
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      } else {
+        echo 'パスワードは半角英数字をそれぞれ1文字以上含んだ8文字以上で設定してください。';
+        return false;
+      }
       
+
     $stmt = $pdo->prepare("insert  into management.teacher(名前,教員番号,パスワード,権限) VALUES (?,?,?,?)");
-    $stmt->execute([$name, $no,$password,$authority]);
+    $stmt->execute(array($name, $no,$password,$authority));
   echo '登録完了';
 }
 else{
-    $word = "NO";
+    var_dump($_POST['登録']);
+}
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="jp">
@@ -62,7 +72,7 @@ else{
         <option value="2">アシスタント</option>
     </select><br>
     <!--登録ボタン-->
-    <input id="button" type="submit" value="登録" >
+    <input id="button" type="submit" value="登録" name="登録" >
     <!--リセットボタン-->
     <input id="button" type="reset" value="リセット" onclick="return resetcheck()">
 </form>
