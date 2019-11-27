@@ -52,6 +52,7 @@ exit();
   }
     // SQL文を作る
     if(isset($_POST['学籍番号'])){
+      $no = $_POST['学籍番号'];
       // タイムゾーンを日本に設定
       date_default_timezone_set('Asia/Tokyo');
       // 時刻を取得
@@ -61,13 +62,13 @@ exit();
       $sql = "SELECT * FROM attend where 学籍番号 = ? and 登校日 = ?";
       // SQL文を実行する
       $stm->execute(array($no,$timestamp2));
+      var_dump($sql);
       // 結果の取得（連想配列で受け取る）
-        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+      $result = $stm->fetchAll(PDO::FETCH_ASSOC);
                   if(count($result)>0){
                     var_dump($result);
                 //    $sql = "insert into attend(学籍番号,登校日,登校時間) value(?,?,?)";
                 //    //var_dump($sql);
-                //    //$stm->bindValue(':no', "{$no}", PDO::PARAM_STR);
                 //    $stm = $pdo->prepare($sql);
                 //    $stm->execute(array($no,$timestamp2,$timestamp));
                 //    echo "登録完了";
