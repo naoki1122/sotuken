@@ -46,57 +46,42 @@ exit();
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     // 例外がスローされる設定にする
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // SQL文を作る
-    if(!empty($_POST['学籍番号'])){
-        $sql = "SELECT * FROM student where 学籍番号 =(:no)";
-        $stm = $pdo->prepare($sql);
-        // プレースホルダに値をバインドする
-        $stm->bindValue(':no', "{$no}", PDO::PARAM_STR);
-        // SQL文を実行する
-        $stm->execute();
-      // 結果の取得（連想配列で受け取る）
-                 $result = $stm->fetchAll(PDO::FETCH_ASSOC);
-                 if(count($result)>0){ 
-                   date_default_timezone_set('Asia/Tokyo');
-                   $timestamp = new DateTime();
-                   $timestamp2 = $timestamp->format('Y-m-d');
-                   $timestamp = $timestamp->format('H:i:s');
-                   $sql = "insert into attend(学籍番号,登校日,登校時間) value(?,?,?)";
-                   //var_dump($sql);
-                   //$stm->bindValue(':no', "{$no}", PDO::PARAM_STR);
-                   $stm = $pdo->prepare($sql);
-                   $stm->execute(array($no,$timestamp2,$timestamp));
-                   echo "登録完了";
-                   var_dump($timestamp,$timestamp2);
-         }
-          // テーブルのタイトル行
-          if(count($result)>0){
-          echo "<table>";
-          echo "<thead><tr>";
-          echo "<th>", "学籍番号", "</th>";
-          echo "<th>", "名前", "</th>";
-          echo "</tr></thead>";
-          // 値を取り出して行に表示する
-          echo "<tbody>";
-          foreach ($result as $row){
-            // １行ずつテーブルに入れる
-            echo "<tr>";
-            echo "<td>", $row['学籍番号'], "</td>";
-            echo "<td>", $row['名前'], "</td>";
-            echo "</tr>";
-          }
-          echo "</tbody>";
-          echo "</table>";
-        }
-        else{
-          header("Location:{$gobackURL}");
-        }
-      }
-    // プリペアドステートメントを作る
-      }catch (Exception $e) {
+  }catch (Exception $e) {
     echo '<span class="error">エラーがありました。</span><br>';
     echo $e->getMessage();
   }
+    // SQL文を作る
+    if(isset($_POST['学籍番号'])){
+      // タイムゾーンを日本に設定
+      date_default_timezone_set('Asia/Tokyo');
+      // 時刻を取得
+      $timestamp = new DateTime();
+      $timestamp2 = $timestamp->format('Y-m-d');
+      $timestamp = $timestamp->format('H:i:s');
+      $sql = "SELECT * FROM attend where 学籍番号 = ? and 登校日 = ?";
+      // SQL文を実行する
+      $stm->execute(array($no,$timestamp2));
+      // 結果の取得（連想配列で受け取る）
+        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+                  if(count($result)>0){
+                    var_dump($result);
+                //    $sql = "insert into attend(学籍番号,登校日,登校時間) value(?,?,?)";
+                //    //var_dump($sql);
+                //    //$stm->bindValue(':no', "{$no}", PDO::PARAM_STR);
+                //    $stm = $pdo->prepare($sql);
+                //    $stm->execute(array($no,$timestamp2,$timestamp));
+                //    echo "登録完了";
+                //    var_dump($timestamp2,$stm);
+                   }
+                   else{
+                     header("Location:{$gobackURL}");
+                   }
+        
+                }else{
+          header("Location:{$gobackURL}");
+        }
+    // プリペアドステートメントを作る
+     
   ?>
   <hr>
   <p><a href="<?php echo $gobackURL ?>">戻る</a></p>
