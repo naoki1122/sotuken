@@ -5,7 +5,8 @@ body{
 }
 /*ようこそユーザー名の配置*/
 p{
-    float: right;
+    float: none;
+    margin:0 0 0 auto;
 }
 /*トップ*/
 h1{
@@ -29,7 +30,7 @@ div.float-sample-4{
 /*ログアウトボタン*/
 #button{
     width: 200px;
-    margin: 0 10px;
+    margin:0 0 0 auto;
     padding: 10px;
     background: #fff;
     border: 2px solid #f6bb9e;
