@@ -3,6 +3,11 @@
 body{
     background-color: cornsilk;
 }
+/*ようこそユーザー名の配置*/
+p{
+    float: none;
+    margin:0 0 0 auto;
+}
 /*トップ*/
 h1{
     text-align: left;
@@ -21,6 +26,22 @@ div.float-sample-4{
     width:200px;
     height:300px;
     float: left;
+}
+/*ログアウトボタン*/
+#button{
+    width: 200px;
+    margin:0 0 0 auto;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #f6bb9e;
+    border-radius: 10px;
+    font-size: 1em;
+    -webkit-appearance: none;
+}
+/*カーソルを上に乗せた時の動作*/
+#button:hover {
+    background-color:#f6bb9e;
+    color: #fff;
 }
 /*フッターの設定*/
 footer{

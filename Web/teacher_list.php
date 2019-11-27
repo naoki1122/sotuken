@@ -12,15 +12,16 @@ require_once("localhost_config.php");
 </head>
 
 <body>
-<!--戻るのリンク-->
-<a href="teacher_list.html">戻る</a><br>
+<!-- ようこそ的なメッセージ 名前抽出わからん-->
+<p>ようこそ　ユーザー名さん</p>
+<!-- ログアウトボタン 動きはわからん -->
+<input id="button" type="submit" value="ログアウト" name="ログアウト"><br>
 <H1>教員一覧</H1><br>
     <?php
 //require_once('main_config.php');
 require_once('localhost_config.php');
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
- var_dump($dbh);
   $sql = 'select * from teacher';
 ?>
 <div id='style table'>
