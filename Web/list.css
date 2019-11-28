@@ -5,7 +5,6 @@ body{
 }
 /*ようこそユーザー名の配置*/
 p{
-    float: none;
     margin:0 0 0 auto;
 }
 /*トップ*/
