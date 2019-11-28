@@ -75,7 +75,6 @@ span.font1{
 /*フッターの設定*/
 footer{
     height: 50px;
-    position: absolute;
     bottom: 0;
     width: 99%;
     text-align: right;
