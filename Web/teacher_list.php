@@ -1,8 +1,16 @@
-<?php//sotukenサーバー用のDB情報
-//require_once("server_config.php");
-//ローカル用のサーバー情報
-require_once("localhost_config.php");
+<?php
+session_start();
+
+if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
+  $name="";
+  $level = "";
+}else{
+$name = $_SESSION['名前'];
+$level = $_SESSION['権限'];
+}
+
 ?>
+
 <!DOCTYPE html>
 
 <head>
@@ -13,13 +21,17 @@ require_once("localhost_config.php");
 
 <body>
 <!-- ようこそ的なメッセージ 名前抽出わからん-->
-<p>ようこそ　ユーザー名さん</p>
+<p>ようこそ<?=$name?>さん</p>
 <!-- ログアウトボタン 動きはわからん -->
 <input id="button" type="submit" value="ログアウト" name="ログアウト"><br>
 <H1>教員一覧</H1><br>
     <?php
+//sotukenサーバー用のDB情報
 //require_once('main_config.php');
+//ローカル用のサーバー情報
 require_once('localhost_config.php');
+
+
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from teacher';
@@ -51,11 +63,17 @@ try{
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--教員登録リンク-->
-<li><a href="teacher_insert.php">教員登録</li><br>
+<?php if($level == 0){
+echo '<li><a href="teacher_insert.php">教員登録</li><br>';
+}?>
 <!--教員情報変更リンク-->
-<li><a href="teacher_update.php">教員情報変更</li><br>
+<?php if($level == 0){
+echo '<li><a href="teacher_update.php">教員情報変更</li><br>';
+}?>
 <!--教員削除リンク-->
-<li><a href="teacher_delete.php">教員削除</li><br>
+<?php if($level == 0){
+echo '<li><a href="teacher_delete.php">教員削除</li><br>';
+}?>
 </ul>
     <?php
 }catch (PDOException $e){
