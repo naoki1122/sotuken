@@ -15,29 +15,28 @@ try {
     echo '<span class="error">エラーがありました。</span><br>';
     echo $e->getMessage();
   }
+  $pdo = new PDO(DSN,DB_USER,DB_PASS);
 
-
-if(isset($_POST['登録'])){
-  if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'])){
+  if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'],$_POST['登録'])){
       $name = $_POST['name'];
       $no = $_POST['no'];
       $authority = $_POST['authority'];
-      if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,15}+\z/i', $_POST['password'])) {
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-      } else {
-        echo 'パスワードは半角英数字をそれぞれ1文字以上含んだ8文字以上で設定してください。';
-        return false;
-      }
-      
+       if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,15}+\z/i', $_POST['password'])) {
+         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+       } else {
+         echo 'パスワードは半角英数字をそれぞれ1文字以上含んだ8文字以上で設定してください。';
+         return false;
+       }
+      $sql = "INSERT INTO management.teacher(名前,教員番号,パスワード,権限) VALUES (?,?,?,?);";
 
-    $stmt = $pdo->prepare("insert  into management.teacher(名前,教員番号,パスワード,権限) VALUES (?,?,?,?)");
+    $stmt = $pdo->prepare($sql);
+    
     $stmt->execute(array($name, $no,$password,$authority));
   echo '登録完了';
-}
-else{
+}else{
     var_dump($_POST['登録']);
 }
-}
+
 ?>
 
 

@@ -23,7 +23,7 @@ if (!isset($row['名前'])) {
   return ;
 }
 //パスワード確認後sessionにメールアドレスを渡す　password_verify
-if ($_POST['パスワード']==$row['パスワード']) {
+if (password_verify($_POST['パスワード'],$row['パスワード'])) {
   session_regenerate_id(true); //session_idを新しく生成し、置き換える
   $_SESSION['名前'] = $row['名前'];
   echo 'ログインしました';
