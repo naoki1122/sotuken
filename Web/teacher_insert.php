@@ -2,37 +2,33 @@
 //sotukenサーバー用のDB情報
 //require_once "server_config.php";
 //ローカル用のサーバー情報
-require_once "localhost_config.php";
-require_once "lib.php";
+ require_once "localhost_config.php";
+ require_once "lib.php";
 
-$pdo = dbcon();
+ $pdo = dbcon();
 
-if(isset($_POST['登録'])){
-  if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'])){
-      $name = $_POST['name'];
-      $no = $_POST['no'];
-      $authority = $_POST['authority'];
-      if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,15}+\z/i', $_POST['password'])) {
-        $password = $_POST['password'];
-      } else {
-        echo 'パスワードは半角英数字をそれぞれ1文字以上含んだ8文字以上で設定してください。';
-        return false;
-        ?>
-        <meta http-equiv="refresh" content=" 5; url=signUp.php">
-        <?php
-      }
-      
-
-    $stmt = $pdo->prepare($sql);
-    
-    $stmt->execute(array($name, $no,$password,$authority));
-  echo '登録完了';
-}else{
-    var_dump($_POST['登録']);
-}
-
+ if(isset($_POST['登録'])){
+   if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'])){
+       $name = $_POST['name'];
+       $no = $_POST['no'];
+       $authority = $_POST['authority'];
+       if(preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,15}+\z/i', $_POST['password'])) {
+         $password = $_POST['password'];
+       }else{
+         echo 'パスワードは半角英数字をそれぞれ1文字以上含んだ8文字以上で設定してください。';
+         return false;
+       }
+       $sql = "INSERT INTO management.teacher(名前,教員番号,パスワード,権限) VALUES (?,?,?,?)";
+       $stmt = $pdo->prepare($sql);
+       $stmt->execute(array($name, $no,$password,$authority));
+       echo '登録完了';
+         
+       }
+       ?>
+       <meta http-equiv="refresh" content=" 2; url=teacher_insert.php">
+       <?php
+ }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="jp">
