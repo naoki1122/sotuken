@@ -1,21 +1,11 @@
 <?php
 //sotukenサーバー用のDB情報
-//require_once("server_config.php");
+//require_once "server_config.php";
 //ローカル用のサーバー情報
-require_once("localhost_config.php");
+require_once "localhost_config.php";
+require_once "lib.php";
 
-try {
-    $pdo = new PDO(DSN,DB_USER,DB_PASS);
-    // プリペアドステートメントのエミュレーションを無効にする
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    // 例外がスローされる設定にする
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-}catch (Exception $e) {
-    echo '<span class="error">エラーがありました。</span><br>';
-    echo $e->getMessage();
-  }
-
+$pdo = dbcon();
 
 if(isset($_POST['登録'])){
   if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'])){
@@ -23,10 +13,13 @@ if(isset($_POST['登録'])){
       $no = $_POST['no'];
       $authority = $_POST['authority'];
       if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,15}+\z/i', $_POST['password'])) {
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $password = $_POST['password'];
       } else {
         echo 'パスワードは半角英数字をそれぞれ1文字以上含んだ8文字以上で設定してください。';
         return false;
+        ?>
+        <meta http-equiv="refresh" content=" 5; url=signUp.php">
+        <?php
       }
       
 
