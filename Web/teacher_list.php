@@ -15,7 +15,7 @@ require_once("localhost_config.php");
 <!-- ようこそ的なメッセージ 名前抽出わからん-->
 <p>ようこそ　ユーザー名さん</p>
 <!-- ログアウトボタン 動きはわからん -->
-<input id="button" type="submit" value="ログアウト" name="ログアウト"><br>
+<p><input id="button" type="submit" value="ログアウト" name="ログアウト"></p><br>
 <H1>教員一覧</H1><br>
     <?php
 //require_once('main_config.php');
