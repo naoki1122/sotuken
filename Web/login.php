@@ -23,13 +23,21 @@ if (!isset($row['名前'])) {
   return ;
 }
 //パスワード確認後sessionにメールアドレスを渡す　password_verify
-if (password_verify($_POST['パスワード'],$row['パスワード'])) {
+if ($_POST['パスワード']==$row['パスワード']) {
   session_regenerate_id(true); //session_idを新しく生成し、置き換える
   $_SESSION['名前'] = $row['名前'];
+  $_SESSION['権限'] = $row['権限'];
   echo 'ログインしました';
+  var_dump($_SESSION['権限'],$_SESSION['名前']);
+   ?>
+   <input type="button" value="次へ" onclick="location.href='teacher_list.php'">
+   <?php
 	exit;
 } else {
   echo 'メールアドレス又はパスワードが間違っています。';
-  return false;
+  ?>
+  <meta http-equiv="refresh" content=" 2; url=teacher_signup.html">
+  <?php
+
 }
 ?>
