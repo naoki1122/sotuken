@@ -5,7 +5,7 @@ body{
 }
 /*ようこそユーザー名の配置*/
 p{
-    margin:0 0 0 auto;
+    float: right;
 }
 /*トップ*/
 h1{
@@ -20,7 +20,7 @@ th{
     background-color: black;
     color: white;
 }
-/*テーブルの次のボックス配置*/
+/*テーブルの次のブロック配置*/
 div.float-sample-4{
     width:200px;
     height:300px;
