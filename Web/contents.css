@@ -17,6 +17,7 @@ th{
 	width: 80%;
     margin: 0px auto;
     text-align: center;
+    border: 2px solid blue;
 }
 /*検索条件フォーム*/
 #search{

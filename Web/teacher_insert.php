@@ -23,14 +23,14 @@ if(isset($_POST['登録'])){
       }
       
 
-    $stmt = $pdo->prepare("insert  into management.teacher(名前,教員番号,パスワード,権限) VALUES (?,?,?,?)");
+    $stmt = $pdo->prepare($sql);
+    
     $stmt->execute(array($name, $no,$password,$authority));
   echo '登録完了';
-}
-else{
+}else{
     var_dump($_POST['登録']);
 }
-}
+
 ?>
 
 

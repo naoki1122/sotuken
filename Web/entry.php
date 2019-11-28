@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('local_config.php');
 //データベースへ接続、テーブルがない場合は作成
 try {
   $pdo = new PDO(DSN, DB_USER, DB_PASS);
