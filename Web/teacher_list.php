@@ -8,7 +8,7 @@ require_once("localhost_config.php");
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link href="list.css" rel="stylesheet" media="all">
-    <title>MariaDBへの接続テスト</title>
+    <title>教員詳細一覧</title>
 </head>
 
 <body>
