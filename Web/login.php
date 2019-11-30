@@ -28,10 +28,7 @@ if ($_POST['パスワード']==$row['パスワード']) {
   $_SESSION['名前'] = $row['名前'];
   $_SESSION['権限'] = $row['権限'];
   echo 'ログインしました';
-  var_dump($_SESSION['権限'],$_SESSION['名前']);
-   ?>
-   <input type="button" value="次へ" onclick="location.href='teacher_list.php'">
-   <?php
+  header("Location:teacher_list.php");
 	exit;
 } else {
   echo 'メールアドレス又はパスワードが間違っています。';
