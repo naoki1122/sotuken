@@ -1,9 +1,8 @@
 <?php
 session_start();
-
+$gobackURL = "teacher_signup.html";
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
-  $name="";
-  $level = "";
+  header("Location:{$gobackURL}");
 }else{
 $name = $_SESSION['名前'];
 $level = $_SESSION['権限'];
@@ -23,7 +22,7 @@ $level = $_SESSION['権限'];
 <!-- ようこそ的なメッセージ 名前抽出わからん-->
 <p>ようこそ<?=$name?>さん</p>
 <!-- ログアウトボタン 動きはわからん -->
-<input id="button" type="submit" value="ログアウト" name="ログアウト"><br>
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>教員一覧</H1><br>
     <?php
 //sotukenサーバー用のDB情報
