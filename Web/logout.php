@@ -1,10 +1,12 @@
 <?php
 session_start();
-
+$gobackURL = "teacher_signup.html";
 if (isset($_SESSION["名前"])) {
   echo 'Logoutしました。';
+  header("Location:{$gobackURL}");
 } else {
   echo 'SessionがTimeoutしました。';
+  header("Location:{$gobackURL}");
 }
 
 //セッション変数のクリア
