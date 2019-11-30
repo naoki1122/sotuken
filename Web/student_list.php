@@ -22,7 +22,7 @@ require_once("localhost_config.php");
 require_once('localhost_config.php');
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
-  $sql = 'select * from teacher';
+  $sql = 'select * from student';
 ?>
 <div id='style table'>
 <table border="1">
