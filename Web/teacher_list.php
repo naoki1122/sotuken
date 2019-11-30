@@ -2,7 +2,9 @@
 session_start();
 $gobackURL = "teacher_signup.html";
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
-  header("Location:{$gobackURL}");
+  $name = "ゲスト";
+  $level = 0;
+  // header("Location:{$gobackURL}");
 }else{
 $name = $_SESSION['名前'];
 $level = $_SESSION['権限'];
