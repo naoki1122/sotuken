@@ -119,8 +119,7 @@
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" >
     <!--名前-->
-    <span class="font1">*必須</span>
-    <label for="name">お名前<label>　
+    <span class="font1">*必須</span>　お名前　
     <input id="input" type="text" value="<?=$name?>"name="name" required ><br>
     <!-- フリガナ -->
     <span class="font1">*必須</span>　フリガナ
