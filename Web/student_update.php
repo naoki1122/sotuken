@@ -40,6 +40,7 @@ $pdo = dbcon();
     }else{
         header("Location:{$gobackURL}");
     }
+}
 if(isset($_POST['変更'])){
     $mode = $_COOKIE['mode'];
     var_dump($mode);
