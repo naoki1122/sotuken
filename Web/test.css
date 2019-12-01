@@ -1,0 +1,23 @@
+form{
+    background-color: #eaeaea;
+    padding:30px 50px;
+  }
+
+#formmain{
+  position: relative;
+	width: 80%;
+  margin: 0px auto;
+  text-align: center;
+  border: 2px solid blue;
+}
+  
+  form dl dt{
+    width: 165px;
+    padding:10px 0;
+    float:left;
+    clear:both;
+  }
+  
+  form dl dd{
+    padding:10px 0;
+  }
