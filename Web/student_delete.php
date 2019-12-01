@@ -6,60 +6,48 @@ require_once "localhost_config.php";
 require_once "lib.php";
 $pdo = dbcon();
 
-  $name = "";
-  $no = "";
-  $subject = "";
-  $class = "";
-  $sql = "";
-  if(isset($_POST['word'])){
-    $word = $_POST['word'];
-  }
-  else{
-      $word = "";
-  }
-  
+$name = "";
+$no = "";
+$subject = "";
+$class = "";
+$sql = "";
+if(isset($_POST['word'])){
+  $word = $_POST['word'];
+}
+else{
+    $word = "";
+}
 
-  if(isset($_POST['検索'])){
-    if(isset($_POST['word']) && $_POST['if'] == "名前"){
-        $ifname = $_POST['if'];
-    $sql = "select * from management.student where 名前 = ?";
-    var_dump($sql);
-    }else if(isset($_POST['word']) && $_POST['if'] == "学籍番号"){
-        $ifno = $_POST['if'];
-        $sql = "select * from management.student where 学籍番号 = ?";
-        var_dump($sql);
-    }
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$word]);
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($result as $row){
-       $name  = $row["名前"];
-       $no = $row["学籍番号"];
-       $subject = $row["学科"];
-       $class = $row['学年']."-".$row["クラス"];
-    }
+
+if(isset($_POST['検索'])){
+  if(isset($_POST['word']) && $_POST['mode'] == "名前"){
+  $sql = "select * from management.student where 名前 = ?";
+  var_dump($sql);
+      }else if(isset($_POST['word']) && $_POST['mode'] == "学籍番号"){
+          $sql = "select * from management.student where 学籍番号 = ?";
+          var_dump($sql);
+  }
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$word]);
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  foreach ($result as $row){
+     $name  = $row["名前"];
+     $no = $row["学籍番号"];
+     $subject = $row["学科"];
+     $class = $row["学年"]."-".$row['クラス'];
+  }
 }else{
-    $cmd = "なし";
+  $cmd = "なし";
 }
-
-if(isset($_POST['削除'])){
-    if(isset($_POST['name'],$_POST['no'],$_POST['subject'],$_POST['class'])){
-        $name = $_POST['name'];
-        $no = $_POST['no'];
-        $subject = $_POST['subject'];
-        $class = $_POST['class'];
-        $sql = "update management.teacher set 名前 = ${name} and 学籍番号 = ${no}
-                and 学科 = ${subject} and クラス = ${class}
-                where 名前 = ${word}";
-    var_dump($sql);
+  if(isset($_POST['削除'])){
+    $name = $_POST['name'];
+    $no = $_POST['no'];
+    $sql = "delete from management.student where 名前 = ? and 学籍番号 = ?";
+    var_dump($sql,$no,$name);
     $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+    $stmt->execute(array($name,$no));
     echo "できた";
-    }
-    
-    //$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
+  }
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +64,7 @@ if(isset($_POST['削除'])){
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
     <!--検索条件指定-->
-    <select id="input1" name="if" required >
+    <select id="input1" name="mode" required >
         <option value="" selected>条件を指定してください</option>
         <option value="名前">名前</option>
         <option value="学籍番号">学籍番号</option>
@@ -89,13 +77,13 @@ if(isset($_POST['削除'])){
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" >
     <!--名前-->お名前
-    <input id="input" type="text" disabled value="<?=$name?>" name="name" required><br>
+    <input id="input" type="text" readonly value="<?=$name?>" name="name" required><br>
     <!--教員番号-->学籍番号
-    <input id="input" type="text" disabled value="<?=$no?>" name="no" required><br>
+    <input id="input" type="text" readonly value="<?=$no?>" name="no" required><br>
     <!--学科-->学科
-    <input id="input" type="text" disabled value="<?=$subject?>" name="subject"><br>
+    <input id="input" type="text" readonly value="<?=$subject?>" name="subject"><br>
     <!--クラス-->クラス
-    <input id="input" type="text" disabled value="<?=$class?>" name="class"><br>
+    <input id="input" type="text" readonly value="<?=$class?>" name="class"><br>
     <input id="button" type="submit" value="削除" name="削除"onclick="return checkdelete()">
 </form>
 <script>
