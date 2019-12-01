@@ -2,24 +2,14 @@
 //sotukenサーバー用のDB情報
 //require_once("server_config.php");
 //ローカル用のサーバー情報
-require_once("localhost_config.php");
-
-try {
-    $pdo = new PDO(DSN, DB_USER, DB_PASS);
-    // プリペアドステートメントのエミュレーションを無効にする
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    // 例外がスローされる設定にする
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-}catch (Exception $e) {
-    echo '<span class="error">エラーがありました。</span><br>';
-    echo $e->getMessage();
-  }
+require_once "localhost_config.php";
+require_once "lib.php";
+$pdo = dbcon();
 
   $name = "";
   $no = "";
-  $password = "";
-  $authority = "";
+  $subject = "";
+  $class = "";
   $sql = "";
   if(isset($_POST['word'])){
     $word = $_POST['word'];
@@ -32,11 +22,11 @@ try {
   if(isset($_POST['検索'])){
     if(isset($_POST['word']) && $_POST['if'] == "名前"){
         $ifname = $_POST['if'];
-    $sql = "select * from management.teacher where 名前 = ?";
+    $sql = "select * from management.student where 名前 = ?";
     var_dump($sql);
-    }else if(isset($_POST['word']) && $_POST['if'] == "教員番号"){
+    }else if(isset($_POST['word']) && $_POST['if'] == "学籍番号"){
         $ifno = $_POST['if'];
-        $sql = "select * from management.teacher where 教員番号 = ?";
+        $sql = "select * from management.student where 学籍番号 = ?";
         var_dump($sql);
     }
     $stmt = $pdo->prepare($sql);
@@ -44,22 +34,22 @@ try {
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row){
        $name  = $row["名前"];
-       $no = $row["教員番号"];
-       $password = $row["教員番号"];
-       $authority = $row["権限"];
+       $no = $row["学籍番号"];
+       $subject = $row["学科"];
+       $class = $row['学年']."-".$row["クラス"];
     }
 }else{
     $cmd = "なし";
 }
 
 if(isset($_POST['削除'])){
-    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority'],$ifname)){
+    if(isset($_POST['name'],$_POST['no'],$_POST['subject'],$_POST['class'])){
         $name = $_POST['name'];
         $no = $_POST['no'];
-        $password = $_POST['password'];
-        $authority = $_POST['authority'];
+        $subject = $_POST['subject'];
+        $class = $_POST['class'];
         $sql = "update management.teacher set 名前 = ${name} and 学籍番号 = ${no}
-                and パスワード = ${password} and 権限 = ${authority}
+                and 学科 = ${subject} and クラス = ${class}
                 where 名前 = ${word}";
     var_dump($sql);
     $stmt = $pdo->prepare($sql);
@@ -103,9 +93,9 @@ if(isset($_POST['削除'])){
     <!--教員番号-->学籍番号
     <input id="input" type="text" disabled value="<?=$no?>" name="no" required><br>
     <!--学科-->学科
-    <input id="input" type="text" disabled value="<?=$password?>" name="password"><br>
+    <input id="input" type="text" disabled value="<?=$subject?>" name="subject"><br>
     <!--クラス-->クラス
-    <input id="input" type="text" disabled value="<?=$rename?>" name="authority"><br>
+    <input id="input" type="text" disabled value="<?=$class?>" name="class"><br>
     <input id="button" type="submit" value="削除" name="削除"onclick="return checkdelete()">
 </form>
 <script>
