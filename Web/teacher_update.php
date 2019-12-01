@@ -1,8 +1,10 @@
 <?php
 //sotukenサーバー用のDB情報
-//require_once("server_config.php");
+//require_once "server_config.php";
 //ローカル用のサーバー情報
-require_once("localhost_config.php");
+require_once "localhost_config.php";
+require_once "lib.php";
+
 $gobackURL = "teacher_update.php";
 if(isset($_POST['word'])){
     $word = $_POST['word'];
@@ -11,18 +13,8 @@ if(isset($_POST['word'])){
       $word = "";
   }
 
-try {
-    $pdo = new PDO(DSN, DB_USER, DB_PASS);
-    // プリペアドステートメントのエミュレーションを無効にする
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    // 例外がスローされる設定にする
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-}catch (Exception $e) {
-    echo '<span class="error">エラーがありました。</span><br>';
-    echo $e->getMessage();
-  }
-
+  $pdo = dbcon();
+  
   $name = "";
   $no = "";
   $password = "";
@@ -88,8 +80,6 @@ if(isset($_POST['変更'])){
     $stmt->execute(array($name,$no,$password,$authority,$word));
     echo "できた";
     }
-    
-    //$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
