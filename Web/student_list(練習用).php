@@ -31,7 +31,7 @@ try{
   <th>学籍番号</th>
   <th>名前</th>
   <th>クラス</th>
-  <th>最終出席時刻</th>
+  <th class="col-xs-3">最終出席時刻</th>
   </tr>
 
   <?php
