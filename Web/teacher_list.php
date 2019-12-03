@@ -30,7 +30,7 @@ $level = $_SESSION['権限'];
 //sotukenサーバー用のDB情報
 //require_once('main_config.php');
 //ローカル用のサーバー情報
-require_once('localhost_config.php');
+require_once 'localhost_config.php';
 
 
 try{
