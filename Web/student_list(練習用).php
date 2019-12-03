@@ -25,13 +25,13 @@ try{
   $sql = 'select * from student';
 ?>
 <div id='style table'>
-<table class="table table-striped">
+<table class="table table-striped table-bordered" width="80%">
 <thead class="thead-dark">
   <tr>
   <th>学籍番号</th>
   <th>名前</th>
   <th>クラス</th>
-  <th class="col-xs-3">最終出席時刻</th>
+  <th>最終出席時刻</th>
   </tr>
 
   <?php
