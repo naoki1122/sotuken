@@ -46,6 +46,7 @@ try{
   }
     ?>
     </table>
+</div>
     <div class="float-sample-4">
       <p>　　　　　</p>
     </div>
