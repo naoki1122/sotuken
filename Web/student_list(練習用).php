@@ -66,6 +66,6 @@ try{
 }
 $dbh = null;
 ?>
-<footer></footer>
+<footer>copyright© チームコリジョン</footer>
 </body>
 </html>
