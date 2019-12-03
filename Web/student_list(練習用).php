@@ -24,8 +24,8 @@ try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
 ?>
-<div id='style table'>
-<table class="table table-striped table-bordered" width="80%">
+<div id='style table' class="col-xs-4">
+<table class="table table-striped table-bordered">
 <thead class="thead-dark">
   <tr>
   <th>学籍番号</th>
