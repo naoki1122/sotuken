@@ -24,14 +24,14 @@ try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
 ?>
-<div id='style table'>
-<table class="table table-striped">
+<div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content float=left">
+<table class="table table-striped table-bordered">
 <thead class="thead-dark">
   <tr>
   <th>学籍番号</th>
   <th>名前</th>
   <th>クラス</th>
-  <th class="col-xs-3">最終出席時刻</th>
+  <th>最終出席時刻</th>
   </tr>
 
   <?php
@@ -46,17 +46,15 @@ try{
   }
     ?>
     </table>
-    <div class="float-sample-4">
-      <p>　　　　　</p>
-    </div>
+</div>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--教員登録リンク-->
-<li><a href="student_insert.php">生徒登録</li><br>
+<li><a href="student_insert.php">生徒登録</a></li><br>
 <!--教員情報変更リンク-->
-<li><a href="student_update.php">生徒情報変更</li><br>
+<li><a href="student_update.php">生徒情報変更</a></li><br>
 <!--教員削除リンク-->
-<li><a href="student_delete.php">生徒削除</li><br>
+<li><a href="student_delete.php">生徒削除</a></li><br>
 </ul>
     <?php
 }catch (PDOException $e){
