@@ -1,8 +1,8 @@
 <?php
 //sotukenサーバー用のDB情報
-//require_once("server_config.php");
+require_once("server_config.php");
 //ローカル用のサーバー情報
-require_once("localhost_config.php");
+//require_once("localhost_config.php");
 $gobackURL = "teacher_update.php";
 if(isset($_POST['word'])){
     $word = $_POST['word'];

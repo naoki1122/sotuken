@@ -1,10 +1,8 @@
-
-
 <?php
 //sotukenサーバー用のDB情報
-//require_once("server_config.php");
+require_once("server_config.php");
 //ローカル用のサーバー情報
-require_once("localhost_config.php");
+//require_once("localhost_config.php");
 
 session_start();
 
@@ -28,7 +26,7 @@ if ($_POST['パスワード']==$row['パスワード']) {
   $_SESSION['名前'] = $row['名前'];
   $_SESSION['権限'] = $row['権限'];
   echo 'ログインしました';
-  header("Location:teacher_list.php");
+  header("Location:main.php");
 	exit;
 } else {
   echo 'メールアドレス又はパスワードが間違っています。';

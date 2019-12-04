@@ -7,8 +7,7 @@
 
 <body>
     <?php
-//require_once('main_config.php');
-require_once('localhost_config.php');
+require_once('server_config.php');
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
  var_dump($dbh);
