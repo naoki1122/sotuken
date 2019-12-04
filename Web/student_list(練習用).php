@@ -28,10 +28,10 @@ try{
 <table class="table table-striped table-bordered">
 <thead class="thead-dark">
   <tr>
-  <div class="col col-xl-4"><th>学籍番号</div></th>
-  <div class="col col-xl-2"><th>名前</div></th>
-  <div class="col col-xl-2"><th>クラス</div></th>
-  <div class="col col-xl-6"><th>最終出席時刻</div></th>
+  <th><div class="col col-xl-4">学籍番号</div></th>
+  <th><div class="col col-xl-2">名前</div></th>
+  <th><div class="col col-xl-2">クラス</div></th>
+  <th><div class="col col-xl-6">最終出席時刻</div></th>
   </tr>
 
   <?php
