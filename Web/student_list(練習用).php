@@ -24,14 +24,14 @@ try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
 ?>
-<div class="col-auto py-md-3 pl-md-5 bd-content float=left">
+<div class="py-md-3 pl-md-5 bd-content float=left">
 <table class="table table-striped table-bordered">
 <thead class="thead-dark">
   <tr>
-  <th>学籍番号</th>
-  <th>名前</th>
-  <th>クラス</th>
-  <th>最終出席時刻</th>
+  <div class="col-auto"><th>学籍番号</div></th>
+  <div class="col-auto"><th>名前</div></th>
+  <div class="col-auto"><th>クラス</div></th>
+  <div class="col-auto"><th>最終出席時刻</div></th>
   </tr>
 
   <?php
