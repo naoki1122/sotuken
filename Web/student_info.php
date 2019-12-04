@@ -12,17 +12,20 @@ require_once("server_config.php");
 </head>
 
 <body>
-<!-- ようこそ的なメッセージ 名前抽出わからん-->
-<p>ようこそ　ユーザー名さん</p>
-<!-- ログアウトボタン 動きはわからん -->
-<input id="button" type="submit" value="ログアウト" name="ログアウト"><br>
-<H1>生徒一覧</H1><br>
+<!--戻るのリンク-->
+<a href="student_list.html">戻る</a><br>
     <?php
 require_once('server_config.php');
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
 ?>
+<form id="formmain" action="" method="post" onSubmit="return checksubmit()">
+<!--名前-->
+<span class="font1">*必須</span>　お名前　　　
+    <input id="input" type="text" name="name" required autofocus placeholder="例：山田太郎"><br>
+</form>
+
 <div id='style table'>
 <table border="1">
   <tr>
