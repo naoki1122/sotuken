@@ -99,9 +99,6 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
         $time2 = $time2->format('H:i:s');
         $time3 = new DateTime($time[$j]);
         $time3 = $time3->format('H:i:s');
-        var_dump($i);
-        var_dump($time2);
-        var_dump($time3);
         if($attend >= $time2 && $attend <= $time3){
           $diff =$time2->diff($time3);
           $cmd = $msg[$cnt].$diff;
