@@ -11,7 +11,12 @@ $name = $_SESSION['名前'];
 $level = $_SESSION['権限'];
 }
 
-
+ // タイムゾーンを日本に設定
+ date_default_timezone_set('Asia/Tokyo');
+ // 現在時刻の取得
+ $time = new DateTime();
+ $time2 = $time->format('Y-m-d');
+ $time = $time->format('m-d');
 ?>
 
 
@@ -28,7 +33,7 @@ $level = $_SESSION['権限'];
 <p>ようこそ<?=$name?>さん</p>
 <!-- ログアウトボタン 動きはわからん -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
-<H1>本日の出席状況</H1><br>
+<H1>本日<?=$time?>の出席状況</H1><br>
 <?php
 //sotukenサーバー用のDB情報
 //require_once('main_config.php');
@@ -37,11 +42,6 @@ require_once 'localhost_config.php';
 
 try{
   $pdo = new PDO(DSN, DB_USER, DB_PASS);
-  // タイムゾーンを日本に設定
-  date_default_timezone_set('Asia/Tokyo');
-  // 現在時刻の取得
-  $time = new DateTime();
-  $time = $time->format('Y-m-d');
   // クエリ
   $sql = 'SELECT student.学籍番号,student.名前,student.学年,student.クラス,attend.登校時間,attend.登校日,attend.備考 FROM  management.student
   left outer join management.attend
@@ -70,7 +70,11 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
   foreach ($result as $row) { 
   $row['クラス'] = $row['学年']."-".$row['クラス']; 
   if(!empty($row['登校時間'])){
-    if($row['登校時間']);
+    if($row['登校時間']){
+      
+    }
+  }else{
+
   }
   
   ?>
