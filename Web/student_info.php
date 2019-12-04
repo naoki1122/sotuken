@@ -7,38 +7,38 @@ require_once("server_config.php");
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <link href="list.css" rel="stylesheet" media="all">
+    <link href="contents.css" rel="stylesheet" media="all">
     <title>生徒詳細一覧</title>
 </head>
 
 <body>
-<!-- ようこそ的なメッセージ 名前抽出わからん-->
-<p>ようこそ　ユーザー名さん</p>
-<!-- ログアウトボタン 動きはわからん -->
-<input id="button" type="submit" value="ログアウト" name="ログアウト"><br>
-<H1>生徒一覧</H1><br>
+<!--戻るのリンク-->
+<a href="student_list.php">戻る</a><br>
     <?php
 require_once('server_config.php');
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
 ?>
+<form id="formmain" action="" method="post" onSubmit="return checksubmit()">
+<!--検索条件入力-->
+<input id="input1" type="text" name="word" autofocus autocomplete="off">
+    <!--検索ボタン-->
+    <input id="button" type="submit" value="検索" name="検索"><br>
+</form>
+<!--テーブル云々　抽出とかわからん-->
 <div id='style table'>
 <table border="1">
   <tr>
-  <th>学籍番号</th>
-  <th>名前</th>
-  <th>クラス</th>
-  <th>最終出席時刻</th>
+  <th>日付</th>
+  <th>出席時刻</th>
   </tr>
 
   <?php
   foreach ($dbh->query($sql) as $row) { ?>
     <tr>
-    <td><?php print($row['学籍番号']);?>
-    <td><?php print($row['名前']);?>
-    <td><?php print($row['クラス']);?>
-    <td><?php print($row['最終出席時刻']);?>
+    <td><?php print($row['日付']);?>
+    <td><?php print($row['出席時刻']);?>
     </tr>
       <?php
   }
@@ -49,12 +49,8 @@ try{
     </div>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
-<!--生徒登録リンク-->
-<li><a href="student_insert.php">生徒登録</li><br>
-<!--生徒情報変更リンク-->
-<li><a href="student_update.php">生徒情報変更</li><br>
-<!--生徒削除リンク-->
-<li><a href="student_delete.php">生徒削除</li><br>
+<!--出席情報変更リンク-->
+<li><a href="">出席情報変更</li><br>
 </ul>
     <?php
 }catch (PDOException $e){
