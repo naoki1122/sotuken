@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'localhost_config.php';
+require_once 'server_config.php';
 $gobackURL = "main.html";
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   $name = "ゲスト";
@@ -20,7 +20,7 @@ $level = $_SESSION['権限'];
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link href="list.css" rel="stylesheet" media="all">
-    <title>今日の出席状況</title>
+    <title>本日の出席状況</title>
 </head>
 
 <body>
@@ -31,9 +31,9 @@ $level = $_SESSION['権限'];
 <H1>本日の出席状況</H1><br>
 <?php
 //sotukenサーバー用のDB情報
-//require_once('main_config.php');
+require_once('main_config.php');
 //ローカル用のサーバー情報
-require_once 'localhost_config.php';
+//require_once 'localhost_config.php';
 
 try{
   $pdo = new PDO(DSN, DB_USER, DB_PASS);
