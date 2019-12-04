@@ -7,13 +7,13 @@ require_once("server_config.php");
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <link href="list.css" rel="stylesheet" media="all">
+    <link href="contents.css" rel="stylesheet" media="all">
     <title>生徒詳細一覧</title>
 </head>
 
 <body>
 <!--戻るのリンク-->
-<a href="student_list.html">戻る</a><br>
+<a href="student_list.php">戻る</a><br>
     <?php
 require_once('server_config.php');
 try{
