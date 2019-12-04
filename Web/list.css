@@ -22,7 +22,7 @@ th{
 }
 /*テーブルの次のブロック配置*/
 div.float-sample-4{
-    width:200px;
+    width:500px;
     height:300px;
     float: left;
 }

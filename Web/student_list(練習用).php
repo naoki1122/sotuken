@@ -1,7 +1,7 @@
 <?php//sotukenサーバー用のDB情報
-//require_once("server_config.php");
+require_once("server_config.php");
 //ローカル用のサーバー情報
-require_once("localhost_config.php");
+//require_once("localhost_config.php");
 ?>
 <!DOCTYPE html>
 
@@ -18,20 +18,19 @@ require_once("localhost_config.php");
 <input id="button" type="submit" value="ログアウト" name="ログアウト"><br>
 <H1>生徒一覧</H1><br>
     <?php
-//require_once('main_config.php');
-require_once('localhost_config.php');
+require_once('server_config.php');
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
 ?>
-<div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content float=left">
+<div class="py-md-3 pl-md-5 bd-content float=left">
 <table class="table table-striped table-bordered">
 <thead class="thead-dark">
   <tr>
-  <th>学籍番号</th>
-  <th>名前</th>
-  <th>クラス</th>
-  <th>最終出席時刻</th>
+  <th><div class="col col-xl-4">学籍番号</div></th>
+  <th><div class="col col-xl-2">名前</div></th>
+  <th><div class="col col-xl-2">クラス</div></th>
+  <th><div class="col col-xl-6">最終出席時刻</div></th>
   </tr>
 
   <?php
