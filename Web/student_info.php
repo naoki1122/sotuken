@@ -21,9 +21,10 @@ try{
   $sql = 'select * from student';
 ?>
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
-<!--名前-->
-<span class="font1">*必須</span>　お名前　　　
-    <input id="input" type="text" name="name" required autofocus placeholder="例：山田太郎"><br>
+<!--検索条件入力-->
+<input id="input1" type="text" name="word" autofocus autocomplete="off">
+    <!--検索ボタン-->
+    <input id="button" type="submit" value="検索" name="検索"><br>
 </form>
 
 <div id='style table'>
