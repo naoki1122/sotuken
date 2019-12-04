@@ -20,7 +20,7 @@ $level = $_SESSION['権限'];
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link href="list.css" rel="stylesheet" media="all">
-    <title>教員詳細一覧</title>
+    <title>今日の出席状況</title>
 </head>
 
 <body>
