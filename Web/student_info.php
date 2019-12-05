@@ -12,8 +12,19 @@
     <?php
 require_once('server_config.php');
 try{
-  $dbh = new PDO(DSN, DB_USER, DB_PASS);
-  $sql = 'select * from student';
+  $pdo = new PDO(DSN, DB_USER, DB_PASS);
+  $word="";
+  if(isset($_POST['検索'])){
+    if(isset($_POST['word'])){
+    $word = $_POST['word'];
+    }else{
+    $word="";
+  }
+}
+  $sql = 'select * from management.attend where 学籍番号 = ?';
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$word]);
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
 <!--検索条件入力-->
@@ -30,10 +41,10 @@ try{
   </tr>
 
   <?php
-  foreach ($dbh->query($sql) as $row) { ?>
+  foreach ($result as $row) { ?>
     <tr>
-    <td><?php print($row['日付']);?>
-    <td><?php print($row['出席時刻']);?>
+    <td><?php print($row['登校日']);?>
+    <td><?php print($row['登校時間']);?>
     </tr>
       <?php
   }
