@@ -1,7 +1,3 @@
-<?php
-//ローカル用のサーバー情報
-require_once("localhost_config.php");
-?>
 <!DOCTYPE html>
 
 <head>
