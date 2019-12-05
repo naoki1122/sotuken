@@ -55,6 +55,8 @@ try{
     </table>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
+<!--生徒詳細一覧リンク-->
+<li><a href="student_insert.php">生徒詳細一覧</li><br>
 <!--生徒登録リンク-->
 <li><a href="student_insert.php">生徒登録</li><br>
 <!--生徒情報変更リンク-->
