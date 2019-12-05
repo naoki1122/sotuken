@@ -4,6 +4,7 @@ require_once('server_config.php');
 try{
   $pdo = new PDO(DSN, DB_USER, DB_PASS);
   $day="";
+  $attend = "";
   $word = $_SESSION['word'];
   if(isset($_POST['検索'])){
     if(isset($_POST['day'])){
