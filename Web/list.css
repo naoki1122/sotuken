@@ -48,10 +48,11 @@ div.float-sample-4{
 }
 /*フッターの設定*/
 footer{
-    height: 50px;
+    height: auto;
     position: absolute;
     bottom: 0;
     width: 99%;
     text-align: right;
     clear:both;
+    border: 2px solid red;
 }

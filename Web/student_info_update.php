@@ -66,6 +66,6 @@ try{
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkdelete()">
 </form>
 <!--copyright-->
-<footer>copyright© チームコリジョン</footer>
+<footer><p>copyright© チームコリジョン</p></footer>
 </body>
 </html>
