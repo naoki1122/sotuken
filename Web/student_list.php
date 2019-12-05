@@ -1,5 +1,4 @@
-<?php//sotukenサーバー用のDB情報
-//require_once("server_config.php");
+<?php
 //ローカル用のサーバー情報
 require_once("localhost_config.php");
 ?>
