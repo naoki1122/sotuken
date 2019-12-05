@@ -10,7 +10,7 @@
 <!-- ようこそ的なメッセージ 名前抽出わからん-->
 <p>ようこそ　ユーザー名さん</p>
 <!-- ログアウトボタン 動きはわからん -->
-<input id="button" type="submit" value="ログアウト" name="ログアウト"><br>
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>生徒一覧</H1><br>
     <?php
 require_once('server_config.php');
