@@ -20,10 +20,6 @@ th{
     background-color: black;
     color: white;
 }
-/*liタグ含めたリンク関連*/
-ul{
-    float:none;
-}
 /*テーブルの次のブロック配置*/
 div.float-sample-4{
     width:200px;
@@ -54,5 +50,4 @@ footer{
     width: 99%;
     text-align: right;
     clear:both;
-    border: 2px solid red;
 }
