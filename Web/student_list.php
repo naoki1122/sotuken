@@ -45,9 +45,9 @@ try{
     <td><?php print($row['フリガナ']);?>
     <td><?php print($row['メールアドレス']);?>
     <td><?php print($row['電話番号']);?>
-    <td><?php print($row['路線１']);?>
-    <td><?php print($row['路線２']);?>
-    <td><?php print($row['路線３']);?>
+    <td><?php print($row['路線1']);?>
+    <td><?php print($row['路線2']);?>
+    <td><?php print($row['路線3']);?>
     </tr>
       <?php
   }
