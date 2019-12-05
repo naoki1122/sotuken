@@ -53,6 +53,7 @@ try{
   }
     ?>
     </table>
+</div>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--生徒詳細一覧リンク-->

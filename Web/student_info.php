@@ -37,7 +37,7 @@ try{
 <p></p><br>
 <!--テーブル云々　抽出とかわからん-->
 <div id='style table'>
-<table border="1">
+<table border="1" align="center">
   <tr>
   <th>日付</th>
   <th>出席時刻</th>
