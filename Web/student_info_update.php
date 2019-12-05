@@ -32,6 +32,7 @@ try{
                 $stmt->execute(array($day,$attend,$word));
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
+                $_SESSION = array();
             }
 }catch (PDOException $e){
     print('Error:'.$e->getMessage());
