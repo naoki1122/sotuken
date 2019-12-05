@@ -57,7 +57,7 @@ try{
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--出席情報変更リンク-->
-<li><a href="">出席情報変更</li><br>
+<li><a href="student_info_update.php">出席情報変更</li><br>
 </ul>
     <?php
 }catch (PDOException $e){
