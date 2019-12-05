@@ -10,6 +10,7 @@
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
     <?php
+    session_start();
 require_once('server_config.php');
 try{
   $pdo = new PDO(DSN, DB_USER, DB_PASS);
@@ -17,6 +18,7 @@ try{
   if(isset($_POST['検索'])){
     if(isset($_POST['word'])){
     $word = $_POST['word'];
+    $_SESSION['word'] = $word;
     }else{
     $word="";
   }
