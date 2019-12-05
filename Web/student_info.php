@@ -32,6 +32,7 @@ try{
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索" name="検索"><br>
 </form>
+<p></p><br>
 <!--テーブル云々　抽出とかわからん-->
 <div id='style table'>
 <table border="1">
