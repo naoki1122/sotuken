@@ -54,4 +54,5 @@ footer{
     width: 99%;
     text-align: right;
     clear:both;
+    border: 2px solid red;
 }
