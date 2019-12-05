@@ -19,7 +19,7 @@
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" >
     <!--名前-->日付
-    <input id="input" type="text" readonly value="<?=$name?>" name="name" required>
+    <input id="input" type="text" readonly value="<?=$name?>" name="name" required><br>
     <!--教員番号-->出席時刻
     <input id="input" type="text" readonly value="<?=$no?>" name="no" required><br>
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkdelete()">
