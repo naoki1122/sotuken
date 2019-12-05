@@ -22,10 +22,8 @@ else{
 if(isset($_POST['検索'])){
   if(isset($_POST['word']) && $_POST['mode'] == "名前"){
   $sql = "select * from management.student where 名前 = ?";
-  var_dump($sql);
       }else if(isset($_POST['word']) && $_POST['mode'] == "学籍番号"){
           $sql = "select * from management.student where 学籍番号 = ?";
-          var_dump($sql);
   }
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$word]);
@@ -43,7 +41,6 @@ if(isset($_POST['検索'])){
     $name = $_POST['name'];
     $no = $_POST['no'];
     $sql = "delete from management.student where 名前 = ? and 学籍番号 = ?";
-    var_dump($sql,$no,$name);
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array($name,$no));
     echo "できた";
@@ -59,7 +56,7 @@ if(isset($_POST['検索'])){
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="student_list.html">戻る</a><br>
+<a href="student_list.php">戻る</a><br>
 <H1>学生削除</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
