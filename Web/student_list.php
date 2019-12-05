@@ -53,6 +53,7 @@ try{
   }
     ?>
     </table>
+</div>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--生徒詳細一覧リンク-->
@@ -62,7 +63,7 @@ try{
 <!--生徒情報変更リンク-->
 <li><a href="student_update.php">生徒情報変更</a></li><br>
 <!--生徒削除リンク-->
-<li><a href="student_delete.php">生徒削除</a></li>
+<li><a href="student_delete.php">生徒削除</a></li><br>
 </ul>
     <?php
 }catch (PDOException $e){
