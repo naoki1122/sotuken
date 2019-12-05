@@ -28,7 +28,7 @@ $level = $_SESSION['権限'];
 <H1>教員一覧</H1><br>
     <?php
 //sotukenサーバー用のDB情報
-require_once('main_config.php');
+require_once 'server_config.php';
 //ローカル用のサーバー情報
 //require_once 'localhost_config.php';
 
