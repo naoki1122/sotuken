@@ -11,17 +11,19 @@
 <H1>生徒出席情報変更</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
-    <!--検索条件指定-->
-    <select id="input1" name="mode" required >
-        <option value="" selected>条件を指定してください</option>
-        <option value="名前">名前</option>
-        <option value="学籍番号">学籍番号</option>
-    </select><br>
-    <!--検索条件入力-->
-    <input id="input1" type="text" name="word" autofocus autocomplete="off">
+    <!--検索条件入力-->　　　
+    <input id="input" type="text" name="name" required autofocus placeholder="日付の入力"><br>
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索" name="検索"><br>
 </form><br>
+<!--入力フォーム-->
+<form id="formmain" action="" method="post" >
+    <!--名前-->日付
+    <input id="input" type="text" readonly value="<?=$name?>" name="name" required>
+    <!--教員番号-->出席時刻
+    <input id="input" type="text" readonly value="<?=$no?>" name="no" required><br>
+    <input id="button" type="submit" value="変更" name="変更"onclick="return checkdelete()">
+</form>
 <!--copyright-->
 <footer>copyright© チームコリジョン</footer>
 </body>
