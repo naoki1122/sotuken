@@ -73,13 +73,13 @@ if(isset($_POST['検索'])){
 </form><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" >
-    <!--名前-->お名前
+    <!--名前-->お名前　
     <input id="input" type="text" readonly value="<?=$name?>" name="name" required><br>
     <!--教員番号-->学籍番号
     <input id="input" type="text" readonly value="<?=$no?>" name="no" required><br>
-    <!--学科-->学科
+    <!--学科-->学科　　
     <input id="input" type="text" readonly value="<?=$subject?>" name="subject"><br>
-    <!--クラス-->クラス
+    <!--クラス-->クラス　
     <input id="input" type="text" readonly value="<?=$class?>" name="class"><br>
     <input id="button" type="submit" value="削除" name="削除"onclick="return checkdelete()">
 </form>
