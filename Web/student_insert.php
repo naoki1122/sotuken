@@ -70,7 +70,7 @@ else{
     <select id="input" name="subject" required>
         <option value="" selected>学科を選択してください</option>
         <option value="ITエンジニア科4年制">ITエンジニア科4年制</option>
-        <option value="ITエンジニア化3年制">ITエンジニア化3年制</option>
+        <option value="ITエンジニア科年制">ITエンジニア化3年制</option>
         <option value="情報処理科">情報処理科</option>
         <option value="情報ネットワーク科">情報ネットワーク科</option>
         <option value="WEBクリエーター科">WEBクリエーター科</option>
