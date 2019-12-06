@@ -79,7 +79,7 @@ $gobackURL = "student_update.php";
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="student_list.html">戻る</a><br>
+<a href="student_list.php">戻る</a><br>
 <H1>生徒情報変更</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
