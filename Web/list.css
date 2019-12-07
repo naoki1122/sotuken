@@ -13,9 +13,7 @@ h1{
     font-size: 250%;
 }
 /*テーブル関連*/
-table{
-    float: left;
-}
+
 th{
     background-color: black;
     color: white;
