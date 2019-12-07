@@ -1,6 +1,6 @@
 <?php
 //sotukenサーバー用のDB情報
-require_once("server_config.php");
+require_once "server_config.php";
 //ローカル用のサーバー情報
 //require_once("localhost_config.php");
 
@@ -32,10 +32,8 @@ try {
   if(isset($_POST['検索'])){
     if(isset($_POST['word']) && $_POST['mode'] == "名前"){
     $sql = "select * from management.teacher where 名前 = ?";
-    var_dump($sql);
         }else if(isset($_POST['word']) && $_POST['mode'] == "教員番号"){
             $sql = "select * from management.teacher where 教員番号 = ?";
-            var_dump($sql);
     }
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$word]);
@@ -56,7 +54,6 @@ try {
         $authority = $_POST['authority'];
         $sql = "delete from management.teacher where 名前 = ? and 教員番号 = ?
                 and パスワード = ? and 権限 = ?";
-    var_dump($sql);
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array($name,$no,$password,$authority));
     echo "できた";
