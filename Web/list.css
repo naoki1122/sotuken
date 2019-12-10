@@ -20,7 +20,7 @@ th{
 }
 tbody {
     overflow-x: scroll;
-    height: 150px;
+    width: 50px;
 }
 /*テーブルの次のブロック配置*/
 div.float-sample-4{
