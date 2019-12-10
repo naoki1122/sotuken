@@ -14,7 +14,6 @@ h1{
 }
 /*テーブル関連*/
 th{
-    display: block;
     background-color: black;
     color: white;
 }
