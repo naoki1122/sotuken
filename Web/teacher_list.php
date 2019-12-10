@@ -22,7 +22,7 @@ $level = $_SESSION['権限'];
 
 <body>
 <!--戻るのリンク-->
-<a href="student_list.php">戻る</a><br>
+<a href="main.php">戻る</a><br>
 <!-- ようこそ的なメッセージ -->
 <p>ようこそ<?=$name?>さん</p>
 <!-- ログアウトボタン -->
