@@ -25,8 +25,7 @@ try{
 
   if(isset($_POST['変更'])){
       if(isset($_POST['attend'],$_POST['day'])){
-        $sql = "update management.attend set  登校日 = ?,登校時間 = ?,
-                学籍番号 = ?";
+        $sql = "update management.attend set  登校日 = ?,登校時間 = ? where  学籍番号 = ? ";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute(array($day,$attend,$word));
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

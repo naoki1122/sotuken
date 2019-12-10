@@ -124,6 +124,7 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
   }
     ?>
     </table>
+    </div>
     <div class="float-sample-4">
       <p>　　　　　</p>
     </div>
