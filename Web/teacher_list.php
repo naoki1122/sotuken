@@ -39,7 +39,7 @@ try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from teacher';
 ?>
-<div id='style table'>
+<div id='scroll-table'>
 <table border="1">
   <tr>
   <th>教員番号</th>
