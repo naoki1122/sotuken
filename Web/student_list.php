@@ -20,7 +20,7 @@ try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
 ?>
-<div id='scroll-table'>
+<div class='scroll-table'>
 <table border="1">
   <tr>
   <th>学籍番号</th>
