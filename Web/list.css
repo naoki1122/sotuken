@@ -13,12 +13,15 @@ h1{
     font-size: 250%;
 }
 /*テーブル関連*/
+table{
+    white-space: nowrap;
+}
 th{
     background-color: black;
     color: white;
 }
 tbody {
-    overflow-x: scroll;
+    overflow: auto;
     width: 50px;
 }
 /*テーブルの次のブロック配置*/
