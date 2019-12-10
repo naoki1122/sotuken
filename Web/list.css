@@ -13,15 +13,16 @@ h1{
     font-size: 250%;
 }
 /*テーブル関連*/
-table {
-    display: block;
-    overflow-x: scroll;
+.scroll-table{
     white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
+    overflow: auto;
 }
 th{
     background-color: black;
     color: white;
+}
+tbody {
+    width: 50px;
 }
 /*テーブルの次のブロック配置*/
 div.float-sample-4{
