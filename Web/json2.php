@@ -8,7 +8,7 @@ $dbh = new PDO("mysql:host=localhost;dbname=management","root","");
 //実行したいSQL文を記述
 // $stmt = $dbh->prepare("select * from student where $id");
 // $stmt->setFetchMode(PDO::FETCH_ASSOC);
-$sql = "SELECT * from student WHERE ?";
+$sql = "SELECT * from student WHERE ";
 $stmt = $dbh->prepare($sql);
 $stmt->execute(array($id));
 $stmt->execute();
