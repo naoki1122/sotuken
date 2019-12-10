@@ -13,7 +13,12 @@ h1{
     font-size: 250%;
 }
 /*テーブル関連*/
-
+table {
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
 th{
     background-color: black;
     color: white;
