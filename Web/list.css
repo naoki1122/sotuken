@@ -17,6 +17,7 @@ h1{
     white-space: nowrap;
     overflow-y:scroll;
     width: 920px;
+    float: left;
 }
 th{
     background-color: black;
