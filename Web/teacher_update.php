@@ -35,15 +35,13 @@ try {
         $word = $_POST['word'];
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
-        $sql = "select * from management.teacher where 名前 = ?";
-        var_dump($sql);
+        $sql = "select 名前,教員番号,権限 from management.teacher where 名前 = ?";
     }else if(isset($_POST['word']) && $_POST['mode'] == "教員番号"){
         $mode = "教員番号";
         $word = $_POST['word'];
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
-        $sql = "select * from management.teacher where 教員番号 = ?";
-        var_dump($sql);
+        $sql = "select 名前,教員番号,権限 from management.teacher where 教員番号 = ?";
     }else{
         header("Location:{$gobackURL}");
     }
@@ -54,9 +52,11 @@ try {
     foreach ($result as $row){
        $name  = $row["名前"];
        $no = $row["教員番号"];
-       $password = $row["パスワード"];
        $authority = $row["権限"];
     }
+    if($row['権限'] == 0) {$admin_selects="selected";$general_selects="";$assistant_selects="";}
+    else if($row['権限'] == 1) {$general_selects="selected";$admin_selects="";$assistant_selects="";}
+    else if($row['権限'] == 2) {$assistant_selects="selected";$admin_selects="";$general_selects="";}
 }else{
     $cmd = "なし";
 }
@@ -64,28 +64,24 @@ try {
 if(isset($_POST['変更'])){
     $mode = $_COOKIE['mode'];
     var_dump($mode);
-    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $mode == "名前"){
+    if(isset($_POST['name'],$_POST['no'],$_POST['authority']) && $mode == "名前"){
         $name = $_POST['name'];
         $no = $_POST['no'];
-        $password = $_POST['password'];
         $authority = $_POST['authority'];
         $word = $_COOKIE['word'];
-        $sql = "update management.teacher set 名前 = ?,教員番号 = ?,
-                パスワード = ?,権限 = ? where 名前 = ?";
+        $sql = "update management.teacher set 名前 = ?,教員番号 = ?,権限 = ? where 名前 = ?";
     }
-    else if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $mode == "教員番号"){
+    else if(isset($_POST['name'],$_POST['no'],$_POST['authority']) && $mode == "教員番号"){
         $name = $_POST['name'];
         $no = $_POST['no'];
-        $password = $_POST['password'];
         $authority = $_POST['authority'];
         $word = $_COOKIE['word'];
         var_dump($mode);
-        $sql = "update management.teacher set 名前 = ?,教員番号 = ?,
-                パスワード = ?,権限 = ? where 教員番号 = ?";
+        $sql = "update management.teacher set 名前 = ?,教員番号 = ?,権限 = ? where 教員番号 = ?";
     }
     echo $sql;
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(array($name,$no,$password,$authority,$word));
+    $stmt->execute(array($name,$no,$authority,$word));
     echo "できた";
     }
     
@@ -128,9 +124,9 @@ if(isset($_POST['変更'])){
     <!--権限選択-->権限　　　　
     <select id="input" name="authority" value="<?=$authority?>" required>
         <option value="" selected>権限を選択し直してください</option>
-        <option value="">管理者</option>
-        <option value="1">一般教員</option>
-        <option value="2">アシスタント</option>
+        <option value="0"<?=$admin_selects?>>管理者</option>
+        <option value="1"<?=$general_selects?>>一般教員</option>
+        <option value="2"<?=$assistant_selects?>>アシスタント</option>
     </select><br>
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
 </form>
