@@ -15,7 +15,9 @@ h1{
 /*テーブル関連*/
 .scroll-table{
     white-space: nowrap;
-    overflow: auto;
+    overflow:scroll;
+    width: 920px;
+    float: left;
 }
 th{
     background-color: black;
