@@ -56,6 +56,9 @@ try{
     ?>
     </table>
 </div>
+  <div class="float-sample-4">
+      <p>　　　　　</p>
+  </div>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--生徒詳細一覧リンク-->
