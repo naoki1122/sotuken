@@ -42,6 +42,7 @@ div.float-sample-4{
     border-radius: 10px;
     font-size: 1em;
     -webkit-appearance: none;
+    float: none;
 }
 /*カーソルを上に乗せた時の動作*/
 #button:hover {
