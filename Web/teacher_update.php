@@ -1,33 +1,22 @@
 <?php
 //sotukenサーバー用のDB情報
-require_once("server_config.php");
-//ローカル用のサーバー情報
-//require_once("localhost_config.php");
+require_once "server_config.php";
+
+require_once 'lib.php';
+
 $gobackURL = "teacher_update.php";
-if(isset($_POST['word'])){
-    $word = $_POST['word'];
-  }
-  else{
-      $word = "";
-  }
+// 存在すれば各変数へ代入
+if(isset($_POST['word'])) $word = $_POST['word'];
 
-try {
-    $pdo = new PDO(DSN, DB_USER, DB_PASS);
-    // プリペアドステートメントのエミュレーションを無効にする
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    // 例外がスローされる設定にする
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-}catch (Exception $e) {
-    echo '<span class="error">エラーがありました。</span><br>';
-    echo $e->getMessage();
-  }
+    // DB接続
+    $pdo = dbcon();
 
-  $name = "";
-  $no = "";
-  $password = "";
-  $authority = "";
-  $sql = "";
+    // 初期化
+    $name = "";
+    $no = "";
+    $password = "";
+    $authority = "";
+    $sql = "";
 
   if(isset($_POST['検索'])){
     if(isset($_POST['word']) && $_POST['mode'] == "名前"){
@@ -35,58 +24,66 @@ try {
         $word = $_POST['word'];
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
-        $sql = "select * from management.teacher where 名前 = ?";
-        var_dump($sql);
+        $sql = "select 名前,教員番号,権限 from management.teacher where 名前 = :word";
     }else if(isset($_POST['word']) && $_POST['mode'] == "教員番号"){
         $mode = "教員番号";
         $word = $_POST['word'];
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
-        $sql = "select * from management.teacher where 教員番号 = ?";
-        var_dump($sql);
+        $sql = "select 名前,教員番号,権限 from management.teacher where 教員番号 = :word";
     }else{
         header("Location:{$gobackURL}");
     }
-
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$word]);
+    if(!empty($word))$stmt->bindValue(":word", $word, PDO::PARAM_INT);
+    $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row){
        $name  = $row["名前"];
        $no = $row["教員番号"];
-       $password = $row["パスワード"];
        $authority = $row["権限"];
     }
+    if($row['権限'] == 0) {$admin_selects="selected";$general_selects="";$assistant_selects="";}
+    else if($row['権限'] == 1) {$general_selects="selected";$admin_selects="";$assistant_selects="";}
+    else if($row['権限'] == 2) {$assistant_selects="selected";$admin_selects="";$general_selects="";}
 }else{
     $cmd = "なし";
 }
-
+var_dump($mode);
 if(isset($_POST['変更'])){
+    $admin_selects="";
+    $general_selects="";
+    $assistant_selects="";
     $mode = $_COOKIE['mode'];
-    var_dump($mode);
-    if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $mode == "名前"){
+    $word = $_COOKIE['word'];
+    if(isset($_POST['name'],$_POST['no'],$_POST['authority']) && $mode == "名前"){
         $name = $_POST['name'];
         $no = $_POST['no'];
-        $password = $_POST['password'];
         $authority = $_POST['authority'];
-        $word = $_COOKIE['word'];
-        $sql = "update management.teacher set 名前 = ?,教員番号 = ?,
-                パスワード = ?,権限 = ? where 名前 = ?";
+        $sql = "update management.teacher set 名前 = :name,教員番号 = :no,権限 = :authority ";
     }
-    else if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $mode == "教員番号"){
+    else if(isset($_POST['name'],$_POST['no'],$_POST['authority']) && $mode == "教員番号"){
         $name = $_POST['name'];
         $no = $_POST['no'];
-        $password = $_POST['password'];
         $authority = $_POST['authority'];
-        $word = $_COOKIE['word'];
-        var_dump($mode);
-        $sql = "update management.teacher set 名前 = ?,教員番号 = ?,
-                パスワード = ?,権限 = ? where 教員番号 = ?";
+        $sql = "update management.teacher set 名前 = :name,教員番号 = :no,権限 = :authority ";
     }
-    echo $sql;
+    if(isset($_POST['password'])){
+        $password = $_POST['password'];
+        $sql .= "パスワード = :password ";}
+    if($mode == "名前"){$sql .= "where 名前 = :word";}
+    else if($mode == "教員番号"){$sql .= "where 教員番号 = :word";}
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(array($name,$no,$password,$authority,$word));
+    if(!empty($name))$stmt->bindValue(":name", $name, PDO::PARAM_INT);
+    if(!empty($word))$stmt->bindValue(":no", $no, PDO::PARAM_INT);
+    if(!empty($word))$stmt->bindValue(":authority", $authority, PDO::PARAM_INT);
+    if(!empty($word))$stmt->bindValue(":word", $word, PDO::PARAM_INT);
+    if(!empty($password))$stmt->bindValue(":password", $password, PDO::PARAM_INT);
+    $stmt->execute();
     echo "できた";
+    if($authority == 0){$admin_selects="selected";$general_selects="";$assistant_selects="";}
+    else if($authority == 1){$general_selects="selected";$admin_selects="";$assistant_selects="";}
+    else if($authority == 2){$assistant_selects="selected";$admin_selects="";$general_selects="";}
     }
     
     //$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -128,9 +125,9 @@ if(isset($_POST['変更'])){
     <!--権限選択-->権限　　　　
     <select id="input" name="authority" value="<?=$authority?>" required>
         <option value="" selected>権限を選択し直してください</option>
-        <option value="">管理者</option>
-        <option value="1">一般教員</option>
-        <option value="2">アシスタント</option>
+        <option value="0"<?=$admin_selects?>>管理者</option>
+        <option value="1"<?=$general_selects?>>一般教員</option>
+        <option value="2"<?=$assistant_selects?>>アシスタント</option>
     </select><br>
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
 </form>

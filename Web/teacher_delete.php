@@ -1,20 +1,9 @@
 <?php
 //sotukenサーバー用のDB情報
 require_once "server_config.php";
-//ローカル用のサーバー情報
-//require_once("localhost_config.php");
+require_once "lib.php";
 
-try {
-    $pdo = new PDO(DSN, DB_USER, DB_PASS);
-    // プリペアドステートメントのエミュレーションを無効にする
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    // 例外がスローされる設定にする
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-}catch (Exception $e) {
-    echo '<span class="error">エラーがありました。</span><br>';
-    echo $e->getMessage();
-  }
+$pdo = dbcon();
 
   $name = "";
   $no = "";
@@ -74,13 +63,18 @@ try {
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="contents.css" rel="stylesheet" media="all">
+    <!-- <link href="contents.css" rel="stylesheet" media="all"> -->
+    <link href="test.css" rel="stylesheet" media="all">
     <title>教員削除</title>
 </head>
 <body>
+<header>
 <!--戻るのリンク-->
-<a href="teacher_list.php">戻る</a><br>
-<H1>教員削除</H1><br>
+<a href="teacher_list.php">戻る</a>
+<p>〇〇さんがログイン中</p>
+</header>
+<h1>教員削除</h1>
+
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
     <!--検索条件指定-->

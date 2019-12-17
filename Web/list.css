@@ -15,7 +15,9 @@ h1{
 /*テーブル関連*/
 .scroll-table{
     white-space: nowrap;
-    overflow: auto;
+    overflow:scroll;
+    width: 920px;
+    float: left;
 }
 th{
     background-color: black;
@@ -40,6 +42,7 @@ div.float-sample-4{
     border-radius: 10px;
     font-size: 1em;
     -webkit-appearance: none;
+    clear: right;
 }
 /*カーソルを上に乗せた時の動作*/
 #button:hover {
