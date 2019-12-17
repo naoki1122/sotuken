@@ -30,11 +30,7 @@ try{
 ?>
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
 <!--検索条件入力-->
-<<<<<<< HEAD
-<input id="input1" type="text" name="word" autofocus autocomplete="off"placeholder="学籍番号を入力">
-=======
 <input id="input1" type="text" name="word" autofocus autocomplete="off" required placeholder="学籍番号を入力">
->>>>>>> 2d942fd1f855bab43c62beb14c9a9ad54b7aa96b
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索" name="検索"><br>
 </form>
