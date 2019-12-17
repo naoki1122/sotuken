@@ -105,10 +105,10 @@ if(isset($_POST['変更'])){
     <input id="input" type="text" name="no" value="<?=$no?>" required placeholder="例：x00n000"><br>
     <!-- 学年 -->
     <span style="color:red;">*必須 </span>学年　　　　　
-    <input id="input" type="text" name="class" value="<?=$class?>"　required><br>
+    <input id="input" type="text" name="class" value="<?=$class?>" required><br>
     <!-- クラス -->
     <span style="color:red;">*必須 </span>クラス　　　　
-    <input id="input1" type="text" name="class2" value="<?=$class2?>"　required><br>
+    <input id="input1" type="text" name="class2" value="<?=$class2?>" required><br>
     <!--パスワード-->
     <span style="color:red;">*必須 </span>パスワード　　
     <input id="input1" type="password" name="password" value="<?=$password?>" required placeholder="例：abedefg"><br>
