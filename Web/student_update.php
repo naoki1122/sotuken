@@ -135,13 +135,16 @@ if(isset($_POST['変更'])){
         <option value="京成本線1">京成本線</option>
         <option value="京成千葉線">京成千葉線</option>
         <option value="新京成">新京成</option>
-        <option value="総武線快速">総武線快速</option>
-        <option value="総武線各停">総武線各停</option>
-        <option value="東部アーバンパークライン">東部アーバンパークライン</option>
-        <option value="外房線">外房線</option>
-        <option value="内房線">内房線</option>
-        <option value="常磐線">常磐線</option>
+        <option value="芝山鉄道">芝山鉄道</option>
+        <option value="東武アーバンパークライン">東武アーバンパークライン</option>
         <option value="常総線">常総線</option>
+        <option value="総武線快速">総武線各停</option>
+        <option value="総武線各停">総武線快速</option>
+        <option value="外房線">内房線</option>
+        <option value="内房線">外房線</option>
+        <option value="成田線">成田線</option>
+        <option value="常磐線">常磐線各停</option>
+        <option value="常磐線">常磐線快速</option>
     </select><br>
     使用路線2
     <select id="input" name="train2">
