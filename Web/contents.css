@@ -74,7 +74,7 @@ span.font1{
 }
 /*フッターの設定*/
 footer{
-    height: auto;
+    height: 50px;
     position: absolute;
     bottom: 0;
     width: 99%;
