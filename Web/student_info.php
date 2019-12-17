@@ -55,7 +55,7 @@ try{
 </table>
 </div>
 <!--リスト黒四角つけるタグ-->
-<ul style="list-style-type: disc">
+<ul style="list-style: none">
 <!--出席情報変更リンク-->
 <li><a href="student_info_update.php">出席情報変更</a></li><br>
 </ul>

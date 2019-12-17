@@ -14,7 +14,6 @@ th{
 /*リストに適用*/
 ul{
     float: right;
-    list-style: none;
 }
 /*フォーム全体に対して適用*/
 #formmain{
