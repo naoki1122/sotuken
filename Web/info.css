@@ -1,4 +1,8 @@
 @charset "utf-8";
+/*背景*/
+body{
+    background-color: cornsilk;
+}
 /*テーブルに適用*/
 table{
     margin: auto;
