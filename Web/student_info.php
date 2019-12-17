@@ -30,7 +30,11 @@ try{
 ?>
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
 <!--検索条件入力-->
+<<<<<<< HEAD
 <input id="input1" type="text" name="word" autofocus autocomplete="off"placeholder="学籍番号を入力">
+=======
+<input id="input1" type="text" name="word" autofocus autocomplete="off" required placeholder="学籍番号を入力">
+>>>>>>> 2d942fd1f855bab43c62beb14c9a9ad54b7aa96b
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索" name="検索"><br>
 </form>
@@ -59,7 +63,7 @@ try{
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--出席情報変更リンク-->
-<li><a href="student_info_update.php">出席情報変更</li><br>
+<li><a href="student_info_update.php">出席情報変更</a></li><br>
 </ul>
     <?php
 }catch (PDOException $e){
