@@ -22,7 +22,6 @@ try{
       $day = $row['登校日'];
       $attend = $row['登校時間'];
   }
-  var_dump($word);
 
   if(isset($_POST['変更'])){
       if(isset($_POST['attend'],$_POST['day'])){
@@ -59,7 +58,7 @@ try{
 </form><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" >
-    <!--名前-->日付
+    <!--名前-->日付  
     <input id="input" type="text" readonly value="<?=$day?>" name="day"><br>
     <!--教員番号-->出席時刻
     <input id="input" type="text"  value="<?=$attend?>" name="attend" ><br>
