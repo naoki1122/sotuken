@@ -2,7 +2,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <link href="contents.css" rel="stylesheet" media="all">
+    <link href="info.css" rel="stylesheet" media="all">
     <title>生徒詳細一覧</title>
 </head>
 
