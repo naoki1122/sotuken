@@ -95,28 +95,28 @@ if(isset($_POST['変更'])){
 <!--入力フォーム-->
 <form id="formmain" action="" method="post">
     <!--名前-->
-    <span style="color:red;">*必須 </span>名前
+    <span style="color:red;">*必須 </span>名前　　　　　
     <input id="input" type="text" name="name" value="<?=$name?>" required><br>
     <!-- フリガナ -->
-    <span style="color:red;">*必須 </span>フリガナ
+    <span style="color:red;">*必須 </span>フリガナ　　　
     <input id="input" type="text" name="name2" value="<?=$name2?>" required placeholder="例：サトウタロウ"><br>
     <!--学籍番号-->
-    <span style="color:red;">*必須 </span>学籍番号
+    <span style="color:red;">*必須 </span>学籍番号　　　
     <input id="input" type="text" name="no" value="<?=$no?>" required placeholder="例：x00n000"><br>
     <!-- 学年 -->
-    <span style="color:red;">*必須 </span>学年
+    <span style="color:red;">*必須 </span>学年　　　　　
     <input id="input" type="text" name="class" value="<?=$class?>"　required><br>
     <!-- クラス -->
-    <span style="color:red;">*必須 </span>クラス
+    <span style="color:red;">*必須 </span>クラス　　　　
     <input id="input1" type="text" name="class2" value="<?=$class2?>"　required><br>
     <!--パスワード-->
-    <span style="color:red;">*必須 </span>パスワード
+    <span style="color:red;">*必須 </span>パスワード　　
     <input id="input1" type="password" name="password" value="<?=$password?>" required placeholder="例：abedefg"><br>
     <!--メアド-->
     <span style="color:red;">*必須 </span>メールアドレス
     <input id="input1" type="email" name="mail" value="<?=$mail?>" required placeholder="例：Example@xxx.com"><br>
     <!--電話番号-->
-    <span style="color:red;">*必須 </span>電話番号
+    <span style="color:red;">*必須 </span>電話番号　　　
     <input id="input1" type="tel" name="tel" value="<?=$tel?>" required placeholder="ハイフンなし"><br>
     <!--学科-->
     学科
