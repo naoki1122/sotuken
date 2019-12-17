@@ -1,4 +1,8 @@
 @charset "utf-8";
+/*テーブルに適用*/
+table{
+    margin: auto;
+}
 /*リストに適用*/
 ul{
     float: right;
