@@ -7,6 +7,10 @@ body{
 table{
     margin: auto;
 }
+th{
+    background-color: black;
+    color: white;
+}
 /*リストに適用*/
 ul{
     float: right;
