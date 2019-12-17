@@ -68,36 +68,36 @@ $pdo = dbcon();
     <title>教員削除</title>
 </head>
 <body>
-<header>
+<div id="wrap">
+<header id="header">
 <!--戻るのリンク-->
-<a href="teacher_list.php">戻る</a>
+<p><a href="teacher_list.php">戻る</a></p>
 <p>〇〇さんがログイン中</p>
-</header>
 <h1>教員削除</h1>
-
+</header>
 <!--検索フォーム-->
-<form id ="search" action="" method="post">
+<form id ="form_search" action="" method="post">
     <!--検索条件指定-->
     <select id="input1" name="mode" required >
         <option value="" selected>条件を指定してください</option>
         <option value="名前">名前</option>
         <option value="教員番号">教員番号</option>
-    </select><br>
+    </select>
     <!--検索条件入力-->
     <input id="input1" type="text" name="word" autofocus autocomplete="off">
     <!--検索ボタン-->
-    <input id="button" type="submit" value="検索" name="検索"><br>
-</form><br>
+    <input id="button" type="submit" value="検索" name="検索">
+</form>
 <!--入力フォーム-->
-<form id="formmain" action="" method="post" >
+<form id="form_main" action="" method="post" >
     <!--名前-->お名前　　　
-    <input id="input" type="text" readonly value="<?=$name?>" name="name" required><br>
+    <input id="input1" type="text" readonly value="<?=$name?>" name="name" required><br>
     <!--教員番号-->教員番号　　
-    <input id="input" type="text" readonly value="<?=$no?>" name="no" required><br>
+    <input id="input1" type="text" readonly value="<?=$no?>" name="no" required><br>
     <!--パスワード-->パスワード　
-    <input id="input" type="password" readonly value="<?=$password?>" name="password"><br>
+    <input id="input1" type="password" readonly value="<?=$password?>" name="password"><br>
     <!--権限-->権限　　　　
-    <input id="input" type="text" readonly value="<?=$authority?>" name="authority"><br>
+    <input id="input1" type="text" readonly value="<?=$authority?>" name="authority"><br>
     <input id="button" type="submit" value="削除" name="削除" onclick="return checkupdate()">
 </form>
 <script>
@@ -107,5 +107,6 @@ $pdo = dbcon();
 </script>
 <!--copyright-->
 <footer>copyright© チームコリジョン</footer>
+</div>
 </body>
 </html>
