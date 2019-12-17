@@ -56,10 +56,8 @@ try{
       <?php
   }
     ?>
-    </table>
-    <div class="float-sample-4">
-      <p>　　　　　</p>
-    </div>
+</table>
+</div>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--出席情報変更リンク-->
