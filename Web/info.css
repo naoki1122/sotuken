@@ -1,4 +1,8 @@
 @charset "utf-8";
+/*リストに適用*/
+ul{
+    float: right;
+}
 /*フォーム全体に対して適用*/
 #formmain{
     position: relative;
