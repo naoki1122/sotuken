@@ -30,7 +30,7 @@ try{
 ?>
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
 <!--検索条件入力-->
-<input id="input1" type="text" name="word" autofocus autocomplete="off">
+<input id="input1" type="text" name="word" autofocus autocomplete="off" required placeholder="例：x00n000">
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索" name="検索"><br>
 </form>
