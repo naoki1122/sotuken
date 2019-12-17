@@ -1,22 +1,54 @@
 @charset "utf-8";
 /*背景関連のプロパティ*/
-body{
-  background-color: rgb(156, 245, 153);
+#wrap{
+  margin: 10px;
+  height: 30px auto;
+  background-color: rgb(226, 162, 24);
 }
 /*ヘッダー関連*/
-header{
-  display: inline;
+#header{
+  background-color: rgb(235, 77, 15);
 }
-header a{
-  width:50px;
-  height: 50px;
+#header p{
+  display: inline-block;
 }
-header p{
-  float: right;
-  width:300px;
+/*中央配置*/
+#header h1,#form_main{
+  text-align: center;
 }
-/*ページタイトル*/
-h1{
-  width: 300px;
-  margin: 40px,auto;
+
+/*検索フォーム*/
+#form_search{
+width: 260px;
+}
+/*検索フォームのテキストボックス*/
+#input1{
+font: 15px/24px sans-serif;
+box-sizing: border-box;
+width: 150px;
+height:40px;
+margin: 2px 10px;
+padding: 10px;
+transition: 0.3s;
+border: 2px solid black;
+border-radius: 4px;
+outline: none;;
+
+/*選択された時の動作*/
+}#input1:focus {
+  border: 2px solid skyblue;   
+  outline: none;      
+}
+/*メインフォーム*/
+
+/*送信、リセットボタン*/
+#button{
+  width: 150px;
+  margin: 5px 10px;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid #f6bb9e;
+  border-radius: 10px;
+  font-size: 1em;
+  -webkit-appearance: none;
 }
