@@ -21,7 +21,7 @@
 #form_search{
 width: 260px;
 }
-/*検索フォームのテキストボックス*/
+/*検索フォーム（form_search）のテキストボックス*/
 #input1{
 font: 15px/24px sans-serif;
 box-sizing: border-box;
@@ -32,7 +32,7 @@ padding: 10px;
 transition: 0.3s;
 border: 2px solid black;
 border-radius: 4px;
-outline: none;;
+outline: none;
 
 /*選択された時の動作*/
 }#input1:focus {
@@ -40,6 +40,37 @@ outline: none;;
   outline: none;      
 }
 /*メインフォーム*/
+#form_main,#input_form{
+  width: auto;
+  height:350px;
+  display:inline-block;
+  text-align:center;
+}
+
+ul li {
+  height:50px;
+  width:auto;
+  list-style: none;
+  text-align:center;
+}/*メインフォーム（form_main）のテキストボックス*/
+#name,#no,#password,#authority{
+  font: 15px/24px sans-serif;
+  box-sizing: border-box;
+  width: 200px;
+  height:40px;
+  text-align: center;
+  margin: 2px 10px;
+  padding: 10px;
+  transition: 0.3s;
+  border: 2px solid black;
+  border-radius: 4px;
+  outline: none;
+  /*選択された時の動作*/
+}#input:focus{
+  border: 2px solid skyblue;   
+  outline: none;      
+}
+  
 
 /*送信、リセットボタン*/
 #button{
@@ -51,4 +82,10 @@ outline: none;;
   border-radius: 10px;
   font-size: 1em;
   -webkit-appearance: none;
+}
+
+footer{
+  height: 30px;
+  text-align: right;
+  background-color: red;
 }
