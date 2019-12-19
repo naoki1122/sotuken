@@ -2,7 +2,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <link href="contents.css" rel="stylesheet" media="all">
+    <link href="info.css" rel="stylesheet" media="all">
     <title>生徒詳細一覧</title>
 </head>
 
@@ -30,7 +30,7 @@ try{
 ?>
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
 <!--検索条件入力-->
-<input id="input1" type="text" name="word" autofocus autocomplete="off">
+<input id="input1" type="text" name="word" autofocus autocomplete="off" required placeholder="学籍番号を入力">
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索" name="検索"><br>
 </form>
@@ -52,14 +52,12 @@ try{
       <?php
   }
     ?>
-    </table>
-    <div class="float-sample-4">
-      <p>　　　　　</p>
-    </div>
+</table>
+</div>
 <!--リスト黒四角つけるタグ-->
-<ul style="list-style-type: disc">
+<ul style="list-style: none">
 <!--出席情報変更リンク-->
-<li><a href="student_info_update.php">出席情報変更</li><br>
+<li><a href="student_info_update.php">出席情報変更</a></li><br>
 </ul>
     <?php
 }catch (PDOException $e){

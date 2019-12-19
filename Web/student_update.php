@@ -95,31 +95,31 @@ if(isset($_POST['変更'])){
 <!--入力フォーム-->
 <form id="formmain" action="" method="post">
     <!--名前-->
-    <span style="color:red;">*必須 </span>名前
+    <span style="color:red;">*必須 </span>名前　　　　　
     <input id="input" type="text" name="name" value="<?=$name?>" required><br>
     <!-- フリガナ -->
-    <span style="color:red;">*必須 </span>フリガナ
+    <span style="color:red;">*必須 </span>フリガナ　　　
     <input id="input" type="text" name="name2" value="<?=$name2?>" required placeholder="例：サトウタロウ"><br>
     <!--学籍番号-->
-    <span style="color:red;">*必須 </span>学籍番号
+    <span style="color:red;">*必須 </span>学籍番号　　　
     <input id="input" type="text" name="no" value="<?=$no?>" required placeholder="例：x00n000"><br>
     <!-- 学年 -->
-    <span style="color:red;">*必須 </span>学年
-    <input id="input" type="text" name="class" value="<?=$class?>"　required><br>
+    <span style="color:red;">*必須 </span>学年　　　　　
+    <input id="input" type="text" name="class" value="<?=$class?>" required><br>
     <!-- クラス -->
-    <span style="color:red;">*必須 </span>クラス
-    <input id="input1" type="text" name="class2" value="<?=$class2?>"　required><br>
+    <span style="color:red;">*必須 </span>クラス　　　　
+    <input id="input1" type="text" name="class2" value="<?=$class2?>" required><br>
     <!--パスワード-->
-    <span style="color:red;">*必須 </span>パスワード
+    <span style="color:red;">*必須 </span>パスワード　　
     <input id="input1" type="password" name="password" value="<?=$password?>" required placeholder="例：abedefg"><br>
     <!--メアド-->
     <span style="color:red;">*必須 </span>メールアドレス
     <input id="input1" type="email" name="mail" value="<?=$mail?>" required placeholder="例：Example@xxx.com"><br>
     <!--電話番号-->
-    <span style="color:red;">*必須 </span>電話番号
+    <span style="color:red;">*必須 </span>電話番号　　　
     <input id="input1" type="tel" name="tel" value="<?=$tel?>" required placeholder="ハイフンなし"><br>
     <!--学科-->
-    学科
+    　  学科　　　　　
     <select id="input" name="subject" required>
         <option value="" selected>学科を選択し直してください</option>
         <option value="0">ITエンジニア科4年制</option>
@@ -129,47 +129,56 @@ if(isset($_POST['変更'])){
         <option value="4">WEBクリエーター科</option>
         <option value="5">こども学科</option>
     </select><br>
-    使用路線
+    　  使用路線　　　
     <select id="input" name="train1" >
         <option value="" selected>使用する路線(1路線目)を選んでください</option>
-        <option value="京成本線1">京成本線</option>
+        <option value="京成本線">京成本線</option>
         <option value="京成千葉線">京成千葉線</option>
         <option value="新京成">新京成</option>
-        <option value="総武線快速">総武線快速</option>
-        <option value="総武線各停">総武線各停</option>
-        <option value="東部アーバンパークライン">東部アーバンパークライン</option>
-        <option value="外房線">外房線</option>
-        <option value="内房線">内房線</option>
-        <option value="常磐線">常磐線</option>
+        <option value="芝山鉄道">芝山鉄道</option>
+        <option value="東武アーバンパークライン">東武アーバンパークライン</option>
         <option value="常総線">常総線</option>
+        <option value="総武線快速">総武線各停</option>
+        <option value="総武線各停">総武線快速</option>
+        <option value="外房線">内房線</option>
+        <option value="内房線">外房線</option>
+        <option value="成田線">成田線</option>
+        <option value="常磐線">常磐線各停</option>
+        <option value="常磐線">常磐線快速</option>
     </select><br>
-    使用路線2
+    　  使用路線２　　
     <select id="input" name="train2">
-        <option value="" selected>使用する路線(2路線目)を選んでください</option>
+    <option value="" selected>使用する路線(1路線目)を選んでください</option>
         <option value="京成本線-2">京成本線</option>
         <option value="京成千葉線-2">京成千葉線</option>
         <option value="新京成-2">新京成</option>
-        <option value="総武線快速-2">総武線快速</option>
-        <option value="総武線各停-2">総武線各停</option>
-        <option value="東部アーバンパークライン-2">東部アーバンパークライン</option>
-        <option value="外房線-2">外房線</option>
-        <option value="内房線-2">内房線</option>
-        <option value="常磐線-2">常磐線</option>
+        <option value="芝山鉄道-2">芝山鉄道</option>
+        <option value="東武アーバンパークライン-2">東武アーバンパークライン</option>
         <option value="常総線-2">常総線</option>
+        <option value="総武線快速-2">総武線各停</option>
+        <option value="総武線各停-2">総武線快速</option>
+        <option value="外房線-2">内房線</option>
+        <option value="内房線-2">外房線</option>
+        <option value="成田線-2">成田線</option>
+        <option value="常磐線-2">常磐線各停</option>
+        <option value="常磐線-2">常磐線快速</option>
     </select><br>
-    使用路線3
+    　  使用路線３　　
     <select id="input" name="train3">
-        <option value="" selected>使用する路線(3路線目)を選んでください</option>
+    <option value="" selected>使用する路線(1路線目)を選んでください</option>
         <option value="京成本線-3">京成本線</option>
         <option value="京成千葉線-3">京成千葉線</option>
         <option value="新京成-3">新京成</option>
-        <option value="総武線快速-3">総武線快速</option>
-        <option value="総武線各停-3">総武線各停</option>
-        <option value="東武アーバンパークライン-3">東部アーバンパークライン</option>
-        <option value="外房線-3">外房線</option>
-        <option value="内房線-3">内房線</option>
-        <option value="常磐線-3">常磐線</option>
+        <option value="芝山鉄道-3">芝山鉄道</option>
+        <option value="東武アーバンパークライン-3">東武アーバンパークライン</option>
         <option value="常総線-3">常総線</option>
+        <option value="総武線快速-3">総武線各停</option>
+        <option value="総武線各停-3">総武線快速</option>
+        <option value="外房線-3">内房線</option>
+        <option value="内房線-3">外房線</option>
+        <option value="成田線-3">成田線</option>
+        <option value="常磐線-3">常磐線各停</option>
+        <option value="常磐線-3">常磐線快速</option>
     </select><br>
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
 </form>
