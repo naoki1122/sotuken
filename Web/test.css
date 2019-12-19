@@ -41,9 +41,9 @@ outline: none;
 }
 /*メインフォーム*/
 #form_main,#input_form{
-  width: auto;
+  margin:5px;
+  width:auto;
   height:350px;
-  display:inline-block;
   text-align:center;
 }
 
