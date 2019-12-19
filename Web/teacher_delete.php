@@ -90,15 +90,19 @@ $pdo = dbcon();
 </form>
 <!--入力フォーム-->
 <form id="form_main" action="" method="post" >
-    <!--名前-->お名前　　　
-    <input id="input1" type="text" readonly value="<?=$name?>" name="name" required><br>
-    <!--教員番号-->教員番号　　
-    <input id="input1" type="text" readonly value="<?=$no?>" name="no" required><br>
-    <!--パスワード-->パスワード　
-    <input id="input1" type="password" readonly value="<?=$password?>" name="password"><br>
-    <!--権限-->権限　　　　
-    <input id="input1" type="text" readonly value="<?=$authority?>" name="authority"><br>
-    <input id="button" type="submit" value="削除" name="削除" onclick="return checkupdate()">
+    <section id="input_form">
+<ul>
+    <!--名前-->
+    <li><lavel><spa7>お名前<input id="name" type="text" readonly value="<?=$name?>" name="name" required></lavel></li>
+    <!--教員番号-->
+    <li><lavel>教員番号<input id="no" type="text" readonly value="<?=$no?>" name="no" required></lavel></li>
+    <!--パスワード-->
+    <li><lavel>パスワード<input id="password" type="password" readonly value="<?=$password?>" name="password"></lavel></li>
+    <!--権限-->
+    <li><lavel>権限<input id="authority" type="text" readonly value="<?=$authority?>" name="authority"></lavel></li>
+</ul>
+<input id="button" type="submit" value="削除" name="削除" onclick="return checkupdate()">
+    </section>
 </form>
 <script>
     function checkdelete(){
