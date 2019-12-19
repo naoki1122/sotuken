@@ -70,7 +70,13 @@ ul li {
   border: 2px solid skyblue;   
   outline: none;      
 }
-  
+ /*ラベルの分離*/
+ #item{
+   width:80px;
+   display: inline-block;
+   margin:auto;
+   padding:10px;
+ }
 
 /*送信、リセットボタン*/
 #button{
