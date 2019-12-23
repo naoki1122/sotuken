@@ -11,7 +11,7 @@ try {
     // 例外がスローされる設定にする
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-}catch (Exception $e) {
+}catch (Exception $e){
     echo '<span class="error">エラーがありました。</span><br>';
     echo $e->getMessage();
   }
