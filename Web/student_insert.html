@@ -37,7 +37,7 @@
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="contents.css" rel="stylesheet" media="all">
+    <link href="test.css" rel="stylesheet" media="all">
     <title>生徒登録</title>
 </head>
 <body>
@@ -52,27 +52,24 @@
 <form id="formmain" action="" method="post">
     <ul>
     <!--名前-->
-    <span class="font1">*必須</span>　お名前　　　
-    <input id="input" type="text" name="name" required autofocus placeholder="例：山田太郎"><br>
+<li><lavel><span id="item">お名前</span> <input id="name" type="text" name="name" autofocus autocomplete=placeholder="例：山田太郎"></lavel></li>
+
     <!--フリガナ-->
-    <span class="font1">*必須</span>　フリガナ　　
-    <input id="input" type="text" name="name2" required autofocus placeholder="例：ヤマダタロウ"><br>
-    <!--学籍番号-->
-    <span class="font1">*必須</span>　学籍番号　　
-    <input id="input" type="text" name="no" required placeholder="例：00n000"><br>
-    <!--パスワード-->
-    <span class="font1">*必須</span>　パスワード　
-    <input id="input" type="password" name="password" required placeholder="abcdefg1234"><br>
-    <!--学年-->
-    <span class="font1">*必須</span>　学年　　　
-    <input id="input" type="text" name="year" required placeholder="1"><br>
-    <!--クラス-->
-    <span class="font1">*必須</span>　クラス　　　
-    <input id="input" type="text" name="class" required placeholder="1"><br>
+    <li><lavel><span id="item">フリガナ</span> <input id="name" type="text" name="name2"placeholder="例：ヤマダタロウ"></lavel></li>
    
+    <!--学籍番号-->
+    <li><lavel><span id="item">学籍番号</span> <input id="name" pe="text" name="no" required placeholder="例：00n000"></lavel></li>
+    <!--パスワード-->
+    <li><lavel><span id="item">パスワード</span> <input id="name" type="password" name="password"placeholder="例：abcdfg1234"></lavel></li>
+    <!--学年-->
+    <li><lavel><span id="item">学年</span> <input id="name" type="text" name="year"placeholder="例：1"></lavel></li>
+    <!--クラス-->
+    <li><lavel><span id="item">クラス</span> <input id="name" te="text" name="class"placeholder="例：1"></lavel></li>
     <!--学科-->
-    <li>  <span class="font1">*必須</span>　学科　　　　
-<select id="subject" required>
+
+
+    <li><span id="item">学科</span>
+        <select id="subject" required>
         <option value="" selected>学科を選択してください</option>
         <option value="ITエンジニア科4年制">ITエンジニア科4年制</option>
         <option value="ITエンジニア科3年制">ITエンジニア化3年制</option>
@@ -80,13 +77,14 @@
         <option value="情報ネットワーク科">情報ネットワーク科</option>
         <option value="WEBクリエーター科">WEBクリエーター科</option>
         <option value="こども学科">こども学科</option>
-    </select></li></ul>
+    </select></li>
+
+</ul>
 <ul>
     <!--登録ボタン-->
     <li><input id="button" type="submit" value="登録" ></li>
     <!--リセットボタン-->
     <li><input id="button" type="reset" value="リセット" onclick="return resetcheck()"></li>
-</ul>
 </ul>
 </form>
 <!--確認ポップアップ用javascript-->
