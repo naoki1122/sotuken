@@ -56,6 +56,7 @@ if(isset($_POST['検索'])){
 </head>
 <body>
 <!--戻るのリンク-->
+<P>しゅんしゅん！！！！！</P>
 <a href="student_list.php">戻る</a><br>
 <H1>学生削除</H1><br>
 <!--検索フォーム-->
