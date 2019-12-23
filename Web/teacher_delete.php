@@ -78,15 +78,17 @@ $pdo = dbcon();
 <!--検索フォーム-->
 <form id ="form_search" action="" method="post">
     <!--検索条件指定-->
-    <select id="input1" name="mode" required >
+    <ul>
+    <li><select id="input1" name="mode" required >
         <option value="" selected>条件を指定してください</option>
         <option value="名前">名前</option>
         <option value="教員番号">教員番号</option>
-    </select>
+    </select></li>
     <!--検索条件入力-->
-    <input id="input1" type="text" name="word" autofocus autocomplete="off">
+    <li><input id="input1" type="text" name="word" autofocus autocomplete="off"></li>
     <!--検索ボタン-->
-    <input id="button" type="submit" value="検索" name="検索">
+    <li><input id="button" type="submit" value="検索" name="検索"></li>
+    </ul>
 </form>
 <!--入力フォーム-->
 <form id="form_main" action="" method="post" >
