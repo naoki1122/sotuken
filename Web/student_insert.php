@@ -55,7 +55,7 @@ else{
     <input id="input" type="text" name="name2" required autofocus placeholder="例：ヤマダタロウ"><br>
     <!--学籍番号-->
     <span class="font1">*必須</span>　学籍番号　　
-    <input id="input" type="text" name="no" required placeholder="例：00n000"><br>
+    <input id="input" type="text" name="no" required placeholder="例：x00n000"><br>
     <!--パスワード-->
     <span class="font1">*必須</span>　パスワード　
     <input id="input" type="password" name="password" required placeholder="abcdefg1234"><br>
@@ -70,7 +70,7 @@ else{
     <select id="input" name="subject" required>
         <option value="" selected>学科を選択してください</option>
         <option value="ITエンジニア科4年制">ITエンジニア科4年制</option>
-        <option value="ITエンジニア科年制">ITエンジニア化3年制</option>
+        <option value="ITエンジニア科3年制">ITエンジニア化3年制</option>
         <option value="情報処理科">情報処理科</option>
         <option value="情報ネットワーク科">情報ネットワーク科</option>
         <option value="WEBクリエーター科">WEBクリエーター科</option>
