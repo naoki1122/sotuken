@@ -51,38 +51,53 @@ if(isset($_POST['検索'])){
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="contents.css" rel="stylesheet" media="all">
+    <link href="test.css" rel="stylesheet" media="all">
     <title>学生削除</title>
 </head>
 <body>
+<div id="wrap">
+<header id="header">
 <!--戻るのリンク-->
+<<<<<<< HEAD
+<p><a href="student_list.php">戻る</a><p>
+<H1>学生削除</H1>
+</header>
+=======
 <P>しゅんしゅん！！！！！</P>
 <a href="student_list.php">戻る</a><br>
 <H1>学生削除</H1><br>
+>>>>>>> 49276734bd72ca9f5d28b7c23ea085e56a84d645
 <!--検索フォーム-->
-<form id ="search" action="" method="post">
+<form id ="form_search" action="" method="post">
     <!--検索条件指定-->
-    <select id="input1" name="mode" required >
+    <ul>
+    <li><select id="input1" name="mode" required >
         <option value="" selected>条件を指定してください</option>
         <option value="名前">名前</option>
         <option value="学籍番号">学籍番号</option>
-    </select><br>
+    </select></li>
     <!--検索条件入力-->
-    <input id="input1" type="text" name="word" autofocus autocomplete="off">
+    <li><input id="input1" type="text" name="word" autofocus autocomplete="off"></li>
     <!--検索ボタン-->
-    <input id="button" type="submit" value="検索" name="検索"><br>
-</form><br>
+    <li><input id="button" type="submit" value="検索" name="検索"></li>
+    </ul>
+</form>
 <!--入力フォーム-->
-<form id="formmain" action="" method="post" >
-    <!--名前-->お名前　
-    <input id="input" type="text" readonly value="<?=$name?>" name="name" required><br>
-    <!--教員番号-->学籍番号
-    <input id="input" type="text" readonly value="<?=$no?>" name="no" required><br>
-    <!--学科-->学科　　
-    <input id="input" type="text" readonly value="<?=$subject?>" name="subject"><br>
-    <!--クラス-->クラス　
-    <input id="input" type="text" readonly value="<?=$class?>" name="class"><br>
+<form id="form_main" action="" method="post" >
+  <section id="input_form">
+    <ul>
+    <!--名前-->
+    <li><lavel><span id="item">名前</span><input id="name" type="text" readonly value="<?=$name?> "name="name" required></lavel></li>
+    <!--学籍番号-->
+    <li><lavel><span id="item">学籍番号</span><input id="no" type="text" readonly value="<?=$no?> "name="no" required></lavel></li>
+    <!--学科-->　　
+    <li><lavel><span id="item">学科</span><input id="subject" type="text" readonly value="<?=$subject?>" name="subject"></lavel></li>
+    <!--クラス-->　
+    <li><lavel><span id="item">クラス</span><input id="class" type="text" readonly value="<?=$class?>" name="class"></lavel></li>
+    </ul>
+    <!--削除ボタン-->
     <input id="button" type="submit" value="削除" name="削除"onclick="return checkdelete()">
+    </section>
 </form>
 <script>
     function checkdelete(){
@@ -91,5 +106,6 @@ if(isset($_POST['検索'])){
 </script>
 <!--copyright-->
 <footer>copyright© チームコリジョン</footer>
+</div>
 </body>
 </html>
