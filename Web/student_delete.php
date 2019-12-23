@@ -58,9 +58,15 @@ if(isset($_POST['検索'])){
 <div id="wrap">
 <header id="header">
 <!--戻るのリンク-->
+<<<<<<< HEAD
 <p><a href="student_list.php">戻る</a><p>
 <H1>学生削除</H1>
 </header>
+=======
+<P>しゅんしゅん！！！！！</P>
+<a href="student_list.php">戻る</a><br>
+<H1>学生削除</H1><br>
+>>>>>>> 49276734bd72ca9f5d28b7c23ea085e56a84d645
 <!--検索フォーム-->
 <form id ="form_search" action="" method="post">
     <!--検索条件指定-->

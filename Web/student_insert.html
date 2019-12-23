@@ -1,37 +1,37 @@
 <?php
-//sotukenサーバー用のDB情報
-require_once("server_config.php");
-//ローカル用のサーバー情報
-//require_once("localhost_config.php");
+// //sotukenサーバー用のDB情報
+// require_once("server_config.php");
+// //ローカル用のサーバー情報
+// //require_once("localhost_config.php");
 
-try {
-    $pdo = new PDO(DSN,DB_USER,DB_PASS);
-    // プリペアドステートメントのエミュレーションを無効にする
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    // 例外がスローされる設定にする
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// try {
+//     $pdo = new PDO(DSN,DB_USER,DB_PASS);
+//     // プリペアドステートメントのエミュレーションを無効にする
+//     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+//     // 例外がスローされる設定にする
+//     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-}catch (Exception $e){
-    echo '<span class="error">エラーがありました。</span><br>';
-    echo $e->getMessage();
-  }
+// }catch (Exception $e) {
+//     echo '<span class="error">エラーがありました。</span><br>';
+//     echo $e->getMessage();
+//   }
 
-  if(isset($_POST['name'],$_POST['name2'],$_POST['no'],$_POST['password'],$_POST['subject'])){
-      $name = $_POST['name'];
-      $name2 = $_POST['name2'];
-      $no = $_POST['no'];
-      $password = $_POST['password'];
-      $year = $_POST['year'];
-      $class = $_POST['class'];
-      $subject = $_POST['subject'];
+//   if(isset($_POST['name'],$_POST['name2'],$_POST['no'],$_POST['password'],$_POST['subject'])){
+//       $name = $_POST['name'];
+//       $name2 = $_POST['name2'];
+//       $no = $_POST['no'];
+//       $password = $_POST['password'];
+//       $year = $_POST['year'];
+//       $class = $_POST['class'];
+//       $subject = $_POST['subject'];
       
-    $stmt = $pdo->prepare("INSERT INTO management.student(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科) VALUES (?,?,?,?,?,?,?)");
-    $stmt->execute([$name,$name2,$no,$password,$year,$class,$subject]);
-  echo '登録完了';
-}
-else{
-    $word = "NO";
-}
+//     $stmt = $pdo->prepare("INSERT INTO management.student(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科) VALUES (?,?,?,?,?,?,?)");
+//     $stmt->execute([$name,$name2,$no,$password,$year,$class,$subject]);
+//   echo '登録完了';
+// }
+// else{
+//     $word = "NO";
+// }
 ?>
 
 <!DOCTYPE html>
