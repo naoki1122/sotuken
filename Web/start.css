@@ -22,7 +22,7 @@ h1{
     margin: auto;
     text-align: center;
 }
-#no{
+.input{
     font: 15px/24px sans-serif;
 	box-sizing: border-box;
 	width: 70%;
