@@ -1,10 +1,9 @@
 @charset "utf-8";
 #wrap{
   width:100%;
-  height:610px;
-  background-color:#efc;
+  height:700px;
   display:flex;
-    background-color: cornsilk;
+  background-color: #3a6868a2;
   }
 #top{
   flex:0 1 auto;
@@ -35,8 +34,16 @@ h1{
     display: table-cell;
 	vertical-align: middle;
 }
+/*送信、リセットボタン*/
 #button{
-    padding: 0;
-    border:0;
+  width: 200px;
+  margin: 0 10px;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid #f6bb9e;
+  border-radius: 10px;
+  font-size: 1em;
+  -webkit-appearance: none;
 }
+
 
