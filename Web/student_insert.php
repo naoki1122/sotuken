@@ -1,20 +1,10 @@
 <?php
 //sotukenサーバー用のDB情報
-require_once("server_config.php");
-//ローカル用のサーバー情報
-//require_once("localhost_config.php");
+require_once "server_config.php";
+require_once "lib.php";
 
-try {
-    $pdo = new PDO(DSN,DB_USER,DB_PASS);
-    // プリペアドステートメントのエミュレーションを無効にする
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    // 例外がスローされる設定にする
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-}catch (Exception $e){
-    echo '<span class="error">エラーがありました。</span><br>';
-    echo $e->getMessage();
-  }
+$pdo = dbcon();
+
 
   if(isset($_POST['name'],$_POST['name2'],$_POST['no'],$_POST['password'],$_POST['subject'])){
       $name = $_POST['name'];
@@ -38,7 +28,7 @@ else{
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="contents.css" rel="stylesheet" media="all">
+    <link href="test.css" rel="stylesheet" media="all">
     <title>生徒登録</title>
 </head>
 <body>
@@ -47,9 +37,9 @@ else{
 <H1>生徒登録</H1><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
+<ul>
     <!--名前-->
-    <span class="font1">*必須</span>　お名前　　　
-    <input id="input" type="text" name="name" required autofocus placeholder="例：山田太郎"><br>
+    <li><lavel>*必須  <span class="item">名前</span><input id="name" type="text" name="name" required autofocus placeholder="例：山田太郎"></lavel></li>
     <!--フリガナ-->
     <span class="font1">*必須</span>　フリガナ　　
     <input id="input" type="text" name="name2" required autofocus placeholder="例：ヤマダタロウ"><br>
@@ -76,6 +66,7 @@ else{
         <option value="WEBクリエーター科">WEBクリエーター科</option>
         <option value="こども学科">こども学科</option>
     </select><br>
+</ul>
     <!--登録ボタン-->
     <input id="button" type="submit" value="登録" >
     <!--リセットボタン-->
