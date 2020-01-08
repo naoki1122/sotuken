@@ -71,7 +71,7 @@ ul li {
   outline: none;      
 }
  /*ラベルの分離*/
- #item{
+ .item{
    width:80px;
    display: inline-block;
    margin:auto;
