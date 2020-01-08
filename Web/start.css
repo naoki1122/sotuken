@@ -22,7 +22,7 @@ h1{
     text-align: center;
 }
 .input{
-    font: 15px/24px sans-serif;
+  font: 15px/24px sans-serif;
 	box-sizing: border-box;
 	width: 70%;
 	margin: 15px auto;
@@ -30,8 +30,8 @@ h1{
 	transition: 0.3s;
 	border: 2px solid black;
 	border-radius: 4px;
-    outline: none;
-    display: table-cell;
+  outline: none;
+  display: table-cell;
 	vertical-align: middle;
 }
 /*送信、リセットボタン*/
