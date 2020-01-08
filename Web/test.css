@@ -53,7 +53,7 @@ ul li {
   list-style: none;
   text-align:center;
 }/*メインフォーム（form_main）のテキストボックス*/
-#name,#name2,#no,#password,#authority,#subject,#class{
+.inputbox{
   font: 15px/24px sans-serif;
   box-sizing: border-box;
   width: 200px;
