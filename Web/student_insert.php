@@ -39,13 +39,14 @@ else{
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
 <ul>
     <!--名前-->
-    <li><lavel>*必須  <span class="item">名前</span><input id="name" type="text" name="name" required autofocus placeholder="例：山田太郎"></lavel></li>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">名前</span>
+    <input id="name" type="text" name="name" required autofocus placeholder="例：山田太郎"></lavel></li>
     <!--フリガナ-->
-    <span class="font1">*必須</span>　フリガナ　　
-    <input id="input" type="text" name="name2" required autofocus placeholder="例：ヤマダタロウ"><br>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">フリガナ</span>
+    <input id="name2" type="text" name="name2" required placeholder="例：ヤマダタロウ"></lavel></li>
     <!--学籍番号-->
-    <span class="font1">*必須</span>　学籍番号　　
-    <input id="input" type="text" name="no" required placeholder="例：x00n000"><br>
+    <li></lavel><span style="color: red">*必須  </span><span class="item">学籍番号</span>
+    <input id="no" type="text" name="no" required placeholder="例：x00n000">
     <!--パスワード-->
     <span class="font1">*必須</span>　パスワード　
     <input id="input" type="password" name="password" required placeholder="abcdefg1234"><br>
