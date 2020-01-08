@@ -37,28 +37,29 @@ else{
 <H1>生徒登録</H1><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
+    <section id="input_form">
 <ul>
     <!--名前-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">名前</span>
-    <input id="name" type="text" name="name" required autofocus placeholder="例：山田太郎"></lavel></li>
+    <input class="inputbox" type="text" name="name" required autofocus placeholder="例：山田太郎"></lavel></li>
     <!--フリガナ-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">フリガナ</span>
-    <input id="name2" type="text" name="name2" required placeholder="例：ヤマダタロウ"></lavel></li>
+    <input class="inputbox" type="text" name="name2" required placeholder="例：ヤマダタロウ"></lavel></li>
     <!--学籍番号-->
     <li></lavel><span style="color: red">*必須  </span><span class="item">学籍番号</span>
-    <input id="no" type="text" name="no" required placeholder="例：x00n000">
+    <input class="inputbox" type="text" name="no" required placeholder="例：x00n000"></lavel></li>
     <!--パスワード-->
-    <span class="font1">*必須</span>　パスワード　
-    <input id="input" type="password" name="password" required placeholder="abcdefg1234"><br>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">パスワード</span>
+    <input class="inputbox" type="password" name="password" required placeholder="abcd1234"></lavel></li>
     <!--学年-->
-    <span class="font1">*必須</span>　学年　　　
-    <input id="input" type="text" name="year" required placeholder="1"><br>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">学年</span>
+    <input class="inputbox" type="text" name="year" required placeholder="1"></lavel></li>
     <!--クラス-->
-    <span class="font1">*必須</span>　クラス　　　
-    <input id="input" type="text" name="class" required placeholder="1"><br>
+    <li><lavel><span style="color: red">*必須  </span><sapn class="item">クラス</span>
+    <input class="inputbox" type="text" name="class" required placeholder="1"></lavel></li>
     <!--学科-->
-    <span class="font1">*必須</span>　学科　　　　
-    <select id="input" name="subject" required>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">学科</span>
+    <select class="inputbox" name="subject" required>
         <option value="" selected>学科を選択してください</option>
         <option value="ITエンジニア科4年制">ITエンジニア科4年制</option>
         <option value="ITエンジニア科3年制">ITエンジニア科3年制</option>
@@ -66,12 +67,13 @@ else{
         <option value="情報ネットワーク科">情報ネットワーク科</option>
         <option value="WEBクリエーター科">WEBクリエーター科</option>
         <option value="こども学科">こども学科</option>
-    </select><br>
+    </select></lavel></li>
 </ul>
     <!--登録ボタン-->
     <input id="button" type="submit" value="登録" >
     <!--リセットボタン-->
     <input id="button" type="reset" value="リセット" onclick="return resetcheck()">
+</secion>
 </form>
 <!--確認ポップアップ用javascript-->
 <script>
