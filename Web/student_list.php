@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+<script src="jquery-3.4.1.min.js"></script>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link href="list.css" rel="stylesheet" media="all">
     <title>生徒詳細一覧</title>
 </head>
-
 <body>
 <!--戻るのリンク-->
 <a href="main.php">戻る</a><br>
@@ -21,8 +21,10 @@ try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
 ?>
+<input id="input1" type="text" value size="100">
 <div class='scroll-table'>
-<table border="1">
+<table id="sample1" border="1">
+<thead>
   <tr>
   <th>学籍番号</th>
   <th>学年</th>
@@ -36,10 +38,11 @@ try{
   <th>路線２</th>
   <th>路線３</th>
   </tr>
-
+</thead>
   <?php
   foreach ($dbh->query($sql) as $row) { ?>
-    <tr>
+    <tbody>
+    <tr data-href="student_admin.php">
     <td><?php print($row['学籍番号']);?>
     <td><?php print($row['学年']);?>
     <td><?php print($row['クラス']);?>
@@ -50,12 +53,30 @@ try{
     <td><?php print($row['電話番号']);?>
     <td><?php print($row['路線1']);?>
     <td><?php print($row['路線2']);?>
-    <td><?php print($row['路線3']);?>
+    <td><?php print($row['路線3']);?></a>
     </tr>
+    </tbody>
       <?php
   }
     ?>
     </table>
+    <script>
+    jQuery( function($) {
+      $('tbody tr[data-href]').addClass('clickable').click( function() {
+        window.location = $(this).attr('data-href');
+      }).find('a').hover( function() {
+        $(this).parents('tr').unbind('click');
+      }, function() {
+        $(this).parents('tr').click( function() {
+          window.location = $(this).attr('data-href');
+        });
+      });
+    });
+// $("#sample1 td").on("click",function(){
+// 	var td_now = $(this).text();
+// 	$("#input1").val(td_now);
+// })
+</script>
 </div>
   <div class="float-sample-4">
       <p>　　　　　</p>
