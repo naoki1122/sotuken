@@ -55,7 +55,7 @@ else{
     <li><lavel><span style="color: red">*必須  </span><span class="item">学年</span>
     <input class="inputbox" type="text" name="year" required placeholder="1"></lavel></li>
     <!--クラス-->
-    <li><lavel><span style="color: red">*必須  </span><sapn class="item">クラス</span>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">クラス</span>
     <input class="inputbox" type="text" name="class" required placeholder="1"></lavel></li>
     <!--学科-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">学科</span>
