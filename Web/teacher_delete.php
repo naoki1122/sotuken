@@ -95,13 +95,13 @@ $pdo = dbcon();
     <section id="input_form">
 <ul>
     <!--名前-->
-    <li><lavel><span id="item">お名前</span><input id="name" type="text" readonly value="<?=$name?>" name="name" required></lavel></li>
+    <li><lavel><span class="item">お名前</span><input class="inputbox" type="text" readonly value="<?=$name?>" name="name" required></lavel></li>
     <!--教員番号-->
-    <li><lavel><span id="item">教員番号</span><input id="no" type="text" readonly value="<?=$no?>" name="no" required></lavel></li>
+    <li><lavel><span class="item">教員番号</span><input class="inputbox" type="text" readonly value="<?=$no?>" name="no" required></lavel></li>
     <!--パスワード-->
-    <li><lavel><span id="item">パスワード</span><input id="password" type="password" readonly value="<?=$password?>" name="password"></lavel></li>
+    <li><lavel><span class="item">パスワード</span><input class="inputbox" type="password" readonly value="<?=$password?>" name="password"></lavel></li>
     <!--権限-->
-    <li><lavel><span id="item">権限</span><input id="authority" type="text" readonly value="<?=$authority?>" name="authority"></lavel></li>
+    <li><lavel><span class="item">権限</span><input class="inputbox" type="text" readonly value="<?=$authority?>" name="authority"></lavel></li>
 </ul>
 <input id="button" type="submit" value="削除" name="削除" onclick="return checkupdate()">
     </section>
