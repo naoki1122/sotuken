@@ -16,7 +16,7 @@ h1{
 .scroll-table{
     white-space: nowrap;
     overflow:scroll;
-    width: 920px;
+    width: 1000px;
     float: left;
 }
 th{
