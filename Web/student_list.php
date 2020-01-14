@@ -21,7 +21,7 @@ try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
 ?>
-<input id="input1" type="text" value size="100">
+<!-- <input id="input1" type="text" value size="100"> -->
 <div class='scroll-table'>
 <table id="sample1" border="1">
 <thead>
@@ -42,7 +42,8 @@ try{
   <?php
   foreach ($dbh->query($sql) as $row) { ?>
     <tbody>
-    <tr data-href="student_admin.php">
+    <tr>
+    <!-- <tr  data-href="student_admin.php"> -->
     <td><?php print($row['学籍番号']);?>
     <td><?php print($row['学年']);?>
     <td><?php print($row['クラス']);?>
@@ -60,7 +61,7 @@ try{
   }
     ?>
     </table>
-    <script>
+    <!-- <script>
     jQuery( function($) {
       $('tbody tr[data-href]').addClass('clickable').click( function() {
         window.location = $(this).attr('data-href');
@@ -71,12 +72,12 @@ try{
           window.location = $(this).attr('data-href');
         });
       });
-    });
-// $("#sample1 td").on("click",function(){
+    }); -->
+<!-- // $("#sample1 td").on("click",function(){
 // 	var td_now = $(this).text();
 // 	$("#input1").val(td_now);
-// })
-</script>
+// }) -->
+ <!--/script>　-->
 </div>
   <div class="float-sample-4">
       <p>　　　　　</p>
