@@ -94,9 +94,11 @@ if(isset($_POST['変更'])){
 </form><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post">
+    <section id="input_form">
+<ul>
     <!--名前-->
-    <span style="color:red;">*必須 </span>名前　　　　　
-    <input id="input" type="text" name="name" value="<?=$name?>" required><br>
+    <li><span style="color:red;">*必須 </span>名前　　　　　
+    <input class="inputbox" type="text" name="name" value="<?=$name?>" required><br>
     <!-- フリガナ -->
     <span style="color:red;">*必須 </span>フリガナ　　　
     <input id="input" type="text" name="name2" value="<?=$name2?>" required placeholder="例：サトウタロウ"><br>
@@ -181,6 +183,7 @@ if(isset($_POST['変更'])){
         <option value="常磐線-3">常磐線快速</option>
     </select><br>
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
+    </section>
 </form>
 <script>
     function checkupdate(){
