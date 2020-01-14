@@ -1,8 +1,6 @@
 <?php
 //sotukenサーバー用のDB情報
-require_once("server_config.php");
-//ローカル用のサーバー情報
-//require_once "localhost_config.php";
+require_once "server_config.php";
 require_once "lib.php";
 $pdo = dbcon();
 
@@ -77,17 +75,17 @@ if(isset($_POST['検索'])){
     </ul>
 </form>
 <!--入力フォーム-->
-<form id="form_main" action="" method="post" >
+<form id="formmain" action="" method="post" >
   <section id="input_form">
     <ul>
     <!--名前-->
-    <li><lavel><span id="item">名前</span><input id="name" type="text" readonly value="<?=$name?> "name="name" required></lavel></li>
+    <li><lavel><span class="item">名前</span><input class="inputbox" type="text" readonlyvalue="<?=$name?> "name="name" required></lavel></li>
     <!--学籍番号-->
-    <li><lavel><span id="item">学籍番号</span><input id="no" type="text" readonly value="<?=$no?> "name="no" required></lavel></li>
-    <!--学科-->　　
-    <li><lavel><span id="item">学科</span><input id="subject" type="text" readonly value="<?=$subject?>" name="subject"></lavel></li>
-    <!--クラス-->　
-    <li><lavel><span id="item">クラス</span><input id="class" type="text" readonly value="<?=$class?>" name="class"></lavel></li>
+    <li><lavel><span class="item">学籍番号</span><input class="inputbox" type="text" readonly value="<?=$no?> "name="no" required></lavel></li>
+    <!--学科-->
+    <li><lavel><span class="item">学科</span><input class="inputbox" type="text" readonly value="<?=$subject?>" name="subject"></lavel></li>
+    <!--クラス-->
+    <li><lavel><span class="item">クラス</span><input class="inputbox" type="text" readonly value="<?=$class?>" name="class"></lavel></li>
     </ul>
     <!--削除ボタン-->
     <input id="button" type="submit" value="削除" name="削除"onclick="return checkdelete()">
