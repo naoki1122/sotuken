@@ -28,7 +28,7 @@ tbody {
 }
 /*テーブルの次のブロック配置*/
 div.float-sample-4{
-    width:50px;
+    width:25px;
     height:300px;
     float: left;
 }
