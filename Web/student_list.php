@@ -79,9 +79,9 @@ try{
 // }) -->
  <!--/script>　-->
 </div>
-  <div class="float-sample-4">
+<div class="float-sample-4">
       <p>　　　　　</p>
-  </div>
+</div>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--生徒詳細一覧リンク-->
