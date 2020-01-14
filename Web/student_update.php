@@ -71,7 +71,7 @@ if(isset($_POST['変更'])){
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="contents.css" rel="stylesheet" media="all">
+    <link href="test.css" rel="stylesheet" media="all">
     <!-- <link href="test.css" rel="stylesheet" media="all"> -->
     <title>生徒情報変更</title>
 </head>
@@ -97,32 +97,31 @@ if(isset($_POST['変更'])){
     <section id="input_form">
 <ul>
     <!--名前-->
-    <li><span style="color:red;">*必須 </span>名前　　　　　
-    <input class="inputbox" type="text" name="name" value="<?=$name?>" required><br>
+    <li><lavel><span class="item">名前</span>
+    <input class="inputbox" type="text" name="name" value="<?=$name?>" required></lavel></li>
     <!-- フリガナ -->
-    <span style="color:red;">*必須 </span>フリガナ　　　
-    <input id="input" type="text" name="name2" value="<?=$name2?>" required placeholder="例：サトウタロウ"><br>
+    <li><lavel><span class="item">フリガナ</span>
+    <input class="inputbox" type="text" name="name2" value="<?=$name2?>" required placeholder="例：サトウタロウ"></lavel></li>
     <!--学籍番号-->
-    <span style="color:red;">*必須 </span>学籍番号　　　
-    <input id="input" type="text" name="no" value="<?=$no?>" required placeholder="例：x00n000"><br>
+    <li><lavel><span class="item">学籍番号</span>
+    <input class="inputbox" type="text" name="no" value="<?=$no?>" required placeholder="例：x00n000"></lavel></li>
     <!-- 学年 -->
-    <span style="color:red;">*必須 </span>学年　　　　　
-    <input id="input" type="text" name="class" value="<?=$class?>" required><br>
+    <li><lavel><span class="item">学年</span>
+    <input class="inputbox" type="text" name="class" value="<?=$class?>" required></lavel></li>
     <!-- クラス -->
-    <span style="color:red;">*必須 </span>クラス　　　　
-    <input id="input1" type="text" name="class2" value="<?=$class2?>" required><br>
+    <li><lavel><span class="item">クラス</span>
+    <input class="inputbox" type="text" name="class2" value="<?=$class2?>" required></lavel></li>
     <!--パスワード-->
-    <span style="color:red;">*必須 </span>パスワード　　
-    <input id="input1" type="password" name="password" value="<?=$password?>" required placeholder="例：abedefg"><br>
-    <!--メアド-->
-    <span style="color:red;">*必須 </span>メールアドレス
-    <input id="input1" type="email" name="mail" value="<?=$mail?>" required placeholder="例：Example@xxx.com"><br>
+    <li><lavel><span class="item">パスワード</span>
+    <input class="inputbox" type="password" name="password" value="<?=$password?>" required placeholder="例：abedefg"></lavel></li>
+    <!--メールアドレス-->
+    <li><lavel><span class="item">メールアドレス</span>
+    <input class="inputbox" type="email" name="mail" value="<?=$mail?>" required placeholder="例：Example@xxx.com"></lavel></li>
     <!--電話番号-->
-    <span style="color:red;">*必須 </span>電話番号　　　
-    <input id="input1" type="tel" name="tel" value="<?=$tel?>" required placeholder="ハイフンなし"><br>
+    <li><lavel><span class="item">電話番号</span>
+    <input class="inputbox" type="tel" name="tel" value="<?=$tel?>" required placeholder="ハイフンなし"></lavel></li>
     <!--学科-->
-    　  学科　　　　　
-    <select id="input" name="subject" required>
+    <li><lavel><span class="item">学科</span><select class="inputbox" name="subject" required>
         <option value="" selected>学科を選択し直してください</option>
         <option value="0">ITエンジニア科4年制</option>
         <option value="1">ITエンジニア化3年制</option>
@@ -130,8 +129,8 @@ if(isset($_POST['変更'])){
         <option value="3">情報ネットワーク科</option>
         <option value="4">WEBクリエーター科</option>
         <option value="5">こども学科</option>
-    </select><br>
-    　  使用路線　　　
+    </select></lavel></li>
+    　  使用路線
     <select id="input" name="train1" >
         <option value="" selected>使用する路線(1路線目)を選んでください</option>
         <option value="京成本線">京成本線</option>
@@ -182,6 +181,8 @@ if(isset($_POST['変更'])){
         <option value="常磐線-3">常磐線各停</option>
         <option value="常磐線-3">常磐線快速</option>
     </select><br>
+    </ul>
+    <!-- 変更ボタン -->
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
     </section>
 </form>
