@@ -72,26 +72,30 @@ if(isset($_POST['変更'])){
 <head>
     <meta charset="UTF-8">
     <link href="test.css" rel="stylesheet" media="all">
-    <!-- <link href="test.css" rel="stylesheet" media="all"> -->
     <title>生徒情報変更</title>
 </head>
 <body>
+<div id="wrap">
+<header id="header">
 <!--戻るのリンク-->
-<a href="student_list.php">戻る</a><br>
-<H1>生徒情報変更</H1><br>
+<a href="student_list.php">戻る</a>
+<H1>生徒情報変更</H1>
+</header>
 <!--検索フォーム-->
-<form id ="search" action="" method="post">
+<form id ="form_search" action="" method="post">
     <!--検索条件指定-->
-    <select id="input1" name="mode" required >
+    <ul>
+    <li><select id="input1" name="mode" required >
         <option value="" selected>条件を指定してください</option>
         <option value="名前">名前</option>
         <option value="学籍番号">学籍番号</option>
-    </select><br>
+    </select></li>
     <!--検索条件入力-->
     <input id="input1" type="text" name="word" autofocus autocomplete="off">
     <!--検索ボタン-->
-    <input id="button" type="submit" value="検索" name="検索"><br>
-</form><br>
+    <input id="button" type="submit" value="検索" name="検索">
+    </ul>
+</form>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post">
     <section id="input_form">
@@ -121,7 +125,8 @@ if(isset($_POST['変更'])){
     <li><lavel><span class="item">電話番号</span>
     <input class="inputbox" type="tel" name="tel" value="<?=$tel?>" required placeholder="ハイフンなし"></lavel></li>
     <!--学科-->
-    <li><lavel><span class="item">学科</span><select class="inputbox" name="subject" required>
+    <li><lavel><span class="item">学科</span>
+    <select class="inputbox" name="subject" required>
         <option value="" selected>学科を選択し直してください</option>
         <option value="0">ITエンジニア科4年制</option>
         <option value="1">ITエンジニア化3年制</option>
@@ -130,8 +135,9 @@ if(isset($_POST['変更'])){
         <option value="4">WEBクリエーター科</option>
         <option value="5">こども学科</option>
     </select></lavel></li>
-    　  使用路線
-    <select id="input" name="train1" >
+    <!-- 使用路線1 -->
+    <li><lavel><span class="item">使用路線</span>
+    <select class="inputbox" name="train1" >
         <option value="" selected>使用する路線(1路線目)を選んでください</option>
         <option value="京成本線">京成本線</option>
         <option value="京成千葉線">京成千葉線</option>
@@ -146,10 +152,11 @@ if(isset($_POST['変更'])){
         <option value="成田線">成田線</option>
         <option value="常磐線">常磐線各停</option>
         <option value="常磐線">常磐線快速</option>
-    </select><br>
-    　  使用路線２　　
-    <select id="input" name="train2">
-    <option value="" selected>使用する路線(1路線目)を選んでください</option>
+    </select></lavel></li>
+    <!-- 使用路線2 -->
+    <li><lavel><span class="item">使用路線2</span>
+    <select class="inputbox" name="train2" >
+        <option value="" selected>使用する路線(1路線目)を選んでください</option>
         <option value="京成本線-2">京成本線</option>
         <option value="京成千葉線-2">京成千葉線</option>
         <option value="新京成-2">新京成</option>
@@ -163,9 +170,11 @@ if(isset($_POST['変更'])){
         <option value="成田線-2">成田線</option>
         <option value="常磐線-2">常磐線各停</option>
         <option value="常磐線-2">常磐線快速</option>
-    </select><br>
-    　  使用路線３　　
-    <select id="input" name="train3">
+    </select></lavel></li>
+
+    <!-- 使用路線3 -->
+    <li><lavel><span class="item">使用路線3</span>
+    <select class="inputbox" name="train3" >
     <option value="" selected>使用する路線(1路線目)を選んでください</option>
         <option value="京成本線-3">京成本線</option>
         <option value="京成千葉線-3">京成千葉線</option>
@@ -180,7 +189,7 @@ if(isset($_POST['変更'])){
         <option value="成田線-3">成田線</option>
         <option value="常磐線-3">常磐線各停</option>
         <option value="常磐線-3">常磐線快速</option>
-    </select><br>
+    </select></lavel></li>
     </ul>
     <!-- 変更ボタン -->
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
@@ -193,5 +202,6 @@ if(isset($_POST['変更'])){
 </script>
 <!--copyright-->
 <footer>copyright© チームコリジョン</footer>
+</div>
 </body>
 </html>
