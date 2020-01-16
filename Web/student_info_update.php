@@ -43,7 +43,7 @@ try{
 <head>
     <meta charset="UTF-8">
     <link href="contents.css" rel="stylesheet" media="all">
-    <title>学生削除</title>
+    <title>生徒出席情報変更</title>
 </head>
 <body>
 <!--戻るのリンク-->

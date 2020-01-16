@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link href="info.css" rel="stylesheet" media="all">
-    <title>生徒詳細一覧</title>
+    <title>生徒詳細情報</title>
 </head>
 
 <body>
