@@ -49,7 +49,6 @@ if(isset($_POST['word'])) $word = $_POST['word'];
 }else{
     $cmd = "なし";
 }
-var_dump($mode);
 if(isset($_POST['変更'])){
     $admin_selects="";
     $general_selects="";
