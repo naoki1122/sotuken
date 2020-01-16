@@ -3,6 +3,11 @@
 body{
     background-color: cornsilk;
 }
+/*トップ*/
+h1{
+    text-align: center;
+    font-size: 250%;
+}
 /*テーブルに適用*/
 table{
     margin: auto;
