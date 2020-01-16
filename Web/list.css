@@ -26,6 +26,7 @@ th{
 }
 tbody {
     width: 50px;
+    text-align: center;
 }
 /*テーブルの次のブロック配置*/
 div.float-sample-4{

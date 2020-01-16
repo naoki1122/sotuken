@@ -11,7 +11,7 @@
 <a href="main.php">戻る</a><br>
 <p> </p><br>
 <!-- ようこそ的なメッセージ 名前抽出わからん-->
-<p>ようこそ　ユーザー名さん</p>
+<p>ようこそ　ゲストさん</p>
 <!-- ログアウトボタン 動きはわからん -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>生徒一覧</H1><br>
