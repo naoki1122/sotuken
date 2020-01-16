@@ -1,3 +1,14 @@
+<?php
+session_start();
+$gobackURL = "teacher_signup.html";
+if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
+  header("Location:{$gobackURL}");
+}else{
+$name = $_SESSION['名前'];
+$level = $_SESSION['権限'];
+}
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -10,13 +21,12 @@
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
 <p> </p><br>
-<!-- ようこそ的なメッセージ 名前抽出わからん-->
-<p>ようこそ　ゲストさん</p>
-<!-- ログアウトボタン 動きはわからん -->
+<!-- ログイン中の名前 -->
+<p>ようこそ<?=$name?>さん</p>
+<!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <h1>生徒詳細情報</h1>
     <?php
-    session_start();
 require_once('server_config.php');
 try{
   $pdo = new PDO(DSN, DB_USER, DB_PASS);

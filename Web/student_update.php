@@ -74,11 +74,11 @@ if(isset($_POST['変更'])){
     <link href="test.css" rel="stylesheet" media="all">
     <title>生徒情報変更</title>
 </head>
-<body>
-<div id="wrap">
+<body id="wrap">
 <header id="header">
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a>
+<!-- タイトル -->
 <H1>生徒情報変更</H1>
 </header>
 <!--検索フォーム-->
@@ -202,6 +202,5 @@ if(isset($_POST['変更'])){
 </script>
 <!--copyright-->
 <footer>copyright© チームコリジョン</footer>
-</div>
 </body>
 </html>
