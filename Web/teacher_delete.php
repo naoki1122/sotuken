@@ -63,7 +63,6 @@ $pdo = dbcon();
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <!-- <link href="contents.css" rel="stylesheet" media="all"> -->
     <link href="test.css" rel="stylesheet" media="all">
     <title>教員削除</title>
 </head>
@@ -71,7 +70,7 @@ $pdo = dbcon();
 <header id="header">
 <!--戻るのリンク-->
 <p><a href="teacher_list.php">戻る</a></p>
-<p>〇〇さんがログイン中</p>
+
 <h1>教員削除</h1>
 </header>
 <!--検索フォーム-->
