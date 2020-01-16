@@ -1,10 +1,8 @@
 <?php
 session_start();
-$gobackURL = "main.html";
+$gobackURL = "teacher_signup.html";
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
-  $name = "ゲスト";
-  $level = 0;
-  // header("Location:{$gobackURL}");
+  header("Location:{$gobackURL}");
 }else{
 $name = $_SESSION['名前'];
 $level = $_SESSION['権限'];
@@ -35,9 +33,7 @@ $level = $_SESSION['権限'];
 <H1>本日<?=$day?>の出席状況</H1><br>
 <?php
 //sotukenサーバー用のDB情報
-//require_once('main_config.php');
-//ローカル用のサーバー情報
-require_once 'localhost_config.php';
+require_once 'server_config.php';
 
 try{
   $pdo = new PDO(DSN, DB_USER, DB_PASS);

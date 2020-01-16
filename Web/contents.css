@@ -14,8 +14,8 @@ th{
 /*フォーム全体に対して適用*/
 #formmain{
     position: relative;
-	width: 80%;
-    margin: 0px auto;
+	margin: 8px 0;
+	padding: 0.3em;
     text-align: center;
 }
 /*検索条件フォーム*/
@@ -37,7 +37,7 @@ span.font1{
 	transition: 0.3s;
 	border: 2px solid black;
 	border-radius: 4px;
-    outline: none;;
+    outline: none;
 }
 /*各項目に対して適用*/
 #input {
@@ -49,7 +49,7 @@ span.font1{
 	transition: 0.3s;
 	border: 2px solid black;
 	border-radius: 4px;
-    outline: none;;
+    outline: none;
     -webkit-appearance: none;
 /*選択された時の動作*/
 }#input:focus {

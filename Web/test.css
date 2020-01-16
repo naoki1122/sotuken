@@ -1,7 +1,6 @@
 @charset "utf-8";
 /*背景関連のプロパティ*/
 #wrap{
-  margin: 10px;
   background-color: cornsilk;
 }
 /*ヘッダー関連*/
