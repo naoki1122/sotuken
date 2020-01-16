@@ -99,6 +99,11 @@ if(isset($_POST['変更'])){
 <body>
 <!--戻るのリンク-->
 <a href="teacher_list.php">戻る</a><br>
+<p> </p><br>
+<!-- ようこそ的なメッセージ 名前抽出わからん-->
+<p>ようこそ　ゲストさん</p>
+<!-- ログアウトボタン 動きはわからん -->
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>教員情報変更</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">

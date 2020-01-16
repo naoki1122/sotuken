@@ -56,6 +56,11 @@ if(isset($_POST['検索'])){
 <header id="header">
 <!--戻るのリンク-->
 <p><a href="student_list.php">戻る</a><p>
+<p> </p><br>
+<!-- ようこそ的なメッセージ 名前抽出わからん-->
+<p>ようこそ　ゲストさん</p>
+<!-- ログアウトボタン 動きはわからん -->
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>学生削除</H1>
 </header>
 <!--検索フォーム-->
