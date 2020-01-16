@@ -9,6 +9,7 @@
 <body>
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
+<h1>生徒詳細情報</h1>
     <?php
     session_start();
 require_once('server_config.php');
