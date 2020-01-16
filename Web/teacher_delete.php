@@ -67,8 +67,7 @@ $pdo = dbcon();
     <link href="test.css" rel="stylesheet" media="all">
     <title>教員削除</title>
 </head>
-<body>
-<div id="wrap">
+<body id="wrap">
 <header id="header">
 <!--戻るのリンク-->
 <p><a href="teacher_list.php">戻る</a></p>
@@ -113,6 +112,5 @@ $pdo = dbcon();
 </script>
 <!--copyright-->
 <footer>copyright© チームコリジョン</footer>
-</div>
 </body>
 </html>
