@@ -26,9 +26,9 @@ $level = $_SESSION['権限'];
 </head>
 
 <body>
-<!-- ようこそ的なメッセージ 名前抽出わからん-->
+<!-- ログイン中の名前 -->
 <p>ようこそ<?=$name?>さん</p>
-<!-- ログアウトボタン 動きはわからん -->
+<!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>本日<?=$day?>の出席状況</H1><br>
 <?php
