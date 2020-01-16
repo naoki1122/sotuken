@@ -12,11 +12,12 @@ if(isset($_POST['word'])) $word = $_POST['word'];
     $pdo = dbcon();
 
     // 初期化
-    $name = "";
-    $no = "";
-    $password = "";
-    $authority = "";
-
+    $name=null;
+    $no=null;
+    $password=null;
+    $authority=null;
+    $word=null;
+    $tbl="management.teacher";
 // 検索
   if(isset($_POST['検索'])){
       // 名前検索
@@ -25,19 +26,19 @@ if(isset($_POST['word'])) $word = $_POST['word'];
         $word = $_POST['word'];
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
-        $sql = "select 名前,教員番号,権限 from management.teacher where 名前 = :word";
+        $sql = "select 名前,教員番号,権限 from ${tbl} where 名前 = :word";
       // 教員番号検索
     }else if(isset($_POST['word']) && $_POST['mode'] == "教員番号"){
         $mode = "教員番号";
         $word = $_POST['word'];
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
-        $sql = "select 名前,教員番号,権限 from management.teacher where 教員番号 = :word";
+        $sql = "select 名前,教員番号,権限 from ${tbl} where 教員番号 = :word";
     }else{
         header("Location:{$gobackURL}");
     }
     $stmt = $pdo->prepare($sql);
-    if(!empty($word))$stmt->bindValue(":word", $word, PDO::PARAM_INT);
+    if(!empty($word))$stmt->bindValue(":word", $word, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row){
@@ -59,42 +60,49 @@ if(isset($_POST['変更'])){
     $assistant_selects="";
     $mode = $_COOKIE['mode'];
     $word = $_COOKIE['word'];
-    $sql = "update management.teacher set ";
-    if(isset($_POST['name'])) {$name = $_POST['name']; $sql .= "名前 = :name ";}
-    if(isset($_POST['no'])){
+    $sql = "UPDATE ${tbl} SET ";
+    if(!empty($_POST['name'])) {
+        $name = $_POST['name'];
+        $sql .= "名前 = :name ";
+    }
+
+    if(!empty($_POST['no'])){
         if(isset($_POST['name'])) {$sql .= ", ";}
         $no = $_POST['no'];$sql .= "教員番号 = :no ";
     }
-    if(isset($_POST['authority'])){
+
+    if(!empty($_POST['authority'])){
         if((isset($name)) or (isset($no))){ $sql .= ", ";}
         $authority = $_POST['authority']; $sql .= "権限 = :authority ";
     }
-    if(isset($_POST['password'])){
-        if((isset($name)) or (isset($no)) or (isset($authority))){$sql .= ", ";}
-        $password = $_POST['password']; $sql .= "パスワード = :password ";
+
+    if(!empty($_POST['password'])){
+        if((isset($name)) or (isset($no)) or (isset($authority))){
+            $sql .= ", ";
+        }
+        $password = $_POST['password']; 
+        $sql .= "パスワード = :password ";
     }
 
-    if($mode == "名前"){$sql .= "where 名前 = :word";}
-    else if($mode == "教員番号"){$sql .= "where 教員番号 = :word";}
-    var_dump($sql);
+    if($mode == "名前"){$sql .= "WHERE 名前 = :word";}
+    else if($mode == "教員番号"){$sql .= "WHERE 教員番号 = :word";}
     $stmt = $pdo->prepare($sql);
 
     if(!empty($name)) $stmt->bindValue(":name", $name, PDO::PARAM_STR);
     if(!empty($no)) $stmt->bindValue(":no", $no, PDO::PARAM_STR);
     if(!empty($authority)) $stmt->bindValue(":authority", $authority, PDO::PARAM_INT);
-    if(!empty($word)) $stmt->bindValue(":word", $word, PDO::PARAM_STR);
     if(!empty($password)) $stmt->bindValue(":password", $password, PDO::PARAM_STR);
 
 
-    var_dump($no); echo "<br>";
-    var_dump($name); echo "<br>";
-    var_dump($authority); echo "<br>";
-    var_dump($word); echo "<br>";
-    var_dump($password); echo "<br>";
-
-    $sql = "update management.teacher set 名前 = '$name' , 教員番号 = '$no' , 権限 = $authority , パスワード = '$password' where 名前 = '$word'";
-    $stmt = $pdo->query($sql);
-//     $stmt->execute();
+    // var_dump($no); echo "<br>";
+    // var_dump($name); echo "<br>";
+    // var_dump($authority); echo "<br>";
+    // var_dump($word); echo "<br>";
+    // var_dump($password); echo "<br>";
+    // var_dump($stmt);
+     $sql = "update management.teacher set 名前 = '$name' , 教員番号 = '$no' , 権限 = $authority , パスワード = '$password' where 名前 = '$word'";
+     $stmt = $pdo->query($sql);
+    //  $stmt->execute();
     if ($stmt) {
         echo "成功";
     } else {
