@@ -40,6 +40,11 @@ require_once "server_config.php";
 <body>
 <!--戻るのリンク-->
 <a href="teacher_list.php">戻る</a><br>
+<p> </p><br>
+<!-- ようこそ的なメッセージ 名前抽出わからん-->
+<p>ようこそ　ゲストさん</p>
+<!-- ログアウトボタン 動きはわからん -->
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>教員登録</H1><br>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">

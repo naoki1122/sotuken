@@ -43,11 +43,16 @@ try{
 <head>
     <meta charset="UTF-8">
     <link href="contents.css" rel="stylesheet" media="all">
-    <title>学生削除</title>
+    <title>生徒出席情報変更</title>
 </head>
 <body>
 <!--戻るのリンク-->
 <a href="student_info.php">戻る</a><br>
+<p> </p><br>
+<!-- ようこそ的なメッセージ 名前抽出わからん-->
+<p>ようこそ　ゲストさん</p>
+<!-- ログアウトボタン 動きはわからん -->
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>生徒出席情報変更</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">

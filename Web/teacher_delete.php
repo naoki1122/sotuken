@@ -70,7 +70,11 @@ $pdo = dbcon();
 <header id="header">
 <!--戻るのリンク-->
 <p><a href="teacher_list.php">戻る</a></p>
-
+<p> </p><br>
+<!-- ようこそ的なメッセージ 名前抽出わからん-->
+<p>ようこそ　ゲストさん</p>
+<!-- ログアウトボタン 動きはわからん -->
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <h1>教員削除</h1>
 </header>
 <!--検索フォーム-->

@@ -3,12 +3,17 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link href="info.css" rel="stylesheet" media="all">
-    <title>生徒詳細一覧</title>
+    <title>生徒詳細情報</title>
 </head>
 
 <body>
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
+<p> </p><br>
+<!-- ようこそ的なメッセージ 名前抽出わからん-->
+<p>ようこそ　ゲストさん</p>
+<!-- ログアウトボタン 動きはわからん -->
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <h1>生徒詳細情報</h1>
     <?php
     session_start();
@@ -56,7 +61,7 @@ try{
 </table>
 </div>
 <!--リスト黒四角つけるタグ-->
-<ul style="list-style: none">
+<ul style="list-style: disc">
 <!--出席情報変更リンク-->
 <li><a href="student_info_update.php">出席情報変更</a></li><br>
 </ul>

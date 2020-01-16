@@ -2,6 +2,10 @@
 body{
     background-color: cornsilk;
 }
+/*ようこそユーザー名の配置*/
+p{
+    float: right;
+}
 /*トップ*/
 h1{
     text-align: center;
