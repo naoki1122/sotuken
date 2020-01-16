@@ -31,7 +31,7 @@ else{
     <link href="test.css" rel="stylesheet" media="all">
     <title>生徒登録</title>
 </head>
-<body>
+<body id="wrap">
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
 <H1>生徒登録</H1><br>
