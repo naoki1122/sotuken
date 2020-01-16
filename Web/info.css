@@ -19,6 +19,7 @@ th{
 /*リストに適用*/
 ul{
     float: right;
+    margin: 0 20 0 0;
 }
 /*フォーム全体に対して適用*/
 #formmain{
