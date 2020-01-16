@@ -14,8 +14,8 @@ th{
 /*フォーム全体に対して適用*/
 #formmain{
     position: relative;
-	width: 80%;
-    margin: 0px auto;
+	margin: 8px 0;
+	padding: 0.3em;
     text-align: center;
 }
 /*検索条件フォーム*/
