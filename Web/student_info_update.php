@@ -56,7 +56,7 @@ try{
 <H1>生徒出席情報変更</H1><br>
 <!--検索フォーム-->
 <form id ="search" action="" method="post">
-    <!--検索条件入力-->　　　
+    <!--検索条件入力-->
     <input id="input" type="text" name="day" required autofocus placeholder="日付の入力"><br>
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索" name="検索"><br>
