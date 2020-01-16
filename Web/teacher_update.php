@@ -123,21 +123,16 @@ if(isset($_POST['変更'])){
 
 <header id="header">
 <!--戻るのリンク-->
-<<<<<<< HEAD
 <a href="teacher_list.php">戻る</a>
 <!-- タイトル -->
 <H1>教員情報変更</H1>
-</header>
-
-=======
-<a href="teacher_list.php">戻る</a><br>
-<p> </p><br>
 <!-- ようこそ的なメッセージ 名前抽出わからん-->
 <p>ようこそ　ゲストさん</p>
 <!-- ログアウトボタン 動きはわからん -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
-<H1>教員情報変更</H1><br>
->>>>>>> 87af6f7b3a7a5587d838c5d81e23c0affa097e66
+
+</header>
+
 <!--検索フォーム-->
 <form id ="form_search" action="" method="post">
     <!--検索条件指定-->
