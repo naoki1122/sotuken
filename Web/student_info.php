@@ -9,6 +9,11 @@
 <body>
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
+<p> </p><br>
+<!-- ようこそ的なメッセージ 名前抽出わからん-->
+<p>ようこそ　ゲストさん</p>
+<!-- ログアウトボタン 動きはわからん -->
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <h1>生徒詳細情報</h1>
     <?php
     session_start();
