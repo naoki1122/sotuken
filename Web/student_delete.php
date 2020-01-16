@@ -52,8 +52,7 @@ if(isset($_POST['検索'])){
     <link href="test.css" rel="stylesheet" media="all">
     <title>学生削除</title>
 </head>
-<body>
-<div id="wrap">
+<body id="wrap">
 <header id="header">
 <!--戻るのリンク-->
 <p><a href="student_list.php">戻る</a><p>
@@ -98,6 +97,5 @@ if(isset($_POST['検索'])){
 </script>
 <!--copyright-->
 <footer>copyright© チームコリジョン</footer>
-</div>
 </body>
 </html>

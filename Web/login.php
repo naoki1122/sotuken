@@ -1,8 +1,6 @@
 <?php
 //sotukenサーバー用のDB情報
-require_once("server_config.php");
-//ローカル用のサーバー情報
-//require_once("localhost_config.php");
+require_once "server_config.php";
 
 session_start();
 
@@ -17,7 +15,7 @@ try {
 }
 //emailがDB内に存在しているか確認
 if (!isset($row['名前'])) {
-  echo 'メールアドレス又はパスワードが間違っています。';
+  echo '名前又はパスワードが間違っています。';
   return ;
 }
 //パスワード確認後sessionにメールアドレスを渡す　password_verify
@@ -29,7 +27,7 @@ if ($_POST['パスワード']==$row['パスワード']) {
   header("Location:main.php");
 	exit;
 } else {
-  echo 'メールアドレス又はパスワードが間違っています。';
+  echo '名前又はパスワードが間違っています。';
   ?>
   <meta http-equiv="refresh" content=" 2; url=teacher_signup.html">
   <?php
