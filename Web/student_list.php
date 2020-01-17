@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'server_config.php';
 $gobackURL = "teacher_signup.html";
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   header("Location:{$gobackURL}");
@@ -27,7 +28,6 @@ $level = $_SESSION['権限'];
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>生徒一覧</H1><br>
     <?php
-require_once('server_config.php');
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
   $sql = 'select * from student';
@@ -100,7 +100,7 @@ try{
 <!--生徒登録リンク-->
 <li><a href="student_insert.php">生徒登録</a></li><br>
 <!--生徒情報変更リンク-->
-<!-- <li><a href="student_update.php">生徒情報変更</a></li><br> -->
+<li><a href="student_update.php">生徒情報変更</a></li><br>
 <!--生徒削除リンク-->
 <li><a href="student_delete.php">生徒削除</a></li><br>
 </ul>
