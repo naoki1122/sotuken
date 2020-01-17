@@ -95,8 +95,8 @@ if(isset($_POST['変更'])){
 </header>
 <!--検索フォーム-->
 <form id ="form_search" action="" method="post">
-    <!--検索条件指定-->
-    <ul>
+<!--検索条件指定-->
+<ul>
     <li><select id="input1" name="mode" required >
         <option value="" selected>条件を指定してください</option>
         <option value="名前">名前</option>
@@ -106,7 +106,7 @@ if(isset($_POST['変更'])){
     <input id="input1" type="text" name="word" autofocus autocomplete="off">
     <!--検索ボタン-->
     <input id="button" type="submit" value="検索" name="検索">
-    </ul>
+</ul>
 </form>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post">
@@ -150,7 +150,7 @@ if(isset($_POST['変更'])){
     <!-- 使用路線1 -->
     <li><lavel><span class="item">使用路線</span>
     <select class="inputbox" name="train1" >
-        <option value="" selected>使用する路線(1路線目)を選んでください</option>
+        <option value="" selected>路線(1路線目)を選んでください</option>
         <option value="京成本線">京成本線</option>
         <option value="京成千葉線">京成千葉線</option>
         <option value="新京成">新京成</option>
@@ -168,7 +168,7 @@ if(isset($_POST['変更'])){
     <!-- 使用路線2 -->
     <li><lavel><span class="item">使用路線2</span>
     <select class="inputbox" name="train2" >
-        <option value="" selected>使用する路線(1路線目)を選んでください</option>
+        <option value="" selected>路線(1路線目)を選んでください</option>
         <option value="京成本線-2">京成本線</option>
         <option value="京成千葉線-2">京成千葉線</option>
         <option value="新京成-2">新京成</option>
@@ -187,7 +187,7 @@ if(isset($_POST['変更'])){
     <!-- 使用路線3 -->
     <li><lavel><span class="item">使用路線3</span>
     <select class="inputbox" name="train3" >
-    <option value="" selected>使用する路線(1路線目)を選んでください</option>
+    <option value="" selected>路線(1路線目)を選んでください</option>
         <option value="京成本線-3">京成本線</option>
         <option value="京成千葉線-3">京成千葉線</option>
         <option value="新京成-3">新京成</option>
