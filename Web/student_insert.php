@@ -4,7 +4,7 @@ require_once "server_config.php";
 require_once "lib.php";
 
 session_start();
-
+$gobackURL="student_list.php";
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     header("Location:{$gobackURL}");
   }else{
@@ -40,12 +40,12 @@ else{
     <title>生徒登録</title>
 </head>
 <body id="wrap">
+
 <header id="header">
 <!--戻るのリンク-->
-<a href="student_list.php">戻る</a><br>
-<p> </p><br>
+<a href="student_list.php">戻る</a>
 <!-- ログイン中の名前 -->
-<p>ようこそ<?=$name?>さん</p>
+<p>ようこそ <?=$name?> さん</p>
 <!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>生徒登録</H1>
