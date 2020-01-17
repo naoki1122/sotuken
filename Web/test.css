@@ -8,7 +8,7 @@
   background-color: cornsilk;
 }
 #header p{
-  display: inline-block;
+  float: right;
 }
 /*中央配置*/
 #header h1,#form_main{
