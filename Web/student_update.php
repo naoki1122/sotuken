@@ -1,13 +1,21 @@
 <?php
+session_start();
 require_once "server_config.php";
 require_once "lib.php";
 
-$gobackURL = "student_update.php";
+$gobackURL = "student_list.php";
 if(isset($_POST['word'])){
     $word = $_POST['word'];
   }
   else{
       $word = "";
+  }
+
+  if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
+    header("Location:{$gobackURL}");
+  }else{
+  $name = $_SESSION['名前'];
+  $level = $_SESSION['権限'];
   }
 
 $pdo = dbcon();
@@ -77,7 +85,11 @@ if(isset($_POST['変更'])){
 <body id="wrap">
 <header id="header">
 <!--戻るのリンク-->
-<a href="student_list.php">戻る</a>
+<a href="student_list.php">戻る</a><br>
+<!-- ログイン中の名前 -->
+<p>ようこそ<?=$name?>さん</p>
+<!-- ログアウトボタン -->
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <!-- タイトル -->
 <H1>生徒情報変更</H1>
 </header>

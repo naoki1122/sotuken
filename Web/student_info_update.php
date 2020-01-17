@@ -36,6 +36,13 @@ try{
     print('Error:'.$e->getMessage());
     die();
   }
+  // ログイン関連
+  if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
+    header("Location:{$gobackURL}");
+  }else{
+  $name = $_SESSION['名前'];
+  $level = $_SESSION['権限'];
+  }
   $pdo = null;
 ?>
 <!DOCTYPE html>
@@ -49,9 +56,9 @@ try{
 <!--戻るのリンク-->
 <a href="student_info.php">戻る</a><br>
 <p> </p><br>
-<!-- ようこそ的なメッセージ 名前抽出わからん-->
-<p>ようこそ　ゲストさん</p>
-<!-- ログアウトボタン 動きはわからん -->
+<!-- ログイン中の名前 -->
+<p>ようこそ<?=$name?>さん</p>
+<!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>生徒出席情報変更</H1><br>
 <!--検索フォーム-->
