@@ -19,6 +19,7 @@ if(isset($_POST['word'])){
   }
 
 $pdo = dbcon();
+$tbl= "management.student";
 
   $name="";$name2="";$no="";
   $class="";$class2="";$password="";$tel="";
@@ -27,24 +28,44 @@ $pdo = dbcon();
   $authority;
   $sql;
 
+  // 検索
   if(isset($_POST['検索'])){
+      // 名前検索
     if(isset($_POST['word']) && $_POST['mode'] == "名前"){
         $mode = "名前";
         $word = $_POST['word'];
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
-        $sql = "select * from management.student where 名前 = ?";
+        $sql = "select * from ${tbl} where 名前 = ?";
         var_dump($sql);
+        // 学籍番号検索
     }else if(isset($_POST['word']) && $_POST['mode'] == "学籍番号"){
         $mode = "学籍番号";
         $word = $_POST['word'];
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
-        $sql = "select * from management.student where 学籍番号 = ?";
+        $sql = "select * from ${tbl} where 学籍番号 = ?";
         var_dump($sql);
     }else{
         header("Location:{$gobackURL}");
     }
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array($word));
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result as $row){
+        $no = $row["学籍番号"];
+       $name  = $row["名前"];
+       $name2  = $row["フリガナ"];
+       $class  = $row["クラス"];
+       $class2  = $row["学科"];
+       $email  = $row["メールアドレス"];
+       $tel = $row["電話番号"];
+       $password = $row["パスワード"];
+       $train1 = $row["路線1"];
+       $train2 = $row["路線2"];
+       $train3 = $row["路線3"];
+    }
+}
 if(isset($_POST['変更'])){
     $mode = $_COOKIE['mode'];
     var_dump($mode);
@@ -65,14 +86,18 @@ if(isset($_POST['変更'])){
         $word = $_COOKIE['word'];
         var_dump($mode);
         $sql = "update management.teacher set 名前 = ?,教員番号 = ?,
-                パスワード = ?,権限 = ? where 教員番号 = ?";
+                パスワード = ?,権限 = ? where 学籍番号 = ?";
     }
     echo $sql;
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array($name,$no,$password,$authority,$word));
-    echo "できた";
     }
-}
+
+    // ダウンリストに検索結果を反映させる
+    if($subject == 0){$admin_selects="selected";$general_selects="";$assistant_selects="";}
+    else if($subject =="ITエンジニア科4年制"){$general_selects="selected";$admin_selects="";$assistant_selects="";}
+    else if($subject == "ITエンジニア化3年制"){$assistant_selects="selected";$admin_selects="";$general_selects="";}
+    }
 ?>
 
 <!DOCTYPE html>
@@ -112,24 +137,21 @@ if(isset($_POST['変更'])){
 <form id="formmain" action="" method="post">
     <section id="input_form">
 <ul>
+    <!--学籍番号-->
+    <li><lavel><span class="item">学籍番号</span>
+    <input class="inputbox" type="text" name="no" value="<?=$no?>" required placeholder="例：x00n000"></lavel></li>
     <!--名前-->
     <li><lavel><span class="item">名前</span>
     <input class="inputbox" type="text" name="name" value="<?=$name?>" required></lavel></li>
     <!-- フリガナ -->
     <li><lavel><span class="item">フリガナ</span>
     <input class="inputbox" type="text" name="name2" value="<?=$name2?>" required placeholder="例：サトウタロウ"></lavel></li>
-    <!--学籍番号-->
-    <li><lavel><span class="item">学籍番号</span>
-    <input class="inputbox" type="text" name="no" value="<?=$no?>" required placeholder="例：x00n000"></lavel></li>
     <!-- 学年 -->
     <li><lavel><span class="item">学年</span>
     <input class="inputbox" type="text" name="class" value="<?=$class?>" required></lavel></li>
     <!-- クラス -->
     <li><lavel><span class="item">クラス</span>
     <input class="inputbox" type="text" name="class2" value="<?=$class2?>" required></lavel></li>
-    <!--パスワード-->
-    <li><lavel><span class="item">パスワード</span>
-    <input class="inputbox" type="password" name="password" value="<?=$password?>" required placeholder="例：abedefg"></lavel></li>
     <!--メールアドレス-->
     <li><lavel><span class="item">メールアドレス</span>
     <input class="inputbox" type="email" name="mail" value="<?=$mail?>" required placeholder="例：Example@xxx.com"></lavel></li>
@@ -140,12 +162,12 @@ if(isset($_POST['変更'])){
     <li><lavel><span class="item">学科</span>
     <select class="inputbox" name="subject" required>
         <option value="" selected>学科を選択し直してください</option>
-        <option value="0">ITエンジニア科4年制</option>
-        <option value="1">ITエンジニア化3年制</option>
-        <option value="2">情報処理科</option>
-        <option value="3">情報ネットワーク科</option>
-        <option value="4">WEBクリエーター科</option>
-        <option value="5">こども学科</option>
+        <option value="0"<?=$it4_selects?>>ITエンジニア科4年制</option>
+        <option value="1"<?=$it3_selects?>>ITエンジニア化3年制</option>
+        <option value="2"<?=$info_selects?>>情報処理科</option>
+        <option value="3"<?=$net_selects?>>情報ネットワーク科</option>
+        <option value="4"<?=$web_selects?>>WEBクリエーター科</option>
+        <option value="5"<?=$child_selects?>>こども学科</option>
     </select></lavel></li>
     <!-- 使用路線1 -->
     <li><lavel><span class="item">使用路線</span>
@@ -202,6 +224,9 @@ if(isset($_POST['変更'])){
         <option value="常磐線-3">常磐線各停</option>
         <option value="常磐線-3">常磐線快速</option>
     </select></lavel></li>
+        <!--パスワード-->
+        <li><lavel><span class="item">パスワード</span>
+    <input class="inputbox" type="password" name="password" value="<?=$password?>" required placeholder="例：abedefg"></lavel></li>
     </ul>
     <!-- 変更ボタン -->
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
