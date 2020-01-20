@@ -94,10 +94,9 @@ if(isset($_POST['変更'])){
     }
 
     // ダウンリストに検索結果を反映させる
-    if($subject == 0){$admin_selects="selected";$general_selects="";$assistant_selects="";}
+    if($subject == 0){$it4_selects="selected";$general_selects="";$assistant_selects="";}
     else if($subject =="ITエンジニア科4年制"){$general_selects="selected";$admin_selects="";$assistant_selects="";}
     else if($subject == "ITエンジニア化3年制"){$assistant_selects="selected";$admin_selects="";$general_selects="";}
-    }
 ?>
 
 <!DOCTYPE html>
