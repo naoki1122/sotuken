@@ -40,12 +40,11 @@ else{
     <title>生徒登録</title>
 </head>
 <body id="wrap">
-
 <header id="header">
 <!--戻るのリンク-->
-<a href="student_list.php">戻る</a>
+<a href="student_list.php">戻る</a><br>
 <!-- ログイン中の名前 -->
-<p>ようこそ <?=$name?> さん</p>
+<p>ようこそ<?=$name?>さん</p>
 <!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>生徒登録</H1>

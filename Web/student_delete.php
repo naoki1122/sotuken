@@ -1,4 +1,5 @@
 <?php
+session_start();
 //sotukenサーバー用のDB情報
 require_once "server_config.php";
 require_once "lib.php";
@@ -9,14 +10,15 @@ $no = "";
 $subject = "";
 $class = "";
 $sql = "";
-if(isset($_POST['word'])){
-  $word = $_POST['word'];
-}
-else{
-    $word = "";
+
+if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
+  header("Location:{$gobackURL}");
+}else{
+$name = $_SESSION['名前'];
+$level = $_SESSION['権限'];
 }
 
-
+if(isset($_POST['word'])) $word = $_POST['word'];
 if(isset($_POST['検索'])){
   if(isset($_POST['word']) && $_POST['mode'] == "名前"){
   $sql = "select * from management.student where 名前 = ?";
@@ -55,11 +57,10 @@ if(isset($_POST['検索'])){
 <body id="wrap">
 <header id="header">
 <!--戻るのリンク-->
-<p><a href="student_list.php">戻る</a><p>
-<p> </p><br>
-<!-- ようこそ的なメッセージ 名前抽出わからん-->
-<p>ようこそ　ゲストさん</p>
-<!-- ログアウトボタン 動きはわからん -->
+<a href="student_list.php">戻る</a><br>
+<!-- ログイン中の名前 -->
+<p>ようこそ<?=$name?>さん</p>
+<!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>学生削除</H1>
 </header>

@@ -14,14 +14,14 @@ if(isset($_POST['word'])){
   if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     header("Location:{$gobackURL}");
   }else{
-  $name = $_SESSION['名前'];
+  $account = $_SESSION['名前'];
   $level = $_SESSION['権限'];
   }
-
+var_dump($account);
 $pdo = dbcon();
 $tbl= "management.student";
 
-  $name="";$name2="";$no="";
+  $name="";$name2="";$no="";$account="";
   $class="";$class2="";$password="";$tel="";
   $train1="";$train2="";$train3="";$mail="";$subject="";
   
@@ -37,7 +37,6 @@ $tbl= "management.student";
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
         $sql = "select * from ${tbl} where 名前 = ?";
-        var_dump($sql);
         // 学籍番号検索
     }else if(isset($_POST['word']) && $_POST['mode'] == "学籍番号"){
         $mode = "学籍番号";
@@ -45,7 +44,6 @@ $tbl= "management.student";
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
         $sql = "select * from ${tbl} where 学籍番号 = ?";
-        var_dump($sql);
     }else{
         header("Location:{$gobackURL}");
     }
@@ -68,7 +66,6 @@ $tbl= "management.student";
 }
 if(isset($_POST['変更'])){
     $mode = $_COOKIE['mode'];
-    var_dump($mode);
     if(isset($_POST['name'],$_POST['no'],$_POST['password'],$_POST['authority']) && $mode == "名前"){
         $name = $_POST['name'];
         $no = $_POST['no'];
@@ -84,7 +81,6 @@ if(isset($_POST['変更'])){
         $password = $_POST['password'];
         $authority = $_POST['authority'];
         $word = $_COOKIE['word'];
-        var_dump($mode);
         $sql = "update management.teacher set 名前 = ?,教員番号 = ?,
                 パスワード = ?,権限 = ? where 学籍番号 = ?";
     }
@@ -111,7 +107,7 @@ if(isset($_POST['変更'])){
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
 <!-- ログイン中の名前 -->
-<p>ようこそ<?=$name?>さん</p>
+<p>ようこそ<?=$account?>さん</p>
 <!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <!-- タイトル -->
