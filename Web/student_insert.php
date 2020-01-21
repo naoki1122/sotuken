@@ -5,6 +5,8 @@ require_once "lib.php";
 
 session_start();
 $gobackURL="student_list.php";
+$tbl="management.student";
+
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     header("Location:{$gobackURL}");
   }else{
@@ -18,13 +20,20 @@ $pdo = dbcon();
       $name = $_POST['name'];
       $name2 = $_POST['name2'];
       $no = $_POST['no'];
-      $password = $_POST['password'];
+      $pass = $_POST['password'];
       $year = $_POST['year'];
       $class = $_POST['class'];
       $subject = $_POST['subject'];
-      
-    $stmt = $pdo->prepare("INSERT INTO management.student(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科) VALUES (?,?,?,?,?,?,?)");
-    $stmt->execute([$name,$name2,$no,$password,$year,$class,$subject]);
+      $sql = "INSERT INTO management.student(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科) VALUES (:name,:name2,:no,:pass,:year,:class,:subject)";
+      $stmt = $pdo->prepare($sql);
+      $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+      $stmt->bindValue(":name2", $name2, PDO::PARAM_STR);
+      $stmt->bindValue(":no", $no, PDO::PARAM_STR);
+      $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
+      $stmt->bindValue(":year", $year, PDO::PARAM_INT);
+      $stmt->bindValue(":class", $class, PDO::PARAM_INT);
+      $stmt->bindValue(":subject", $subject, PDO::PARAM_STR);
+    $stmt->execute();
   echo '登録完了';
 }
 else{
