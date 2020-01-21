@@ -15,8 +15,10 @@ try {
 }
 //emailがDB内に存在しているか確認
 if (!isset($row['名前'])) {
-  echo '名前又はパスワードが間違っています。';
-  return ;
+  echo '名前が間違っています。';
+  ?>
+  <meta http-equiv="refresh" content=" 2; url=teacher_signup.html">
+  <?php
 }
 //パスワード確認後sessionにメールアドレスを渡す　password_verify
 if ($_POST['パスワード']==$row['パスワード']) {
@@ -27,7 +29,7 @@ if ($_POST['パスワード']==$row['パスワード']) {
   header("Location:main.php");
 	exit;
 } else {
-  echo '名前又はパスワードが間違っています。';
+  echo 'パスワードが間違っています。';
   ?>
   <meta http-equiv="refresh" content=" 2; url=teacher_signup.html">
   <?php
