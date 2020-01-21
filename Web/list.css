@@ -17,6 +17,7 @@ h1{
     white-space: nowrap;
     overflow:scroll;
     width: 1200px;
+    height: 350px;
     float: left;
 }
 th{
@@ -26,6 +27,7 @@ th{
 }
 tbody {
     width: 50px;
+    text-align: center;
 }
 /*テーブルの次のブロック配置*/
 div.float-sample-4{
