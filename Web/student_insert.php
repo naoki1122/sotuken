@@ -16,19 +16,23 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 
 $pdo = dbcon();
 
-  if(isset($_POST['name'],$_POST['name2'],$_POST['no'],$_POST['password'],$_POST['subject'])){
-      $name = $_POST['name'];
-      $name2 = $_POST['name2'];
-      $no = $_POST['no'];
-      $pass = $_POST['password'];
-      $year = $_POST['year'];
-      $class = $_POST['class'];
-      $subject = $_POST['subject'];
-      $sql = "INSERT INTO management.student(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科) VALUES (:name,:name2,:no,:pass,:year,:class,:subject)";
+  if(isset($_POST['NAME_UP'],$_POST['NAME_DOWN'],$_POST['HURI'],$_POST['S_NO'],
+  $_POST['PASSWD'],$_POST['YEAR'],$_POST['CLASS'],$_POST['SUBJECT'])){
+      $name_up = $_POST['NAME_UP'];
+      $name_down = $_POST['NAME_DOWN'];
+      $name = $name_up. " " . $name_down;
+      $huri = $_POST['HURI'];
+      $s_no = $_POST['S_NO'];
+      $pass = $_POST['PASSWD'];
+      $year = $_POST['YEAR'];
+      $class = $_POST['CLASS'];
+      $subject = $_POST['SUBJECT'];
+      $sql = "INSERT INTO ${tbl}(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科) 
+      VALUES (:name,:huri,:s_no,:pass,:year,:class,:subject)";
       $stmt = $pdo->prepare($sql);
       $stmt->bindValue(":name", $name, PDO::PARAM_STR);
-      $stmt->bindValue(":name2", $name2, PDO::PARAM_STR);
-      $stmt->bindValue(":no", $no, PDO::PARAM_STR);
+      $stmt->bindValue(":huri", $huri, PDO::PARAM_STR);
+      $stmt->bindValue(":s_no", $s_no, PDO::PARAM_STR);
       $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
       $stmt->bindValue(":year", $year, PDO::PARAM_INT);
       $stmt->bindValue(":class", $class, PDO::PARAM_INT);
@@ -37,7 +41,7 @@ $pdo = dbcon();
   echo '登録完了';
 }
 else{
-    $word = "NO";
+    echo "no";
 }
 ?>
 
@@ -62,27 +66,30 @@ else{
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
     <section id="input_form">
 <ul>
+    <!--苗字-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">性</span>
+    <input class="inputbox" type="text" name="NAME_UP" required autofocus placeholder="例：山田"></lavel></li>
     <!--名前-->
-    <li><lavel><span style="color: red">*必須  </span><span class="item">名前</span>
-    <input class="inputbox" type="text" name="name" required autofocus placeholder="例：山田太郎"></lavel></li>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">名</span>
+    <input class="inputbox" type="text" name="NAME_DOWN" required autofocus placeholder="例：太郎"></lavel></li>
     <!--フリガナ-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">フリガナ</span>
-    <input class="inputbox" type="text" name="name2" required placeholder="例：ヤマダタロウ"></lavel></li>
+    <input class="inputbox" type="text" name="HURI" required placeholder="例：ヤマダタロウ"></lavel></li>
     <!--学籍番号-->
     <li></lavel><span style="color: red">*必須  </span><span class="item">学籍番号</span>
-    <input class="inputbox" type="text" name="no" required placeholder="例：x00n000"></lavel></li>
+    <input class="inputbox" type="text" name="S_NO" required placeholder="例：x00n000"></lavel></li>
     <!--パスワード-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">パスワード</span>
-    <input class="inputbox" type="password" name="password" required placeholder="abcd1234"></lavel></li>
+    <input class="inputbox" type="password" name="PASSWD" required placeholder="abcd1234"></lavel></li>
     <!--学年-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">学年</span>
-    <input class="inputbox" type="text" name="year" required placeholder="1"></lavel></li>
+    <input class="inputbox" type="number" name="YEAR" required placeholder="1"></lavel></li>
     <!--クラス-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">クラス</span>
-    <input class="inputbox" type="text" name="class" required placeholder="1"></lavel></li>
+    <input class="inputbox" type="number" name="CLASS" required placeholder="1"></lavel></li>
     <!--学科-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">学科</span>
-    <select class="inputbox" name="subject" required>
+    <select class="inputbox" name="SUBJECT" required>
         <option value="" selected>学科を選択してください</option>
         <option value="ITエンジニア科4年制">ITエンジニア科4年制</option>
         <option value="ITエンジニア科3年制">ITエンジニア科3年制</option>
