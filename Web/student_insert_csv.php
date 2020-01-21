@@ -28,7 +28,7 @@ $level = $_SESSION['権限'];
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>CSV生徒取り込み</H1><br>
 <form action="#" method="post" enctype="multipart/form-data">
-<input type="file" name="filename" accept=".csv">
+<input type="file" name="filename" accept="">
 </form><br>
     <?php
 try{
