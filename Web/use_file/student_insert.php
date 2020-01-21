@@ -18,6 +18,7 @@ $pdo = dbcon();
 
   if(isset($_POST['NAME_UP'],$_POST['NAME_DOWN'],$_POST['HURI'],$_POST['S_NO'],
   $_POST['PASSWD'],$_POST['YEAR'],$_POST['CLASS'],$_POST['SUBJECT'])){
+      // 変数代入
       $name_up = $_POST['NAME_UP'];
       $name_down = $_POST['NAME_DOWN'];
       $name = $name_up. " " . $name_down;
@@ -49,7 +50,7 @@ else{
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="test.css" rel="stylesheet" media="all">
+    <link href="form.css" rel="stylesheet" media="all">
     <title>生徒登録</title>
 </head>
 <body id="wrap">
