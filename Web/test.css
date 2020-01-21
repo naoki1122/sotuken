@@ -70,11 +70,12 @@ ul li {
 }
  /*ラベルの分離*/
  .item{
-   width:120px;
+   width:80px;
    display: inline-block;
    margin:auto;
    padding:10px;
  }
+
 
 /*送信、リセットボタン*/
 #button{
