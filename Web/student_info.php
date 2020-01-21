@@ -1,6 +1,9 @@
 <?php
 session_start();
+require_once 'server_config.php';
+require_once 'lib.php';
 $gobackURL = "teacher_signup.html";
+
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   header("Location:{$gobackURL}");
 }else{
@@ -27,7 +30,7 @@ $level = $_SESSION['権限'];
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <h1>生徒詳細情報</h1>
     <?php
-require_once('server_config.php');
+
 try{
   $pdo = new PDO(DSN, DB_USER, DB_PASS);
   $word="";
@@ -39,9 +42,10 @@ try{
     $word="";
   }
 }
-  $sql = 'select * from management.attend where 学籍番号 = ?';
+  $sql = 'select 登校日,登校時間 from management.attend where 学籍番号 = :word';
   $stmt = $pdo->prepare($sql);
-  $stmt->execute([$word]);
+  $stmt->bindvalue(':word', $word,PDO::PARAM_INT);
+  $stmt->execute();
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">

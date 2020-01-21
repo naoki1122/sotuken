@@ -3,8 +3,16 @@
 require_once "server_config.php";
 require_once "lib.php";
 
-$pdo = dbcon();
+session_start();
+$gobackURL="student_list.php";
+if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
+    header("Location:{$gobackURL}");
+  }else{
+  $name = $_SESSION['名前'];
+  $level = $_SESSION['権限'];
+  }
 
+$pdo = dbcon();
 
   if(isset($_POST['name'],$_POST['name2'],$_POST['no'],$_POST['password'],$_POST['subject'])){
       $name = $_POST['name'];
@@ -32,14 +40,15 @@ else{
     <title>生徒登録</title>
 </head>
 <body id="wrap">
+<header id="header">
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
-<p> </p><br>
-<!-- ようこそ的なメッセージ 名前抽出わからん-->
-<p>ようこそ　ゲストさん</p>
-<!-- ログアウトボタン 動きはわからん -->
+<!-- ログイン中の名前 -->
+<p>ようこそ<?=$name?>さん</p>
+<!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
-<H1>生徒登録</H1><br>
+<H1>生徒登録</H1>
+</header>
 <!--入力フォーム-->
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
     <section id="input_form">

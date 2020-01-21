@@ -1,19 +1,10 @@
 <?php
 //sotukenサーバー用のDB情報
-//require_once("server_config.php");
-//ローカル用のサーバー情報
-require_once("localhost_config.php");
-
-//require_once("php7note\chap13\lib\util.php"); 
+require_once "server_config.php";
+require_once "lib.php";
 
 $gobackURL = "start_attend.html";
 
-// 文字エンコードの検証
-// if (!cken($_POST)){
-//   header("Location:{$gobackURL}");
-//   exit();
-// }
-// nameが未設定、空のときはエラー
 if (empty($_POST)){
   header("Location:start_attend.html");
   exit();
@@ -21,7 +12,7 @@ if (empty($_POST)){
   header("Location:{$gobackURL}");
 exit();
 }
-// データベースユーザ
+
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +20,6 @@ exit();
 <head>
 <meta charset="utf-8">
 <title>名前検索</title>
-<!-- <link href="php7note\chap13\css\style.css" rel="stylesheet"> -->
-<!-- テーブル用のスタイルシート -->
-<!-- <link href="php7note\chap13\css\tablestyle.css" rel="stylesheet"> -->
 </head>
 <body>
 <div>
@@ -39,17 +27,10 @@ exit();
   $no = $_POST['学籍番号'];
   $timestamp = '';
   $timestamp2 = '';
+
   //MySQLデータベースに接続する
-  try {
-    $pdo = new PDO(DSN, DB_USER, DB_PASS);
-    // プリペアドステートメントのエミュレーションを無効にする
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    // 例外がスローされる設定にする
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  }catch (Exception $e) {
-    echo '<span class="error">エラーがありました。</span><br>';
-    echo $e->getMessage();
-  }
+  $pdo = dbcon();
+  
     // SQL文を作る
     if(isset($_POST['学籍番号'])){
       $no = $_POST['学籍番号'];

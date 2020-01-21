@@ -1,10 +1,9 @@
 <?php
 //sotukenサーバー用のDB情報
 require_once "server_config.php";
-//ローカル用のサーバー情報
-//require_once "localhost_config.php";
- require_once "lib.php";
+require_once "lib.php";
 
+// MySQLデータベースに接続する
  $pdo = dbcon();
 
  if(isset($_POST['登録'])){
