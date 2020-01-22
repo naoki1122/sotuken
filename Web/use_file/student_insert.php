@@ -1,17 +1,18 @@
 <?php
+session_start();
 //sotukenサーバー用のDB情報
 require_once "server_config.php";
 require_once "lib.php";
 
-session_start();
+
 $gobackURL="student_list.php";
 $tbl="management.student";
 
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     header("Location:{$gobackURL}");
   }else{
-  $name = $_SESSION['名前'];
-  $level = $_SESSION['権限'];
+  $session_name = $_SESSION['名前'];
+  $session_level = $_SESSION['権限'];
   }
 
 $pdo = dbcon();
