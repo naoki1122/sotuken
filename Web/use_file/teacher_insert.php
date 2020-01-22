@@ -8,6 +8,7 @@ session_start();
 $gobackURL="student_list.php";
 $tbl="management.teacher";
 
+// セッションの代入
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     header("Location:{$gobackURL}");
   }else{

@@ -8,6 +8,7 @@ require_once "lib.php";
 $gobackURL="student_list.php";
 $tbl="management.student";
 
+// セッションの代入
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     header("Location:{$gobackURL}");
   }else{
@@ -59,7 +60,7 @@ else{
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
 <!-- ログイン中の名前 -->
-<p>ようこそ<?=$name?>さん</p>
+<p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>生徒登録</H1>
