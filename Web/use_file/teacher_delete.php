@@ -1,22 +1,28 @@
 <?php
+session_start();
 //sotukenサーバー用のDB情報
 require_once "server_config.php";
 require_once "lib.php";
-
 $pdo = dbcon();
 
-  $name = "";
-  $no = "";
-  $password = "";
-  $authority = "";
-  $sql = "";
-  if(isset($_POST['word'])){
-    $word = $_POST['word'];
-  }
-  else{
-      $word = "";
-  }
+$gobackURL="teacher_list.php";
+$tbl="management.teacher";
+
+
+if(empty($_POST['NAME'])) $name = null;
+if(empty($_POST['T_NO'])) $t_no = null;
+if(empty($_POST['PASSWD'])) $pass = null;
+if(empty($_POST['AUTHORITY'])) $authority = null;
   
+// セッションの代入
+if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
+    header("Location:{$gobackURL}");
+  }else{
+  $session_name = $_SESSION['名前'];
+  $session_level = $_SESSION['権限'];
+  }
+
+  if(isset($_POST['word'])) $word = $_POST['word'];
 
   if(isset($_POST['検索'])){
     if(isset($_POST['word']) && $_POST['mode'] == "名前"){
@@ -41,8 +47,7 @@ $pdo = dbcon();
         $no = $_POST['no'];
         $password = $_POST['password'];
         $authority = $_POST['authority'];
-        $sql = "delete from management.teacher where 名前 = ? and 教員番号 = ?
-                and パスワード = ? and 権限 = ?";
+        $sql = "delete from management.teacher where 名前 = ? and 教員番号 = ? and パスワード = ? and 権限 = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array($name,$no,$password,$authority));
     echo "できた";
@@ -63,17 +68,18 @@ $pdo = dbcon();
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="test.css" rel="stylesheet" media="all">
+    <link href="form.css" rel="stylesheet" media="all">
     <title>教員削除</title>
 </head>
 <body id="wrap">
 <header id="header">
 <!--戻るのリンク-->
-<p><a href="teacher_list.php">戻る</a></p>
-<p> </p><br>
-<!-- ようこそ的なメッセージ 名前抽出わからん-->
-<p>ようこそ　ゲストさん</p>
-<!-- ログアウトボタン 動きはわからん -->
+<a href="teacher_list.php">戻る</a><br>
+<!-- ログイン中の名前 -->
+<p>ようこそ<?=$session_name?>さん</p>
+<!-- コメント -->
+<p id="cmd"><?=$cmd?></p>
+<!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <h1>教員削除</h1>
 </header>
