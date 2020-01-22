@@ -11,12 +11,12 @@ if(isset($_POST['word'])){
       $word = "";
   }
 
-  if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
+ /* if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     header("Location:{$gobackURL}");
   }else{
   $account = $_SESSION['名前'];
   $level = $_SESSION['権限'];
-  }
+  }*/
 var_dump($account);
 $pdo = dbcon();
 $tbl= "management.student";
