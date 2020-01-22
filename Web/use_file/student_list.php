@@ -99,6 +99,8 @@ try{
 <li><a href="student_info.php">生徒詳細一覧</a></li><br>
 <!--生徒登録リンク-->
 <li><a href="student_insert.php">生徒登録</a></li><br>
+<!--CSV取り込み-->
+<li><a href="student_insert_csv.php">CSVファイル取り込み</a></li><br>
 <!--生徒情報変更リンク-->
 <li><a href="student_update.php">生徒情報変更</a></li><br>
 <!--生徒削除リンク-->
