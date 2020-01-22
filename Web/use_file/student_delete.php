@@ -5,53 +5,58 @@ require_once "server_config.php";
 require_once "lib.php";
 $pdo = dbcon();
 
-$name = "";
-$no = "";
-$subject = "";
-$class = "";
-$sql = "";
+$gobackURL="student_list.php";
+$tbl="management.student";
 
+$name = "";
+$s_no = "";
+$subject = "";
+$room = "";
+
+// セッションの代入
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   header("Location:{$gobackURL}");
 }else{
-$name = $_SESSION['名前'];
-$level = $_SESSION['権限'];
+$session_name = $_SESSION['名前'];
+$session_level = $_SESSION['権限'];
 }
 
-if(isset($_POST['word'])) $word = $_POST['word'];
-if(isset($_POST['検索'])){
-  if(isset($_POST['word']) && $_POST['mode'] == "名前"){
-  $sql = "select * from management.student where 名前 = ?";
+if(isset($_POST['WORD'])) $word = $_POST['WORD'];
+if(isset($_POST['検索']) or !empty($word)){
+  if(isset($_POST['WORD']) && $_POST['MODE'] == "名前"){
+  $sql = "select * from ${tbl} where 名前 = :word";
       }else if(isset($_POST['word']) && $_POST['mode'] == "学籍番号"){
-          $sql = "select * from management.student where 学籍番号 = ?";
+          $sql = "select 名前 from ${tbl} where 学籍番号 = :word";
   }
   $stmt = $pdo->prepare($sql);
-  $stmt->execute([$word]);
+  $stmt->bindValue(":word", $word, PDO::PARAM_STR);
+  $stmt->execute();
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   foreach ($result as $row){
      $name  = $row["名前"];
-     $no = $row["学籍番号"];
+     $s_no = $row["学籍番号"];
      $subject = $row["学科"];
-     $class = $row["学年"]."-".$row['クラス'];
+     $room = $row["学年"]."-".$row['クラス'];
   }
 }else{
   $cmd = "なし";
 }
   if(isset($_POST['削除'])){
-    $name = $_POST['name'];
-    $no = $_POST['no'];
-    $sql = "delete from management.student where 名前 = ? and 学籍番号 = ?";
+   
+    $sql = "delete from ${tbl} where  学籍番号 = :s_no";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(array($name,$no));
+    $stmt->bindValue(":s_no", $s_no, PDO::PARAM_STR);
+    $stmt->execute();
     echo "できた";
-  }
+  
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="test.css" rel="stylesheet" media="all">
+    <link href="form.css" rel="stylesheet" media="all">
     <title>学生削除</title>
 </head>
 <body id="wrap">
@@ -59,7 +64,7 @@ if(isset($_POST['検索'])){
 <!--戻るのリンク-->
 <a href="student_list.php">戻る</a><br>
 <!-- ログイン中の名前 -->
-<p>ようこそ<?=$name?>さん</p>
+<p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>学生削除</H1>
@@ -84,13 +89,13 @@ if(isset($_POST['検索'])){
   <section id="input_form">
     <ul>
     <!--名前-->
-    <li><lavel><span class="item">名前</span><input class="inputbox" type="text" readonlyvalue="<?=$name?> "name="name" required></lavel></li>
+    <li><lavel><span class="item">名前</span><input class="inputbox" type="text" readonly value="<?=$name?> "name="NAME" required></lavel></li>
     <!--学籍番号-->
-    <li><lavel><span class="item">学籍番号</span><input class="inputbox" type="text" readonly value="<?=$no?> "name="no" required></lavel></li>
+    <li><lavel><span class="item">学籍番号</span><input class="inputbox" type="text" readonly value="<?=$s_no?> "name="S_NO" required></lavel></li>
     <!--学科-->
-    <li><lavel><span class="item">学科</span><input class="inputbox" type="text" readonly value="<?=$subject?>" name="subject"></lavel></li>
+    <li><lavel><span class="item">学科</span><input class="inputbox" type="text" readonly value="<?=$subject?>" name="SUBJECT"></lavel></li>
     <!--クラス-->
-    <li><lavel><span class="item">クラス</span><input class="inputbox" type="text" readonly value="<?=$class?>" name="class"></lavel></li>
+    <li><lavel><span class="item">クラス</span><input class="inputbox" type="text" readonly value="<?=$room?>" name="CLASS"></lavel></li>
     </ul>
     <!--削除ボタン-->
     <input id="button" type="submit" value="削除" name="削除"onclick="return checkdelete()">
