@@ -99,7 +99,7 @@ if(isset($_POST['変更'])){
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="test.css" rel="stylesheet" media="all">
+    <link href="form.css" rel="stylesheet" media="all">
     <title>日課表変更</title>
 </head>
 <body id="wrap" onLoad="functionName()">
