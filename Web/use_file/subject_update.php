@@ -99,7 +99,7 @@ if(isset($_POST['変更'])){
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="test.css" rel="stylesheet" media="all">
+    <link href="form.css" rel="stylesheet" media="all">
     <title>日課表変更</title>
 </head>
 <body id="wrap" onLoad="functionName()">
@@ -118,7 +118,7 @@ if(isset($_POST['変更'])){
 <!--検索条件指定-->
 <ul>
     <!--学科指定-->
-    <li><select id="input1" name ="selectName1" requires onChange="functionName()">
+    <li><select id="input1" name ="subject" requires onChange="functionName()">
     <option value="" selected>学科を指定してください</option>
     <option value = "ITエンジニア科4年制">ITエンジニア科4年制</option>
     <option value = "ITエンジニア科3年制">ITエンジニア科3年制</option>
@@ -132,7 +132,7 @@ if(isset($_POST['変更'])){
     <script>
     function functionName()
     {
-    var select1 = document.forms.form_search.selectName1; //変数select1を宣言
+    var select1 = document.forms.form_search.subject; //変数select1を宣言
     var select2 = document.forms.form_search.selectName2; //変数select2を宣言
     
     select2.options.length = 0; // 選択肢の数がそれぞれに異なる場合、これが重要
@@ -183,8 +183,13 @@ if(isset($_POST['変更'])){
     <!--学年クラス指定（動的変化）-->
     <li><select id="input1" name="selectName2">
     </select></li>
+    <li><select id="input1" name="semester" required >
+        <option value="" selected>学期を指定してください</option>
+        <option value="前期">前期</option>
+        <option value="後期">後期</option>
+    </select></li>
     <!--曜日指定-->
-    <li><select id="input1" name="mode" required >
+    <li><select id="input1" name="week" required >
         <option value="" selected>曜日を指定してください</option>
         <option value="月曜日">月曜日</option>
         <option value="火曜日">火曜日</option>
@@ -202,13 +207,72 @@ if(isset($_POST['変更'])){
 <form id="formmain" action="" method="post">
     <section id="input_form">
 <ul>
-    <!--学科-->
-    <li><lavel><span class="item">学科</span>
-    <select class="inputbox" name="" required>
-
+    <!--授業選択-->
+    <li><lavel><span class="item">1限目</span>
+    <select class="inputbox" name="class1" required>
     </select></lavel></li>
-    
+
+    <li><lavel><span class="item">2限目</span>
+    <select class="inputbox" name="class2" required>
+    </select></lavel></li>
+
+    <li><lavel><span class="item">3限目</span>
+    <select class="inputbox" name="class3" required>
+    </select></lavel></li>
     </ul>
+
+  <!--授業動的変化用-->
+  <script>
+    function functionName()
+    {
+    var select3 = document.forms.form_search.subject; //変数select1を宣言
+    var select4 = document.forms.form_search.class1; //変数select2を宣言
+    
+    select4.options.length = 0; // 選択肢の数がそれぞれに異なる場合、これが重要
+    
+    if (select3.options[select3.selectedIndex].value == "ITエンジニア科4年制")
+    {
+    select2.options[0] = new Option("1年1組");
+    select2.options[1] = new Option("2年1組");
+    select2.options[2] = new Option("3年1組");
+    select2.options[3] = new Option("4年1組");
+    }
+    
+    else if (select1.options[select1.selectedIndex].value == "ITエンジニア科3年制")
+    {
+    select2.options[0] = new Option("1年1組");
+    select2.options[1] = new Option("2年1組");
+    select2.options[2] = new Option("3年1組");
+    }
+    
+    else if (select1.options[select1.selectedIndex].value == "情報処理科")
+    {
+    select2.options[0] = new Option("1年1組");
+    select2.options[1] = new Option("1年2組");
+    select2.options[2] = new Option("2年1組");
+    select2.options[3] = new Option("2年2組");
+    }
+    else if (select1.options[select1.selectedIndex].value == "情報ネットワーク科")
+    {
+    select2.options[0] = new Option("1年1組");
+    select2.options[1] = new Option("1年2組");
+    select2.options[2] = new Option("2年1組");
+    select2.options[3] = new Option("2年2組");
+    }
+    else if (select1.options[select1.selectedIndex].value == "WEBクリエーター科")
+    {
+    select2.options[0] = new Option("1年1組");
+    select2.options[1] = new Option("2年1組");
+    }
+    else if (select1.options[select1.selectedIndex].value == "こども学科")
+    {
+    select2.options[0] = new Option("1年1組");
+    select2.options[1] = new Option("2年1組");
+    select2.options[2] = new Option("3年1組");
+    }
+    }
+    </script>
+
     <!-- 変更ボタン -->
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
     </section>
