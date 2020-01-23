@@ -10,7 +10,6 @@ if(isset($_POST['word'])){
   else{
       $word = "";
   }
-
   if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     header("Location:{$gobackURL}");
   }else{
@@ -21,12 +20,18 @@ var_dump($account);
 $pdo = dbcon();
 $tbl= "management.student";
 
-  $name="";$name2="";$no="";$account="";
-  $class="";$class2="";$password="";$tel="";
-  $train1="";$train2="";$train3="";$mail="";$subject="";
+//   $name="";$name2="";$no="";$account="";
+//   $class="";$class2="";$password="";$tel="";
+//   $train1="";$train2="";$train3="";$mail="";$subject="";
   
-  $authority;
-  $sql;
+//   $authority;
+//   $sql;
+
+
+if(empty($_POST['NAME'])) $name = null;
+if(empty($_POST['T_NO'])) $t_no = null;
+if(empty($_POST['PASSWD'])) $pass = null;
+if(empty($_POST['AUTHORITY'])) $authority = null;
 
   // 検索
   if(isset($_POST['検索'])){
@@ -134,28 +139,28 @@ if(isset($_POST['変更'])){
 <ul>
     <!--学籍番号-->
     <li><lavel><span class="item">学籍番号</span>
-    <input class="inputbox" type="text" name="no" value="<?=$no?>" required placeholder="例：x00n000"></lavel></li>
+    <input class="inputbox" type="text" name="S_NO" value="<?=$no?>" required placeholder="例：x00n000"></lavel></li>
     <!--名前-->
     <li><lavel><span class="item">名前</span>
-    <input class="inputbox" type="text" name="name" value="<?=$name?>" required></lavel></li>
+    <input class="inputbox" type="text" name="NAME" value="<?=$name?>" required></lavel></li>
     <!-- フリガナ -->
     <li><lavel><span class="item">フリガナ</span>
-    <input class="inputbox" type="text" name="name2" value="<?=$name2?>" required placeholder="例：サトウタロウ"></lavel></li>
+    <input class="inputbox" type="text" name="HURI" value="<?=$name2?>" required placeholder="例：サトウタロウ"></lavel></li>
     <!-- 学年 -->
     <li><lavel><span class="item">学年</span>
-    <input class="inputbox" type="text" name="class" value="<?=$class?>" required></lavel></li>
+    <input class="inputbox" type="text" name="YEAR" value="<?=$class?>" required></lavel></li>
     <!-- クラス -->
     <li><lavel><span class="item">クラス</span>
-    <input class="inputbox" type="text" name="class2" value="<?=$class2?>" required></lavel></li>
+    <input class="inputbox" type="text" name="CLASS" value="<?=$class2?>" required></lavel></li>
     <!--メールアドレス-->
     <li><lavel><span class="item">メールアドレス</span>
-    <input class="inputbox" type="email" name="mail" value="<?=$mail?>" required placeholder="例：Example@xxx.com"></lavel></li>
+    <input class="inputbox" type="email" name="MAIL" value="<?=$mail?>" required placeholder="例：Example@xxx.com"></lavel></li>
     <!--電話番号-->
     <li><lavel><span class="item">電話番号</span>
-    <input class="inputbox" type="tel" name="tel" value="<?=$tel?>" required placeholder="ハイフンなし"></lavel></li>
+    <input class="inputbox" type="tel" name="TEL" value="<?=$tel?>" required placeholder="ハイフンなし"></lavel></li>
     <!--学科-->
     <li><lavel><span class="item">学科</span>
-    <select class="inputbox" name="subject" required>
+    <select class="inputbox" name="SUBJECT" required>
         <option value="" selected>学科を選択し直してください</option>
         <option value="0"<?=$it4_selects?>>ITエンジニア科4年制</option>
         <option value="1"<?=$it3_selects?>>ITエンジニア化3年制</option>
