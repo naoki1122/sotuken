@@ -67,8 +67,6 @@ if(isset($_POST['検索']) && !empty($word)){
 <a href="student_list.php">戻る</a><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
-<!-- コメント -->
-<p id="cmd"><?=$cmd?></p>
 <!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>学生削除</H1>
