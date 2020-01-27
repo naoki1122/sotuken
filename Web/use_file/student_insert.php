@@ -19,7 +19,8 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 $pdo = dbcon();
 
   if(isset($_POST['NAME_UP'],$_POST['NAME_DOWN'],$_POST['HURI'],$_POST['S_NO'],
-  $_POST['PASSWD'],$_POST['YEAR'],$_POST['CLASS'],$_POST['SUBJECT'])){
+  $_POST['PASSWD'],$_POST['YEAR'],$_POST['CLASS'],$_POST['SUBJECT'])&&
+  isset($_POST[''])){
       // 変数代入
       $name_up = $_POST['NAME_UP'];
       $name_down = $_POST['NAME_DOWN'];
@@ -101,6 +102,21 @@ else{
         <option value="WEBクリエーター科">WEBクリエーター科</option>
         <option value="こども学科">こども学科</option>
     </select></lavel></li>
+    <!--メールアドレス-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">メールアドレス</span>
+    <input class="inputbox" type="email" name="MAIL" placeholder="1"></lavel></li>
+    <!--電話番号-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">電話番号</span>
+    <input class="inputbox" type="number" name="TEL" placeholder="1"></lavel></li>
+    <!--路線1-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">路線1</span>
+    <input class="inputbox" type="text" name="TRAIN1" placeholder="1"></lavel></li>
+    <!--路線2-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">路線2</span>
+    <input class="inputbox" type="text" name="TRAIN2" placeholder="1"></lavel></li>
+    <!--路線3-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">路線3</span>
+    <input class="inputbox" type="text" name="TRAIN3" placeholder="1"></lavel></li>
 </ul>
     <!--登録ボタン-->
     <input id="button" type="submit" value="登録" >
