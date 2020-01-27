@@ -20,18 +20,9 @@ var_dump($account);
 $pdo = dbcon();
 $tbl= "management.student";
 
-//   $name="";$name2="";$no="";$account="";
-//   $class="";$class2="";$password="";$tel="";
-//   $train1="";$train2="";$train3="";$mail="";$subject="";
-  
-//   $authority;
-//   $sql;
-
-
-if(empty($_POST['NAME'])) $name = null;
-if(empty($_POST['T_NO'])) $t_no = null;
-if(empty($_POST['PASSWD'])) $pass = null;
-if(empty($_POST['AUTHORITY'])) $authority = null;
+  $name="";$name2="";$no="";$account="";
+  $class="";$class2="";$password="";$tel="";
+  $train1="";$train2="";$train3="";$mail="";$subject="";
 
   // 検索
   if(isset($_POST['検索'])){
@@ -95,16 +86,14 @@ if(isset($_POST['変更'])){
     }
 
     // ダウンリストに検索結果を反映させる
-    if($subject == 0){$it4_selects="selected";$general_selects="";$assistant_selects="";}
-    else if($subject =="ITエンジニア科4年制"){$general_selects="selected";$admin_selects="";$assistant_selects="";}
-    else if($subject == "ITエンジニア化3年制"){$assistant_selects="selected";$admin_selects="";$general_selects="";}
+    
 ?>
 
 <!DOCTYPE html>
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link href="test.css" rel="stylesheet" media="all">
+    <link href="form.css" rel="stylesheet" media="all">
     <title>生徒情報変更</title>
 </head>
 <body id="wrap">
@@ -161,13 +150,16 @@ if(isset($_POST['変更'])){
     <!--学科-->
     <li><lavel><span class="item">学科</span>
     <select class="inputbox" name="SUBJECT" required>
-        <option value="" selected>学科を選択し直してください</option>
-        <option value="0"<?=$it4_selects?>>ITエンジニア科4年制</option>
-        <option value="1"<?=$it3_selects?>>ITエンジニア化3年制</option>
-        <option value="2"<?=$info_selects?>>情報処理科</option>
-        <option value="3"<?=$net_selects?>>情報ネットワーク科</option>
-        <option value="4"<?=$web_selects?>>WEBクリエーター科</option>
-        <option value="5"<?=$child_selects?>>こども学科</option>
+        <?php
+        // if($train1)echo"<option value="" selected>学科を選択し直してください</option>";
+        // else{echo"<option value="" selected>学科を選択し直してください</option>";}
+        ?>
+        <option value="0">ITエンジニア科4年制</option>
+        <option value="1">ITエンジニア化3年制</option>
+        <option value="2">情報処理科</option>
+        <option value="3">情報ネットワーク科</option>
+        <option value="4">WEBクリエーター科</option>
+        <option value="5">こども学科</option>
     </select></lavel></li>
     <!-- 使用路線1 -->
     <li><lavel><span class="item">使用路線</span>
