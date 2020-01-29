@@ -27,7 +27,7 @@ if(isset($_POST['PASSWD']))$pass = $_POST['PASSWD'];
 if(isset($_POST['YEAR']))$year = $_POST['YEAR'];
 if(isset($_POST['CLASS']))$class = $_POST['CLASS'];
 if(isset($_POST['SUBJECT']))$subject = $_POST['SUBJECT'];
-// if(isset($_POST['MAEL']))$mail = $_POST['MAEL'];
+if(isset($_POST['MAIL']))$mail = $_POST['MAIL'];
 // if(isset($_POST['TEL']))$tel = $_POST['TEL'];
 // if(isset($_POST['TRAIN1']))$train1 = $_POST['TRAIN1'];
 // if(isset($_POST['TRAIN2']))$train2 = $_POST['TRAIN2'];
@@ -69,7 +69,7 @@ if(isset($_POST['SUBJECT']))$subject = $_POST['SUBJECT'];
     // }
         $sql .= ")";
         // 任意で登録するもの
-      $sql .= " VALUES (:name,:huri,:s_no,:pass,:year,:class,:subject)";
+      $sql .= " VALUES (:name,:huri,:s_no,:pass,:year,:class,:subject";
 
        if(isset($mail)) $sql .= ",:mail";
     // if(isset($tel)){
@@ -92,7 +92,7 @@ if(isset($_POST['SUBJECT']))$subject = $_POST['SUBJECT'];
     //     if((empty($mail))||(empty($tel))||(empty($pass))||(empty($train1))||(empty($train2))) {$sql .= ",";}
     // $sql .= ":train3";
     // }
-    // $sql .= ")";
+    $sql .= ")";
       $stmt = $pdo->prepare($sql);
       var_dump($sql);
       $stmt->bindValue(":name", $name, PDO::PARAM_STR);
