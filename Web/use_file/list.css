@@ -20,6 +20,14 @@ h1{
     height: 350px;
     float: left;
 }
+/*csvテーブル表示*/
+.scroll-table-csv{
+    white-space: nowrap;
+    overflow:scroll;
+    width: 1200px;
+    height: 270px;
+    float: left;
+}
 th{
     width: 300px;
     background-color: black;

@@ -39,7 +39,7 @@ try{
   $sql = 'select * from student';
 ?>
 <!-- <input id="input1" type="text" value size="100"> -->
-<div class='scroll-table'>
+<div class='scroll-table-csv'>
 <table id="sample1" border="1">
 <thead>
   <tr>
