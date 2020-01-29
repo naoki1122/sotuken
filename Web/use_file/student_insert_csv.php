@@ -20,7 +20,7 @@ $level = $_SESSION['権限'];
 </head>
 <body>
 <!--戻るのリンク-->
-<a href="main.php">戻る</a><br>
+<button type=“button” id="back-button" onclick="location.href='main.php'">戻る</button><br>
 <p> </p><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$name?>さん</p>
@@ -39,7 +39,7 @@ try{
   $sql = 'select * from student';
 ?>
 <!-- <input id="input1" type="text" value size="100"> -->
-<div class='scroll-table'>
+<div class='scroll-table-csv'>
 <table id="sample1" border="1">
 <thead>
   <tr>
