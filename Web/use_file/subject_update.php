@@ -105,7 +105,7 @@ if(isset($_POST['変更'])){
 <body id="wrap" onLoad="functionName()">
 <header id="header">
 <!--戻るのリンク-->
-<a href="student_list.php">戻る</a><br>
+<button type=“button” id="back-button" onclick="location.href='student_list.php'">戻る</button><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$account?>さん</p>
 <!-- ログアウトボタン -->

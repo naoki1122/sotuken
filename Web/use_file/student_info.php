@@ -22,7 +22,7 @@ $level = $_SESSION['権限'];
 
 <body>
 <!--戻るのリンク-->
-<a href="student_list.php">戻る</a><br>
+<button type=“button” id="back-button" onclick="location.href='student_list.php'">戻る</button><br>
 <p> </p><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$name?>さん</p>
