@@ -15,8 +15,8 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   $session_name = $_SESSION['名前'];
   $session_level = $_SESSION['権限'];
   }
-
-$pdo = dbcon();
+  // MySQLデータベースに接続する
+  $pdo = dbcon();
 
   // 変数代入
 if(isset($_POST['NAME_UP']))$name_up = $_POST['NAME_UP'];
@@ -28,70 +28,39 @@ if(isset($_POST['YEAR']))$year = $_POST['YEAR'];
 if(isset($_POST['CLASS']))$class = $_POST['CLASS'];
 if(isset($_POST['SUBJECT']))$subject = $_POST['SUBJECT'];
 if(isset($_POST['MAIL']))$mail = $_POST['MAIL'];
-// if(isset($_POST['TEL']))$tel = $_POST['TEL'];
-// if(isset($_POST['TRAIN1']))$train1 = $_POST['TRAIN1'];
-// if(isset($_POST['TRAIN2']))$train2 = $_POST['TRAIN2'];
-// if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
+if(isset($_POST['TEL']))$tel = $_POST['TEL'];
+if(isset($_POST['TRAIN1']))$train1 = $_POST['TRAIN1'];
+if(isset($_POST['TRAIN2']))$train2 = $_POST['TRAIN2'];
+if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
   // なければnull
-// if(empty($_POST['MAEL']))$mail = null;
-// if(empty($_POST['TEL']))$tel = null;
-// if(empty($_POST['TRAIN1']))$train1 = null;
-// if(empty($_POST['TRAIN2']))$train2 = null;
-// if(empty($_POST['TRAIN3']))$train3 = null;
+  if(empty($_POST['MAIL']))$mail = null;
+  if(empty($_POST['TEL']))$tel = null;
+  if(empty($_POST['TRAIN1']))$train1 = null;
+  if(empty($_POST['TRAIN2']))$train2 = null;
+  if(empty($_POST['TRAIN3']))$train3 = null;
 
-  if(isset($name_up,$name_down,$huri,$s_no,
+  if(isset($_POST['登録'])){
+  if(!empty($name_up,$name_down,$huri,$s_no,
   $pass,$year,$class,$subject)){
       // 変数代入
       $name = $name_up. " " . $name_down;
       $sql = "INSERT INTO ${tbl}(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科";
 
-      // 任意で登録するもの
-    if(isset($mail)) $sql .= ",メールアドレス";
-    // if(isset($tel)){
-    //     if(empty($mail)) $sql .= ",";
-    // $sql .= "電話番号";
-    // }
-    // if(isset($pass)){
-    //     if((empty($mail))||(empty($tel))) $sql .= ",";
-    // $sql .= "パスワード";
-    // }
-    // if(isset($train1)){
-    //     if((empty($mail))||(empty($tel))||(empty($pass))) $sql .= ",";
-    // $sql .= "路線1";
-    // }
-    // if(isset($train2)){
-    //     if((empty($mail))||(empty($tel))||(empty($pass))||(empty($train1))) $sql .= ",";
-    // $sql .= "路線2";
-    // }
-    // if(isset($train3)){
-    //     if((empty($mail))||(empty($tel))||(empty($pass))||(empty($train1))||(empty($train2))) $sql .= ",";
-    // $sql .= "路線3";
-    // }
-        $sql .= ")";
-        // 任意で登録するもの
-      $sql .= " VALUES (:name,:huri,:s_no,:pass,:year,:class,:subject";
+    // 任意で登録するもの
+    if(!empty($mail)) $sql .= ",メールアドレス";
+    if(!empty($tel))$sql .= ",電話番号";
+    if(!empty($train1))$sql .= ",路線1";
+    if(!empty($train2))$sql .= ",路線2";
+    if(!empty($train3))$sql .= ",路線3";
+    $sql .= ")";
+    // 任意で登録するもの
+    $sql .= " VALUES (:name,:huri,:s_no,:pass,:year,:class,:subject";
 
-       if(isset($mail)) $sql .= ",:mail";
-    // if(isset($tel)){
-    //     if(empty($mail)){ $sql .= ",";}
-    // $sql .= ":tel";
-    // }
-    // if(isset($pass)){
-    //     if((empty($mail))||(empty($tel))){ $sql .= ",";}
-    // $sql .= ":pass";
-    // }
-    // if(isset($train1)){
-    //     if((empty($mail))||(empty($tel))||(empty($pass))){ $sql .= ",";}
-    // $sql .= ":train1";
-    // }
-    // if(isset($train2)){
-    //     if((empty($mail))||(empty($tel))||(empty($pass))||(empty($train1))) {$sql .= ",";}
-    // $sql .= ":train2";
-    // }
-    // if(isset($train3)){
-    //     if((empty($mail))||(empty($tel))||(empty($pass))||(empty($train1))||(empty($train2))) {$sql .= ",";}
-    // $sql .= ":train3";
-    // }
+    if(!empty($mail)) $sql .= ",:mail";
+    if(!empty($tel))$sql .= ",:tel";
+    if(!empty($train1))$sql .= ",:train1";
+    if(!empty($train2))$sql .= ",:train2";
+    if(!empty($train3))$sql .= ",:train3";
     $sql .= ")";
       $stmt = $pdo->prepare($sql);
       var_dump($sql);
@@ -102,14 +71,15 @@ if(isset($_POST['MAIL']))$mail = $_POST['MAIL'];
       $stmt->bindValue(":year", $year, PDO::PARAM_INT);
       $stmt->bindValue(":class", $class, PDO::PARAM_INT);
       $stmt->bindValue(":subject", $subject, PDO::PARAM_STR);
-       if(isset($mail))$stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
-    //   if(isset($pass))$stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
-    //   if(isset($train1))$stmt->bindValue(":train1", $train1, PDO::PARAM_STR);
-    //   if(isset($train2))$stmt->bindValue(":train2", $train2, PDO::PARAM_STR);
-    //   if(isset($train3))$stmt->bindValue(":train3", $train3, PDO::PARAM_STR);
+      if(!empty($mail))$stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
+      if(!empty($tel))$stmt->bindValue(":tel", $tel, PDO::PARAM_STR);
+      if(isset($train1))$stmt->bindValue(":train1", $train1, PDO::PARAM_STR);
+      if(isset($train2))$stmt->bindValue(":train2", $train2, PDO::PARAM_STR);
+      if(isset($train3))$stmt->bindValue(":train3", $train3, PDO::PARAM_STR);
     $stmt->execute();
   echo '登録完了';
 }
+  }
 ?>
 
 <!DOCTYPE html>
