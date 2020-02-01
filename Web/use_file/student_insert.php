@@ -40,8 +40,8 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
   if(empty($_POST['TRAIN3']))$train3 = null;
 
   if(isset($_POST['登録'])){
-  if(!empty($name_up,$name_down,$huri,$s_no,
-  $pass,$year,$class,$subject)){
+   if(!empty($name_up)&&!empty($name_down)&&!empty($huri)&&!empty($s_no)
+   &&!empty($pass)&&!empty($year)&&!empty($class)&&!empty($subject)){
       // 変数代入
       $name = $name_up. " " . $name_down;
       $sql = "INSERT INTO ${tbl}(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科";
@@ -78,7 +78,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
       if(isset($train3))$stmt->bindValue(":train3", $train3, PDO::PARAM_STR);
     $stmt->execute();
   echo '登録完了';
-}
+ }
   }
 ?>
 
