@@ -26,7 +26,7 @@ $level = $_SESSION['権限'];
 <p>ようこそ<?=$name?>さん</p>
 <!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
-<H1>生徒一覧</H1><br>
+<H1>生徒一覧</H1>
     <?php
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);

@@ -4,7 +4,6 @@ session_start();
 require_once "server_config.php";
 require_once "lib.php";
 
-
 $gobackURL="student_list.php";
 $tbl="management.student";
 

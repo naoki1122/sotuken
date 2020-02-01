@@ -9,17 +9,13 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 $name = $_SESSION['名前'];
 $level = $_SESSION['権限'];
 }
-
 ?>
-
 <!DOCTYPE html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link href="list.css" rel="stylesheet" media="all">
     <title>教員詳細一覧</title>
 </head>
-
 <body>
 <!--戻るのリンク-->
 <button type=“button” id="back-button" onclick="location.href='main.php'">戻る</button><br>
@@ -27,13 +23,10 @@ $level = $_SESSION['権限'];
 <p>ようこそ<?=$name?>さん</p>
 <!-- ログアウトボタン -->
 <button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
-<H1>教員一覧</H1><br>
+<H1>教員一覧</H1>
     <?php
 //sotukenサーバー用のDB情報
 require_once 'server_config.php';
-//ローカル用のサーバー情報
-//require_once 'localhost_config.php';
-
 
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
@@ -62,7 +55,6 @@ try{
     </table>
 </div>
     <div class="float-sample-4">
-      <p>　　　　　</p>
     </div>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">

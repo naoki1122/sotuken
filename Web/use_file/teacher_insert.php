@@ -5,7 +5,7 @@ require_once "server_config.php";
 require_once "lib.php";
 
 
-$gobackURL="student_list.php";
+$gobackURL="teacher_list.php";
 $tbl="management.teacher";
 
 // セッションの代入
@@ -81,7 +81,7 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
     <input class="inputbox" type="text" name="NAME_UP" required autofocus placeholder="例：山田"></lavel></li>
     <!--名前-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">名</span>
-    <input class="inputbox" type="text" name="NAME_DOWN" required autofocus placeholder="例：太郎"></lavel></li>
+    <input class="inputbox" type="text" name="NAME_DOWN" required placeholder="例：太郎"></lavel></li>
     <!--教員番号-->
     <li></lavel><span style="color: red">*必須  </span><span class="item">教員番号</span>
     <input class="inputbox" type="text" name="T_NO" required placeholder="例：t00n00"></lavel></li>
