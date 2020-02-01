@@ -1,10 +1,10 @@
 <?php
+session_start();
 //sotukenサーバー用のDB情報
 require_once "server_config.php";
 require_once "lib.php";
 
 
-session_start();
 $gobackURL="student_list.php";
 $tbl="management.teacher";
 
@@ -18,34 +18,41 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   // MySQLデータベースに接続する
   $pdo = dbcon();
 
- if(isset($_POST['登録'])){
-   if(isset($_POST['NAME_UP'],$_POST['NAME_DOWN'],$_POST['T_NO'],$_POST['PASSWD'],$_POST['AUTHORITY'])){
     // 変数代入
-    $name_up = $_POST['NAME_UP'];
-    $name_down = $_POST['NAME_DOWN'];
-    $name = $name_up. " " . $name_down;
-    $t_no = $_POST['T_NO'];
-    $pass = $_POST['PASSWD'];
-    $authority = $_POST['AUTHORITY'];
-    // パスワードの入力制限
+if(isset($_POST['NAME_UP']))$name_up = $_POST['NAME_UP'];
+if(isset($_POST['NAME_DOWN']))$name_down = $_POST['NAME_DOWN'];
+if(isset($_POST['T_NO']))$t_no = $_POST['T_NO'];
+if(isset($_POST['PASSWD']))$pass = $_POST['PASSWD'];
+if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
+
+  // なければnull
+  if(empty($_POST['NAME_UP']))$name_up = null;
+  if(empty($_POST['NAME_DOWN']))$name_down = null;
+  if(empty($_POST['T_NO']))$t_no = null;
+  if(empty($_POST['PASSWD']))$pass = null;
+  if(empty($_POST['AUTHORITY']))$authority = null;
+  
+  // パスワードの入力制限
     //    if(preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,15}+\z/i', $_POST['PASSWD'])) {
     //      $password = $_POST['password'];
     //    }else{
     //      echo 'パスワードは半角英数字をそれぞれ1文字以上含んだ8文字以上で設定してください。';
     //      return false;
-       }
-       $sql = "INSERT INTO ${tbl}(名前,教員番号,パスワード,権限) VALUES (:name,:t_no,:pass,:authority)";
-       $stmt = $pdo->prepare($sql);
-       $stmt->bindValue(":name", $name, PDO::PARAM_STR);
-       $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
-       $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
-       $stmt->bindValue(":authority", $authority, PDO::PARAM_STR);
-       $stmt->execute();
-       echo '登録完了';
+
+ if(isset($_POST['登録'])){
+     // すべての入力項目が記入されていると実効
+   if(!empty($name_up)&&!empty($name_down)&&!empty($t_no)&&!empty($pass)&&!empty($authority)){
+    $name = $name_up. " " . $name_down;
+    $sql = "INSERT INTO ${tbl}(名前,教員番号,パスワード,権限) VALUES (:name,:t_no,:pass,:authority)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+    $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
+    $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
+    $stmt->bindValue(":authority", $authority, PDO::PARAM_STR);
+    $stmt->execute();
+    echo '登録完了';
     }
-    else{
-        echo "no";
-    }
+}
 ?>
 
 <!DOCTYPE html>
