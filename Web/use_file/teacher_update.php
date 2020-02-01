@@ -131,7 +131,7 @@ if(isset($_POST['変更'])){
 
 <header id="header">
 <!--戻るのリンク-->
-<a href="teacher_list.php">戻る</a>
+<button type=“button” id="back-button" onclick="location.href='teacher_list.php'">戻る</button><br>
 <!-- タイトル -->
 <H1>教員情報変更</H1>
 <!-- ようこそ的なメッセージ 名前抽出わからん-->

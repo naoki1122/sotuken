@@ -92,7 +92,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
 <body id="wrap">
 <header id="header">
 <!--戻るのリンク-->
-<a href="student_list.php">戻る</a><br>
+<button type=“button” id="back-button" onclick="location.href='student_list.php'">戻る</button><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
