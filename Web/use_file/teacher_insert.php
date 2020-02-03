@@ -40,18 +40,32 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
     //      return false;
 
  if(isset($_POST['登録'])){
+    // var_dump($name_up);
+    // var_dump($name_down);
+    // var_dump($t_no);
+    // var_dump($pass);
+    // var_dump($authority);
      // すべての入力項目が記入されていると実効
-   if(!empty($name_up)&&!empty($name_down)&&!empty($t_no)&&!empty($pass)&&!empty($authority)){
+   if((!empty($name_up))&&(!empty($name_down))&&(!empty($t_no))&&(!empty($pass))&&(!empty($authority))){
+   $sql = "SELECT COUNT(*) FROM ${tbl} WHERE 教員番号 = :t_no";
+   $stmt = $pdo->prepare($sql);
+   $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
+   $stmt->execute();
+   var_dump($stmt);
+       if(!$stmt){
     $name = $name_up. " " . $name_down;
     $sql = "INSERT INTO ${tbl}(名前,教員番号,パスワード,権限) VALUES (:name,:t_no,:pass,:authority)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(":name", $name, PDO::PARAM_STR);
     $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
     $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
-    $stmt->bindValue(":authority", $authority, PDO::PARAM_STR);
+    $stmt->bindValue(":authority", $authority, PDO::PARAM_INT);
     $stmt->execute();
     echo '登録完了';
     }
+    var_dump($stmt);
+    echo "既に登録済み";
+}
 }
 ?>
 
@@ -78,23 +92,23 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
 <ul>
     <!--苗字-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">性</span>
-    <input class="inputbox" type="text" name="NAME_UP" required autofocus placeholder="例：山田"></lavel></li>
+    <input class="inputbox" type="text" name="NAME_UP"  autofocus placeholder="例：山田"></lavel></li>
     <!--名前-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">名</span>
-    <input class="inputbox" type="text" name="NAME_DOWN" required placeholder="例：太郎"></lavel></li>
+    <input class="inputbox" type="text" name="NAME_DOWN"  placeholder="例：太郎"></lavel></li>
     <!--教員番号-->
     <li></lavel><span style="color: red">*必須  </span><span class="item">教員番号</span>
-    <input class="inputbox" type="text" name="T_NO" required placeholder="例：t00n00"></lavel></li>
+    <input class="inputbox" type="text" name="T_NO"  placeholder="例：t00n00"></lavel></li>
     <!--パスワード-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">パスワード</span>
-    <input class="inputbox" type="password" name="PASSWD" required placeholder="abcd1234"></lavel></li>
+    <input class="inputbox" type="password" name="PASSWD"  placeholder="abcd1234"></lavel></li>
     <!--権限-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">権限</span>
     <select class="inputbox" name="AUTHORITY" required>
         <option value="" selected>権限を選択してください</option>
-        <option value="0">管理者</option>
-        <option value="1">一般教員</option>
-        <option value="2">アシスタント</option>
+        <option value="1">管理者</option>
+        <option value="2">一般教員</option>
+        <option value="3">アシスタント</option>
     </select></lavel></li>
 </ul>
     <!--登録ボタン-->
