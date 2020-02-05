@@ -62,7 +62,6 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
        $pass = $row['パスワード'];
        $authority = $row["権限"];
     }
-    var_dump($names);
     $name=explode(" ",$names);
     $name_up=$name[0];
     $name_down=$name[1];
@@ -79,6 +78,7 @@ if(isset($_POST['変更'])){
     $admin_selects="";
     $general_selects="";
     $assistant_selects="";
+    $name = $name_up." ".$name_down;
     $mode = $_COOKIE['mode'];
     $word = $_COOKIE['word'];
     $sql = "UPDATE ${tbl} SET ";
@@ -114,16 +114,6 @@ if(isset($_POST['変更'])){
     if(!empty($authority)) $stmt->bindValue(":authority", $authority, PDO::PARAM_INT);
     if(!empty($pass)) $stmt->bindValue(":password", $pass, PDO::PARAM_STR);
 
-
-    // var_dump($no); echo "<br>";
-    // var_dump($name); echo "<br>";
-    // var_dump($authority); echo "<br>";
-    // var_dump($word); echo "<br>";
-    // var_dump($password); echo "<br>";
-    // var_dump($stmt);
-     $sql = "update management.teacher set 名前 = '$name' , 教員番号 = '$no' , 権限 = $authority , パスワード = '$password' where 名前 = '$word'";
-     $stmt = $pdo->query($sql);
-    //  $stmt->execute();
     if ($stmt) {
         echo "成功";
     } else {
