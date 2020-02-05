@@ -32,19 +32,42 @@ if(isset($_POST['TRAIN1']))$train1 = $_POST['TRAIN1'];
 if(isset($_POST['TRAIN2']))$train2 = $_POST['TRAIN2'];
 if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
   // なければnull
+  if(empty($_POST['NAME_UP']))$name_up = null;
+  if(empty($_POST['NAME_DOWN']))$name_down = null;
+  if(empty($_POST['HURI']))$huri = null;
+  if(empty($_POST['S_NO']))$s_no = null;
+  if(empty($_POST['PASSWD']))$pass = null;
+  if(empty($_POST['YEAR']))$year = null;
+  if(empty($_POST['CLASS']))$class = null;
+  if(empty($_POST['SUBJECT']))$subject = null;  
   if(empty($_POST['MAIL']))$mail = null;
   if(empty($_POST['TEL']))$tel = null;
   if(empty($_POST['TRAIN1']))$train1 = null;
   if(empty($_POST['TRAIN2']))$train2 = null;
   if(empty($_POST['TRAIN3']))$train3 = null;
 
-  if(isset($_POST['登録'])){
-   if(!empty($name_up)&&!empty($name_down)&&!empty($huri)&&!empty($s_no)
-   &&!empty($pass)&&!empty($year)&&!empty($class)&&!empty($subject)){
-      // 変数代入
-      $name = $name_up. " " . $name_down;
-      $sql = "INSERT INTO ${tbl}(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科";
 
+  var_dump($name_up);
+  var_dump($name_down);
+  var_dump($huri);
+  var_dump($s_no);
+  var_dump($pass);
+  var_dump($year);
+  var_dump($class);
+  var_dump($subject);
+
+  if(isset($_POST['登録'])){
+   if((!empty($name_up))&&(!empty($name_down))&&(!empty($huri))&&(!empty($s_no))
+   &&(!empty($pass))&&(!empty($year))&&(!empty($class))&&(!empty($subject))){
+    $sql = "SELECT COUNT(*) AS cnt FROM ${tbl} WHERE 学籍番号 = :s_no";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(":s_no", $s_no, PDO::PARAM_STR);
+    $stmt->execute();
+    $cnt = $stmt->fetchColumn();
+    if($cnt == 0){ 
+    // 変数代入
+    $name = $name_up. " " . $name_down;
+    $sql = "INSERT INTO ${tbl}(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科";
     // 任意で登録するもの
     if(!empty($mail)) $sql .= ",メールアドレス";
     if(!empty($tel))$sql .= ",電話番号";
@@ -61,24 +84,30 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
     if(!empty($train2))$sql .= ",:train2";
     if(!empty($train3))$sql .= ",:train3";
     $sql .= ")";
-      $stmt = $pdo->prepare($sql);
-      var_dump($sql);
-      $stmt->bindValue(":name", $name, PDO::PARAM_STR);
-      $stmt->bindValue(":huri", $huri, PDO::PARAM_STR);
-      $stmt->bindValue(":s_no", $s_no, PDO::PARAM_STR);
-      $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
-      $stmt->bindValue(":year", $year, PDO::PARAM_INT);
-      $stmt->bindValue(":class", $class, PDO::PARAM_INT);
-      $stmt->bindValue(":subject", $subject, PDO::PARAM_STR);
-      if(!empty($mail))$stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
-      if(!empty($tel))$stmt->bindValue(":tel", $tel, PDO::PARAM_STR);
-      if(isset($train1))$stmt->bindValue(":train1", $train1, PDO::PARAM_STR);
-      if(isset($train2))$stmt->bindValue(":train2", $train2, PDO::PARAM_STR);
-      if(isset($train3))$stmt->bindValue(":train3", $train3, PDO::PARAM_STR);
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+    $stmt->bindValue(":huri", $huri, PDO::PARAM_STR);
+    $stmt->bindValue(":s_no", $s_no, PDO::PARAM_STR);
+    $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
+    $stmt->bindValue(":year", $year, PDO::PARAM_INT);
+    $stmt->bindValue(":class", $class, PDO::PARAM_INT);
+    $stmt->bindValue(":subject", $subject, PDO::PARAM_STR);
+    if(!empty($mail))$stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
+    if(!empty($tel))$stmt->bindValue(":tel", $tel, PDO::PARAM_STR);
+    if(!empty($train1))$stmt->bindValue(":train1", $train1, PDO::PARAM_STR);
+    if(!empty($train2))$stmt->bindValue(":train2", $train2, PDO::PARAM_STR);
+    if(!empty($train3))$stmt->bindValue(":train3", $train3, PDO::PARAM_STR);
     $stmt->execute();
-  echo '登録完了';
- }
-  }
+    echo "
+    <script>
+        alert('登録完了です'); 
+    </script>";
+   }else{ echo "
+    <script>
+        alert('既に登録済みです'); 
+    </script>";}
+}
+}
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +136,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
     <input class="inputbox" type="text" name="NAME_UP" required autofocus placeholder="例：山田"></lavel></li>
     <!--名前-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">名</span>
-    <input class="inputbox" type="text" name="NAME_DOWN" required autofocus placeholder="例：太郎"></lavel></li>
+    <input class="inputbox" type="text" name="NAME_DOWN" required  placeholder="例：太郎"></lavel></li>
     <!--フリガナ-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">フリガナ</span>
     <input class="inputbox" type="text" name="HURI" required placeholder="例：ヤマダタロウ"></lavel></li>
@@ -196,7 +225,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
     </select></lavel></li>
 </ul>
     <!--登録ボタン-->
-    <input id="button" type="submit" value="登録" >
+    <input id="button" type="submit" value="登録" name="登録" >
     <!--リセットボタン-->
     <input id="button" type="reset" value="リセット" onclick="return resetcheck()">
 </secion>
