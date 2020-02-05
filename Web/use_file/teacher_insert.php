@@ -47,12 +47,6 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
    $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
    $stmt->execute();
    $cnt = $stmt->fetchColumn();
-   var_dump($name_up);
-   var_dump($name_down);
-   var_dump($t_no);
-   var_dump($pass);
-   var_dump($authority);
-   var_dump($cnt);
    if($cnt == 0){
     $name = $name_up. " " . $name_down;
     $sql = "INSERT INTO ${tbl}(名前,教員番号,パスワード,権限) VALUES (:name,:t_no,:pass,:authority)";
@@ -62,9 +56,14 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
     $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
     $stmt->bindValue(":authority", $authority, PDO::PARAM_INT);
     $stmt->execute();
-    echo '登録完了';
-    }
-    else {echo "既に登録済み";}
+    echo "
+    <script>
+        alert('登録完了です'); 
+    </script>";
+    }else{ echo "
+    <script>
+        alert('既に登録済みです'); 
+    </script>";}
 }
 }
 ?>
