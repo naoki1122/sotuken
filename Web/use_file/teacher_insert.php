@@ -40,19 +40,20 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
     //      return false;
 
  if(isset($_POST['登録'])){
-    // var_dump($name_up);
-    // var_dump($name_down);
-    // var_dump($t_no);
-    // var_dump($pass);
-    // var_dump($authority);
      // すべての入力項目が記入されていると実効
    if((!empty($name_up))&&(!empty($name_down))&&(!empty($t_no))&&(!empty($pass))&&(!empty($authority))){
-   $sql = "SELECT COUNT(*) FROM ${tbl} WHERE 教員番号 = :t_no";
+   $sql = "SELECT COUNT(*) AS cnt FROM ${tbl} WHERE 教員番号 = :t_no";
    $stmt = $pdo->prepare($sql);
    $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
    $stmt->execute();
-   var_dump($stmt);
-       if(!$stmt){
+   $cnt = $stmt->fetchColumn();
+   var_dump($name_up);
+   var_dump($name_down);
+   var_dump($t_no);
+   var_dump($pass);
+   var_dump($authority);
+   var_dump($cnt);
+   if($cnt == 0){
     $name = $name_up. " " . $name_down;
     $sql = "INSERT INTO ${tbl}(名前,教員番号,パスワード,権限) VALUES (:name,:t_no,:pass,:authority)";
     $stmt = $pdo->prepare($sql);
@@ -63,8 +64,7 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
     $stmt->execute();
     echo '登録完了';
     }
-    var_dump($stmt);
-    echo "既に登録済み";
+    else {echo "既に登録済み";}
 }
 }
 ?>
