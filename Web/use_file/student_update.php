@@ -16,7 +16,6 @@ if(isset($_POST['word'])){
   $account = $_SESSION['名前'];
   $level = $_SESSION['権限'];
   }
-var_dump($account);
 $pdo = dbcon();
 $tbl= "management.student";
 
