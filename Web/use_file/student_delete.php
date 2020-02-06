@@ -51,7 +51,7 @@ if(isset($_POST['検索']) && !empty($word)){
     $stmt->execute();
     echo "
     <script>
-        alert('登録完了です'); 
+        alert('削除完了です'); 
     </script>";
     $name  = "";
      $s_no = "";
