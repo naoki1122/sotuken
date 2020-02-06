@@ -138,10 +138,10 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
     <input class="inputbox" type="password" name="PASSWD" required placeholder="abcd1234"></lavel></li>
     <!--学年-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">学年</span>
-    <input class="inputbox" type="number" name="YEAR" required placeholder="1"></lavel></li>
+    <input class="inputbox" type="number" name="YEAR" min="1" max="4" value="1" required placeholder="1"></lavel></li>
     <!--クラス-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">クラス</span>
-    <input class="inputbox" type="number" name="CLASS" required placeholder="1"></lavel></li>
+    <input class="inputbox" type="number" name="CLASS" min="1" max="4" value="1" required placeholder="1"></lavel></li>
     <!--学科-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">学科</span>
     <select class="inputbox" name="SUBJECT" required>
