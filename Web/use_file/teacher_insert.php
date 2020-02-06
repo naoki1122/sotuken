@@ -78,7 +78,7 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
 <body id="wrap">
 <header id="header">
 <!--戻るのリンク-->
-<button type=“button” id="back-button" onclick="location.href='student_list.php'">戻る</button><br>
+<button type=“button” id="back-button" onclick="location.href='teacher_list.php'">戻る</button><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
