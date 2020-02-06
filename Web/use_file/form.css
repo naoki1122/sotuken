@@ -74,9 +74,19 @@ ul li {
    display: inline-block;
    margin:auto;
    padding:10px;
- }
-
-
+}
+/*戻るボタン*/
+#back-button{
+  width: 200px;
+  margin: 0 0 0 auto;
+  padding: 10px;
+  background: #f4ffff;
+  border: 2px solid #f6bb9e;
+  border-radius: 10px;
+  font-size: 1em;
+  -webkit-appearance: none;
+  clear: right;
+}
 /*送信、リセットボタン*/
 #button{
   width: 150px;
@@ -88,7 +98,18 @@ ul li {
   font-size: 1em;
   -webkit-appearance: none;
 }
-
+/*ログアウトボタン*/
+#button{
+  width: 200px;
+  margin: 0 0 0 auto;
+  padding: 10px;
+  background: #fff6ff;
+  border: 2px solid #f6bb9e;
+  border-radius: 10px;
+  font-size: 1em;
+  -webkit-appearance: none;
+  clear: right;
+}
 footer{
   height: 30px;
   text-align: right;

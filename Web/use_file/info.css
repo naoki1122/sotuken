@@ -43,6 +43,18 @@ ul{
 	border-radius: 4px;
     outline: none;;
 }
+/*戻るボタン*/
+#back-button{
+    width: 200px;
+    margin: 0 0 0 auto;
+    padding: 10px;
+    background: #f4ffff;
+    border: 2px solid #f6bb9e;
+    border-radius: 10px;
+    font-size: 1em;
+    -webkit-appearance: none;
+    clear: right;
+}
 /*送信、リセットボタン*/
 #button{
     width: 200px;
