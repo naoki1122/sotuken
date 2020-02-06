@@ -34,7 +34,6 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(":word", $word, PDO::PARAM_STR);
     $stmt->execute();
-    var_dump($stmt);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row){
        $name  = $row["名前"];

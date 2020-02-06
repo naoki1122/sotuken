@@ -49,8 +49,6 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
         setcookie("word",$_POST['word']);
         setcookie("mode",$_POST['mode']);
         $sql = "select 名前,教員番号,パスワード,権限 from ${tbl} where 教員番号 = :word";
-    }else{
-        header("Location:{$gobackURL}");
     }
     $stmt = $pdo->prepare($sql);
     if(!empty($word))$stmt->bindValue(":word", $word, PDO::PARAM_STR);
