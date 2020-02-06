@@ -79,6 +79,7 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
 <header id="header">
 <!--戻るのリンク-->
 <button type=“button” id="back-button" onclick="location.href='teacher_list.php'">戻る</button><br>
+<p> </p><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->

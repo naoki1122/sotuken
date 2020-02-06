@@ -19,10 +19,11 @@ $level = $_SESSION['権限'];
 <body>
 <!--戻るのリンク-->
 <button type=“button” id="back-button" onclick="location.href='main.php'">戻る</button><br>
-<!-- ようこそ的なメッセージ -->
+<p> </p><br>
+<!-- ログイン中の名前 -->
 <p>ようこそ<?=$name?>さん</p>
 <!-- ログアウトボタン -->
-<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
+<button type=“button” id="logout-button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>教員一覧</H1>
     <?php
 //sotukenサーバー用のDB情報

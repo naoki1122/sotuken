@@ -71,6 +71,7 @@ if(isset($_POST['検索']) && !empty($word)){
 <header id="header">
 <!--戻るのリンク-->
 <button type=“button” id="back-button" onclick="location.href='student_list.php'">戻る</button><br>
+<p> </p><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
