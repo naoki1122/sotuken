@@ -43,15 +43,15 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
         setcookie("mode",$_POST['MODE']);
         $sql = "select 名前,教員番号,パスワード,権限 from ${tbl} where 名前 = :word";
       // 教員番号検索
-    }else if(isset($_POST['word']) && $_POST['mode'] == "教員番号"){
+    }else if(isset($_POST['WORD']) && $_POST['MODE'] == "教員番号"){
         $mode = "教員番号";
-        $word = $_POST['word'];
-        setcookie("word",$_POST['word']);
-        setcookie("mode",$_POST['mode']);
+        $word = $_POST['WORD'];
+        setcookie("word",$_POST['WORD']);
+        setcookie("mode",$_POST['MODE']);
         $sql = "select 名前,教員番号,パスワード,権限 from ${tbl} where 教員番号 = :word";
     }
     $stmt = $pdo->prepare($sql);
-    if(!empty($word))$stmt->bindValue(":word", $word, PDO::PARAM_STR);
+    $stmt->bindValue(":word", $word, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row){
@@ -80,8 +80,7 @@ if(isset($_POST['変更'])){
     $mode = $_COOKIE['mode'];
     $word = $_COOKIE['word'];
     $sql = "UPDATE ${tbl} SET ";
-    if(!empty($_POST['name'])) {
-        $name = $_POST['name'];
+    if((!empty($_POST['name_up'])&&(!empty($_POST['name_down'])))) {
         $sql .= "名前 = :name ";
     }
 
