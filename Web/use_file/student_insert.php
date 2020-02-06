@@ -46,16 +46,6 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
   if(empty($_POST['TRAIN2']))$train2 = null;
   if(empty($_POST['TRAIN3']))$train3 = null;
 
-
-  var_dump($name_up);
-  var_dump($name_down);
-  var_dump($huri);
-  var_dump($s_no);
-  var_dump($pass);
-  var_dump($year);
-  var_dump($class);
-  var_dump($subject);
-
   if(isset($_POST['登録'])){
    if((!empty($name_up))&&(!empty($name_down))&&(!empty($huri))&&(!empty($s_no))
    &&(!empty($pass))&&(!empty($year))&&(!empty($class))&&(!empty($subject))){
