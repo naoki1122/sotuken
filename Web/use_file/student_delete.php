@@ -21,6 +21,7 @@ $session_name = $_SESSION['名前'];
 $session_level = $_SESSION['権限'];
 }
 
+
 if(isset($_POST['WORD'])) $word = $_POST['WORD'];
 if(isset($_POST['検索']) && !empty($word)){
   if(isset($_POST['WORD']) && $_POST['MODE'] == "名前"){
@@ -38,8 +39,6 @@ if(isset($_POST['検索']) && !empty($word)){
      $subject = $row["学科"];
      $room = $row["学年"]."-".$row['クラス'];
   }
-}else{
-  $cmd = "";
 }
   if(isset($_POST['削除'])){
     $name = $_POST['NAME'];
@@ -50,7 +49,14 @@ if(isset($_POST['検索']) && !empty($word)){
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(":s_no", $s_no, PDO::PARAM_STR);
     $stmt->execute();
-    $cmd= "できた";
+    echo "
+    <script>
+        alert('登録完了です'); 
+    </script>";
+    $name  = "";
+     $s_no = "";
+     $subject = "";
+     $room = "";
 }
 ?>
 
