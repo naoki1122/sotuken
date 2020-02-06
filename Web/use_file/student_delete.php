@@ -71,10 +71,11 @@ if(isset($_POST['検索']) && !empty($word)){
 <header id="header">
 <!--戻るのリンク-->
 <button type=“button” id="back-button" onclick="location.href='student_list.php'">戻る</button><br>
+<p> </p><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
-<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
+<button type=“button” id="logout-button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>学生削除</H1>
 </header>
 <!--検索フォーム-->

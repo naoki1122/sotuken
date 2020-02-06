@@ -57,11 +57,23 @@ div.float-sample-4{
     clear: right;
 }
 /*ログアウトボタン*/
-#button{
+#logout-button{
     width: 200px;
     margin: 0 0 0 auto;
     padding: 10px;
     background: #fff6ff;
+    border: 2px solid #f6bb9e;
+    border-radius: 10px;
+    font-size: 1em;
+    -webkit-appearance: none;
+    clear: right;
+}
+/*その他ボタン*/
+#button{
+    width: 200px;
+    margin: 0 0 0 auto;
+    padding: 10px;
+    background: #fff;
     border: 2px solid #f6bb9e;
     border-radius: 10px;
     font-size: 1em;

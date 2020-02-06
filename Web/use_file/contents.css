@@ -60,16 +60,40 @@ span.font1{
     border: 2px solid skyblue;   
     outline: none;      
 }
+/*戻るボタン*/
+#back-button{
+    width: 200px;
+    margin: 0 0 0 auto;
+    padding: 10px;
+    background: #f4ffff;
+    border: 2px solid #f6bb9e;
+    border-radius: 10px;
+    font-size: 1em;
+    -webkit-appearance: none;
+    clear: right;
+}
+/*ログアウトボタン*/
+#logout-button{
+    width: 200px;
+    margin: 0 0 0 auto;
+    padding: 10px;
+    background: #fff6ff;
+    border: 2px solid #f6bb9e;
+    border-radius: 10px;
+    font-size: 1em;
+    -webkit-appearance: none;
+    clear: right;
+}
 /*送信、リセットボタン*/
 #button{
-        width: 200px;
-        margin: 0 10px;
-        padding: 10px;
-        background: #fff;
-        border: 2px solid #f6bb9e;
-        border-radius: 10px;
-        font-size: 1em;
-        -webkit-appearance: none;
+    width: 200px;
+    margin: 0 10px;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #f6bb9e;
+    border-radius: 10px;
+    font-size: 1em;
+    -webkit-appearance: none;
 }
 /*カーソルを上に乗せた時の動作*/
 #button:hover {

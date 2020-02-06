@@ -25,7 +25,7 @@ $level = $_SESSION['権限'];
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$name?>さん</p>
 <!-- ログアウトボタン -->
-<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
+<button type=“button” id="logout-button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>CSV生徒取り込み</H1><br>
 <!--ファイル取り込みボックス（ファイルをCSVに指定）-->
 <form action="#" method="post" enctype="multipart/form-data">
