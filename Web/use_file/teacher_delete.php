@@ -42,9 +42,8 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
        $pass = $row["パスワード"];
        $authority = $row["権限"];
     }
-}else{
-    $cmd = "なし";
 }
+
     if(isset($_POST['削除'])){
         $name = $_POST['NAME'];
         $t_no = $_POST['T_NO'];
@@ -57,6 +56,10 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
     $stmt->bindValue(":authority", $authority, PDO::PARAM_STR);
     $stmt->execute();
+    echo "
+    <script>
+        alert('削除完了です'); 
+    </script>";
     $name = "";
     $t_no = "";
     $pass = "";
