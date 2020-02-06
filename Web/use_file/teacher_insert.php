@@ -82,7 +82,7 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
-<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
+<button type=“button” id="logout-button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>教員登録</H1>
 </header>
 <!--入力フォーム-->

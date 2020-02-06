@@ -92,7 +92,7 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
-<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
+<button type=“button” id="logout-button" onclick="location.href='logout.php'">ログアウト</button>
 <h1>教員削除</h1>
 </header>
 <!--検索フォーム-->
