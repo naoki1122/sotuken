@@ -99,7 +99,7 @@ ul li {
   -webkit-appearance: none;
 }
 /*ログアウトボタン*/
-#button{
+#logout-button{
   width: 200px;
   margin: 0 0 0 auto;
   padding: 10px;
