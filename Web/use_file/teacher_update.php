@@ -32,26 +32,26 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     if(empty($_POST['T_NO']))$t_no = null;
     if(empty($_POST['PASSWD']))$pass = null;
     if(empty($_POST['AUTHORITY']))$authority = null;
-  
+
 
   // 検索
   if(isset($_POST['検索'])){
       // 名前検索
-    if(isset($word) && $_POST['MODE'] == "名前"){
+    if(!empty($word) && $_POST['MODE'] == "名前"){
         $mode = "名前";
         setcookie("word",$_POST['WORD']);
         setcookie("mode",$_POST['MODE']);
         $sql = "select 名前,教員番号,パスワード,権限 from ${tbl} where 名前 = :word";
       // 教員番号検索
-    }else if(isset($_POST['word']) && $_POST['mode'] == "教員番号"){
+    }else if(!empty($word) && $_POST['MODE'] == "教員番号"){
         $mode = "教員番号";
-        $word = $_POST['word'];
-        setcookie("word",$_POST['word']);
-        setcookie("mode",$_POST['mode']);
+        $word = $_POST['WORD'];
+        setcookie("word",$_POST['WORD']);
+        setcookie("mode",$_POST['MODE']);
         $sql = "select 名前,教員番号,パスワード,権限 from ${tbl} where 教員番号 = :word";
     }
     $stmt = $pdo->prepare($sql);
-    if(!empty($word))$stmt->bindValue(":word", $word, PDO::PARAM_STR);
+    $stmt->bindValue(":word", $word, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row){
@@ -68,9 +68,8 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     if($row['権限'] == 0) {$admin_selects="selected";$general_selects="";$assistant_selects="";}
     else if($row['権限'] == 1) {$general_selects="selected";$admin_selects="";$assistant_selects="";}
     else if($row['権限'] == 2) {$assistant_selects="selected";$admin_selects="";$general_selects="";}
-}else{
-    $cmd = "なし";
 }
+
     // 更新
 if(isset($_POST['変更'])){
     $admin_selects="";
@@ -79,54 +78,43 @@ if(isset($_POST['変更'])){
     $name = $name_up." ".$name_down;
     $mode = $_COOKIE['mode'];
     $word = $_COOKIE['word'];
+    var_dump($word);
+    var_dump($mode);
+    var_dump($name);
+    var_dump($t_no);
+    var_dump($authority);
+    var_dump($pass);
+    var_dump($_POST['PASSWD']);
     $sql = "UPDATE ${tbl} SET ";
-    if(!empty($_POST['name'])) {
-        $name = $_POST['name'];
+
+    if(!empty($name)){
         $sql .= "名前 = :name ";
     }
-
-    if(!empty($_POST['no'])){
-        if(isset($_POST['name'])) {$sql .= ", ";}
-        $no = $_POST['no'];$sql .= "教員番号 = :no ";
+    if(!empty($t_no)){
+        if(!empty($name)){$sql .= ", ";}
+        $sql .= "教員番号 = :t_no ";
     }
 
-    if(!empty($_POST['authority'])){
-        if((isset($name)) or (isset($no))){ $sql .= ", ";}
-        $authority = $_POST['authority']; $sql .= "権限 = :authority ";
+    if(!empty($authority)){
+        if((!empty($name)) || (!empty($t_no))){$sql .= ", ";}
+        $sql .= "権限 = :authority ";
     }
 
-    if(!empty($_POST['password'])){
-        if((isset($name)) or (isset($no)) or (isset($authority))){
-            $sql .= ", ";
-        }
-        $password = $_POST['password']; 
-        $sql .= "パスワード = :password ";
+    if(!empty($pass)){
+        if((!empty($name)) || (!empty($t_no)) || (!empty($authority))){$sql .= ", ";}
+        $sql .= "パスワード = :pass ";
     }
 
     if($mode == "名前"){$sql .= "WHERE 名前 = :word";}
     else if($mode == "教員番号"){$sql .= "WHERE 教員番号 = :word";}
     $stmt = $pdo->prepare($sql);
-
     if(!empty($name)) $stmt->bindValue(":name", $name, PDO::PARAM_STR);
-    if(!empty($t_no)) $stmt->bindValue(":no", $t_no, PDO::PARAM_STR);
+    if(!empty($t_no)) $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
     if(!empty($authority)) $stmt->bindValue(":authority", $authority, PDO::PARAM_INT);
-    if(!empty($pass)) $stmt->bindValue(":password", $pass, PDO::PARAM_STR);
-
-    if ($stmt) {
-        echo "成功";
-    } else {
-        echo "失敗";
-    }
-//     echo "できた";
-
-
-    if($authority == 0){$admin_selects="selected";$general_selects="";$assistant_selects="";}
-    else if($authority == 1){$general_selects="selected";$admin_selects="";$assistant_selects="";}
-    else if($authority == 2){$assistant_selects="selected";$admin_selects="";$general_selects="";}
+    if(!empty($pass)) $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
+    $stmt->excute();
     }
     
-    //$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
@@ -140,11 +128,10 @@ if(isset($_POST['変更'])){
 <header id="header">
 <!--戻るのリンク-->
 <button type=“button” id="back-button" onclick="location.href='teacher_list.php'">戻る</button><br>
-<p> </p><br>
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
-<button type=“button” id="logout-button" onclick="location.href='logout.php'">ログアウト</button>
+<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
 <!-- タイトル -->
 <H1>教員情報変更</H1>
 </header>
@@ -179,7 +166,7 @@ if(isset($_POST['変更'])){
     <input class="inputbox" type="text" value="<?=$t_no?>" name="T_NO"></lavel></li>
     <!--パスワード-->
     <li><lavel><span class="item">パスワード</span>
-    <input class="inputbox" type="password" value="<?=$pass?>" name="PASSSWD"></lavel></li>
+    <input class="inputbox" type="password" value="<?=$pass?>" name="PASSWD"></lavel></li>
     <!--権限選択-->
     <li><lavel><span class="item">権限</span>
     <select class="inputbox" name="AUTHORITY" value="<?=$authority?>">
