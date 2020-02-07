@@ -98,7 +98,7 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
     <input class="inputbox" type="text" name="NAME_DOWN"  placeholder="例：太郎"></lavel></li>
     <!--教員番号-->
     <li></lavel><span style="color: red">*必須  </span><span class="item">教員番号</span>
-    <input class="inputbox" type="text" name="T_NO"  placeholder="例：t00n00"></lavel></li>
+    <input class="inputbox" type="text" name="T_NO" pattern="(^t\d{2}[a-z]\d{3}$)" title="学籍番号はtを含む正規の形で入力してください。" placeholder="例：t00n00"></lavel></li>
     <!--パスワード-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">パスワード</span>
     <input class="inputbox" type="password" name="PASSWD"  placeholder="abcd1234"></lavel></li>
