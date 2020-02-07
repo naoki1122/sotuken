@@ -131,7 +131,7 @@ if(isset($_POST['変更'])){
 <!-- ログイン中の名前 -->
 <p>ようこそ<?=$session_name?>さん</p>
 <!-- ログアウトボタン -->
-<button type=“button” id="button" onclick="location.href='logout.php'">ログアウト</button>
+<button type=“button” id="logout-button" onclick="location.href='logout.php'">ログアウト</button>
 <!-- タイトル -->
 <H1>教員情報変更</H1>
 </header>
