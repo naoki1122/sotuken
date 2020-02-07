@@ -8,6 +8,26 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 $name = $_SESSION['名前'];
 $level = $_SESSION['権限'];
 }
+
+
+setlocale(LC_ALL, 'ja_JP.UTF-8');
+ 
+$file = 'csv_inport.csv';
+$data = file_get_contents($file);
+$data = mb_convert_encoding($data, 'UTF-8', 'auto');
+$temp = tmpfile();
+$csv  = array();
+ 
+fwrite($temp, $data);
+rewind($temp);
+ 
+while (($data = fgetcsv($temp, 0, ",")) !== FALSE) {
+    $csv[] = $data;
+}
+fclose($temp);
+ 
+var_dump($csv);
+
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +48,9 @@ $level = $_SESSION['権限'];
 <button type=“button” id="logout-button" onclick="location.href='logout.php'">ログアウト</button>
 <H1>CSV生徒取り込み</H1><br>
 <!--ファイル取り込みボックス（ファイルをCSVに指定）-->
-<form action="#" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
 <input type="file" name="filename" accept=".csv">
-<input id="button" type="submit" value="表示" >
+<input id="button" type="submit" value="表示" name="表示" >
 <input id="button" type="submit" value="登録" >
 </form><br>
     <?php
@@ -59,7 +79,7 @@ try{
   <?php
   foreach ($dbh->query($sql) as $row) { ?>
     <tbody>
-    <tr>
+    <tr> 
     <!-- <tr  data-href="student_admin.php"> -->
     <td><?php print($row['学籍番号']);?>
     <td><?php print($row['学年']);?>
@@ -88,6 +108,8 @@ try{
   die();
 }
 $dbh = null;
+
+var_dump($_FILES);
 ?>
 <footer>copyright© チームコリジョン</footer>
 </body>

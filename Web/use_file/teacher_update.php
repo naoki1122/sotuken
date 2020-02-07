@@ -107,7 +107,9 @@ if(isset($_POST['変更'])){
 
     if($mode == "名前"){$sql .= "WHERE 名前 = :word";}
     else if($mode == "教員番号"){$sql .= "WHERE 教員番号 = :word";}
+    var_dump($sql);
     $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(":word", $word, PDO::PARAM_STR);
     if(!empty($name)) $stmt->bindValue(":name", $name, PDO::PARAM_STR);
     if(!empty($t_no)) $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
     if(!empty($authority)) $stmt->bindValue(":authority", $authority, PDO::PARAM_INT);
