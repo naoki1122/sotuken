@@ -60,15 +60,15 @@ try{
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--教員登録リンク-->
-<?php if($level == 0){
+<?php if($level == 1){
 echo '<li><a href="teacher_insert.php">教員登録</li><br>';
 }?>
 <!--教員情報変更リンク-->
-<?php if($level == 0){
+<?php if($level == 1){
 echo '<li><a href="teacher_update.php">教員情報変更</li><br>';
 }?>
 <!--教員削除リンク-->
-<?php if($level == 0){
+<?php if($level == 1){
 echo '<li><a href="teacher_delete.php">教員削除</li><br>';
 }?>
 </ul>

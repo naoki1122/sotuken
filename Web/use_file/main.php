@@ -128,15 +128,15 @@ $result = $stm->fetchAll(PDO::FETCH_ASSOC);
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style-type: disc">
 <!--学生管理リンク-->
-<?php if($level == 0){
+<?php if($level == 1){
 echo '<li><a href="student_list.php">学生管理</a></li><br>';
 }?>
 <!--教員管理リンク-->
-<?php if($level == 0){
+<?php if($level == 1){
 echo '<li><a href="teacher_list.php">教員管理</a></li><br>';
 }?>
 <!--CSV出力リンク-->
-<?php if($level == 0){
+<?php if($level == 1){
  echo '<li><a href="csv.php">CSV出力</a></li><br>';
 }?>
 </ul>
