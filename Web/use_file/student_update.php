@@ -50,7 +50,7 @@ $tbl= "management.student";
        $name  = $row["名前"];
        $name2  = $row["フリガナ"];
        $class  = $row["クラス"];
-       $class2  = $row["学科"];
+       $subject  = $row["学科"];
        $email  = $row["メールアドレス"];
        $tel = $row["電話番号"];
        $password = $row["パスワード"];
@@ -125,45 +125,48 @@ if(isset($_POST['変更'])){
 <!--入力フォーム-->
 <form id="formmain" action="" method="post">
     <section id="input_form">
-<ul>
-    <!--学籍番号-->
-    <li><lavel><span class="item">学籍番号</span>
-    <input class="inputbox" type="text" name="S_NO" value="<?=$no?>" required placeholder="例：x00n000"></lavel></li>
+    <ul>
+    <!--苗字-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">性</span>
+    <input class="inputbox" type="text" name="NAME_UP" required autofocus placeholder="例：山田"></lavel></li>
     <!--名前-->
-    <li><lavel><span class="item">名前</span>
-    <input class="inputbox" type="text" name="NAME" value="<?=$name?>" required></lavel></li>
-    <!-- フリガナ -->
-    <li><lavel><span class="item">フリガナ</span>
-    <input class="inputbox" type="text" name="HURI" value="<?=$name2?>" required placeholder="例：サトウタロウ"></lavel></li>
-    <!-- 学年 -->
-    <li><lavel><span class="item">学年</span>
-    <input class="inputbox" type="text" name="YEAR" value="<?=$class?>" required></lavel></li>
-    <!-- クラス -->
-    <li><lavel><span class="item">クラス</span>
-    <input class="inputbox" type="text" name="CLASS" value="<?=$class2?>" required></lavel></li>
-    <!--メールアドレス-->
-    <li><lavel><span class="item">メールアドレス</span>
-    <input class="inputbox" type="email" name="MAIL" value="<?=$mail?>" required placeholder="例：Example@xxx.com"></lavel></li>
-    <!--電話番号-->
-    <li><lavel><span class="item">電話番号</span>
-    <input class="inputbox" type="tel" name="TEL" value="<?=$tel?>" required placeholder="ハイフンなし"></lavel></li>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">名</span>
+    <input class="inputbox" type="text" name="NAME_DOWN" required  placeholder="例：太郎"></lavel></li>
+    <!--フリガナ-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">フリガナ</span>
+    <input class="inputbox" type="text" name="HURI" required placeholder="例：ヤマダタロウ"></lavel></li>
+    <!--学籍番号-->
+    <li></lavel><span style="color: red">*必須  </span><span class="item">学籍番号</span>
+    <input class="inputbox" type="text" name="S_NO" required placeholder="例：x00n000"></lavel></li>
+    <!--パスワード-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">パスワード</span>
+    <input class="inputbox" type="password" name="PASSWD" required placeholder="abcd1234"></lavel></li>
+    <!--学年-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">学年</span>
+    <input class="inputbox" type="number" name="YEAR" min="1" max="4" value="1" required placeholder="1"></lavel></li>
+    <!--クラス-->
+    <li><lavel><span style="color: red">*必須  </span><span class="item">クラス</span>
+    <input class="inputbox" type="number" name="CLASS" min="1" max="4" value="1" required placeholder="1"></lavel></li>
     <!--学科-->
-    <li><lavel><span class="item">学科</span>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">学科</span>
     <select class="inputbox" name="SUBJECT" required>
-        <?php
-        // if($train1)echo"<option value="" selected>学科を選択し直してください</option>";
-        // else{echo"<option value="" selected>学科を選択し直してください</option>";}
-        ?>
-        <option value="0">ITエンジニア科4年制</option>
-        <option value="1">ITエンジニア化3年制</option>
-        <option value="2">情報処理科</option>
-        <option value="3">情報ネットワーク科</option>
-        <option value="4">WEBクリエーター科</option>
-        <option value="5">こども学科</option>
+        <option value="" selected>学科を選択してください</option>
+        <option value="ITエンジニア科4年制">ITエンジニア科4年制</option>
+        <option value="ITエンジニア科3年制">ITエンジニア科3年制</option>
+        <option value="情報処理科">情報処理科</option>
+        <option value="情報ネットワーク科">情報ネットワーク科</option>
+        <option value="WEBクリエーター科">WEBクリエーター科</option>
+        <option value="こども学科">こども学科</option>
     </select></lavel></li>
+    <!--メールアドレス-->
+    <li><lavel><span style="color: black">*任意  </span><span class="item">メールアドレス</span>
+    <input class="inputbox" type="email" name="MAIL"></lavel></li>
+    <!--電話番号-->
+    <li><lavel><span style="color: black">*任意  </span><span class="item">電話番号</span>
+    <input class="inputbox" type="number" name="TEL" placeholder="ハイフンなし"></lavel></li>
     <!-- 使用路線1 -->
-    <li><lavel><span class="item">使用路線</span>
-    <select class="inputbox" name="train1" >
+    <li><lavel><span style="color: black">*任意  </span><span class="item">使用路線</span>
+    <select class="inputbox" name="TRAIN1" >
         <option value="" selected>路線(1路線目)を選んでください</option>
         <option value="京成本線">京成本線</option>
         <option value="京成千葉線">京成千葉線</option>
@@ -180,46 +183,42 @@ if(isset($_POST['変更'])){
         <option value="常磐線">常磐線快速</option>
     </select></lavel></li>
     <!-- 使用路線2 -->
-    <li><lavel><span class="item">使用路線2</span>
-    <select class="inputbox" name="train2" >
-        <option value="" selected>路線(1路線目)を選んでください</option>
-        <option value="京成本線-2">京成本線</option>
-        <option value="京成千葉線-2">京成千葉線</option>
-        <option value="新京成-2">新京成</option>
-        <option value="芝山鉄道-2">芝山鉄道</option>
-        <option value="東武アーバンパークライン-2">東武アーバンパークライン</option>
-        <option value="常総線-2">常総線</option>
-        <option value="総武線快速-2">総武線各停</option>
-        <option value="総武線各停-2">総武線快速</option>
-        <option value="外房線-2">内房線</option>
-        <option value="内房線-2">外房線</option>
-        <option value="成田線-2">成田線</option>
-        <option value="常磐線-2">常磐線各停</option>
-        <option value="常磐線-2">常磐線快速</option>
+    <li><lavel><span style="color: black">*任意  </span><span class="item">使用路線</span>
+    <select class="inputbox" name="TRAIN2" >
+        <option value="" selected>路線(2路線目)を選んでください</option>
+        <option value="京成本線">京成本線</option>
+        <option value="京成千葉線">京成千葉線</option>
+        <option value="新京成">新京成</option>
+        <option value="芝山鉄道">芝山鉄道</option>
+        <option value="東武アーバンパークライン">東武アーバンパークライン</option>
+        <option value="常総線">常総線</option>
+        <option value="総武線快速">総武線各停</option>
+        <option value="総武線各停">総武線快速</option>
+        <option value="外房線">内房線</option>
+        <option value="内房線">外房線</option>
+        <option value="成田線">成田線</option>
+        <option value="常磐線">常磐線各停</option>
+        <option value="常磐線">常磐線快速</option>
     </select></lavel></li>
-
-    <!-- 使用路線3 -->
-    <li><lavel><span class="item">使用路線3</span>
-    <select class="inputbox" name="train3" >
-    <option value="" selected>路線(1路線目)を選んでください</option>
-        <option value="京成本線-3">京成本線</option>
-        <option value="京成千葉線-3">京成千葉線</option>
-        <option value="新京成-3">新京成</option>
-        <option value="芝山鉄道-3">芝山鉄道</option>
-        <option value="東武アーバンパークライン-3">東武アーバンパークライン</option>
-        <option value="常総線-3">常総線</option>
-        <option value="総武線快速-3">総武線各停</option>
-        <option value="総武線各停-3">総武線快速</option>
-        <option value="外房線-3">内房線</option>
-        <option value="内房線-3">外房線</option>
-        <option value="成田線-3">成田線</option>
-        <option value="常磐線-3">常磐線各停</option>
-        <option value="常磐線-3">常磐線快速</option>
+    <!-- 使用路線1 -->
+    <li><lavel><span style="color: black">*任意  </span><span class="item">使用路線</span>
+    <select class="inputbox" name="TRAIN3" >
+        <option value="" selected>路線(3路線目)を選んでください</option>
+        <option value="京成本線">京成本線</option>
+        <option value="京成千葉線">京成千葉線</option>
+        <option value="新京成">新京成</option>
+        <option value="芝山鉄道">芝山鉄道</option>
+        <option value="東武アーバンパークライン">東武アーバンパークライン</option>
+        <option value="常総線">常総線</option>
+        <option value="総武線快速">総武線各停</option>
+        <option value="総武線各停">総武線快速</option>
+        <option value="外房線">内房線</option>
+        <option value="内房線">外房線</option>
+        <option value="成田線">成田線</option>
+        <option value="常磐線">常磐線各停</option>
+        <option value="常磐線">常磐線快速</option>
     </select></lavel></li>
-        <!--パスワード-->
-        <li><lavel><span class="item">パスワード</span>
-    <input class="inputbox" type="password" name="password" value="<?=$password?>" required placeholder="例：abedefg"></lavel></li>
-    </ul>
+</ul>
     <!-- 変更ボタン -->
     <input id="button" type="submit" value="変更" name="変更"onclick="return checkupdate()">
     </section>
