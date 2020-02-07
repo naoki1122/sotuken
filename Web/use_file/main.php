@@ -40,7 +40,8 @@ try{
   // クエリ
   $sql = 'SELECT student.学籍番号,student.名前,student.学年,student.クラス,attend.登校時間,attend.登校日,attend.備考 FROM  management.student
   left outer join management.attend
-  on student.学籍番号 = attend.学籍番号 WHERE attend.登校日 = ?';
+  on student.学籍番号 = attend.学籍番号 WHERE attend.登校日 = ?
+  ORDER BY 学籍番号 ASC';
   // SQL文の実効
   $stm = $pdo->prepare($sql);
   $stm->execute(array($year));
