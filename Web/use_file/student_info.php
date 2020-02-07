@@ -56,7 +56,7 @@ try{
 </form>
 <p></p><br>
 <!--テーブル云々　抽出とかわからん-->
-<div id='style table'>
+<div class='scroll-table'>
 <table border="1" align="center">
   <tr>
   <th>日付</th>
@@ -73,6 +73,9 @@ try{
   }
     ?>
 </table>
+</div>
+<div class="float-sample-4">
+      <p>　　　　　</p>
 </div>
 <!--リスト黒四角つけるタグ-->
 <ul style="list-style: disc">

@@ -12,6 +12,16 @@ h1{
     text-align: center;
     font-size: 250%;
 }
+/*テーブル関連*/
+.scroll-table{
+    white-space: nowrap;
+    overflow:visible scroll;
+    width: 205px;
+    height: 300px;
+    position: relative;
+    right: -40%;
+    float: left;
+}
 /*テーブルに適用*/
 table{
     margin: auto;
@@ -24,6 +34,11 @@ th{
 ul{
     float: right;
     margin: 0px 50px 0px 0px;
+}
+/*テーブルの次のブロック配置*/
+div.float-sample-4{
+    width:25px;
+    float: left;
 }
 /*フォーム全体に対して適用*/
 #formmain{
@@ -89,5 +104,6 @@ footer{
     position: absolute;
     bottom: 0;
     width: 99%;
-    text-align: right;   
+    text-align: right;  
+    clear: both; 
 }
