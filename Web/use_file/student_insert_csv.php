@@ -8,26 +8,26 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 $name = $_SESSION['名前'];
 $level = $_SESSION['権限'];
 }
-
-
+$csv;
+if($_POST['表示']){
 setlocale(LC_ALL, 'ja_JP.UTF-8');
- 
+
 $file = 'csv_inport.csv';
 $data = file_get_contents($file);
 $data = mb_convert_encoding($data, 'UTF-8', 'auto');
 $temp = tmpfile();
 $csv  = array();
- 
+
 fwrite($temp, $data);
 rewind($temp);
- 
+
 while (($data = fgetcsv($temp, 0, ",")) !== FALSE) {
     $csv[] = $data;
 }
 fclose($temp);
- 
-var_dump($csv);
 
+var_dump($csv);
+}
 ?>
 
 <!DOCTYPE html>
@@ -77,25 +77,18 @@ try{
   </tr>
 </thead>
   <?php
-  foreach ($dbh->query($sql) as $row) { ?>
-    <tbody>
-    <tr> 
-    <!-- <tr  data-href="student_admin.php"> -->
-    <td><?php print($row['学籍番号']);?>
-    <td><?php print($row['学年']);?>
-    <td><?php print($row['クラス']);?>
-    <td><?php print($row['学科']);?>
-    <td><?php print($row['名前']);?>
-    <td><?php print($row['フリガナ']);?>
-    <td><?php print($row['メールアドレス']);?>
-    <td><?php print($row['電話番号']);?>
-    <td><?php print($row['路線1']);?>
-    <td><?php print($row['路線2']);?>
-    <td><?php print($row['路線3']);?></a>
-    </tr>
-    </tbody>
-      <?php
+      echo "<tbody>";
+      
+  foreach ($csv as $row) { 
+    echo "<tr>";
+     foreach($row as $v){
+      
+    echo "<td>${v}</td>";
+   }
+   echo "</tr>";
   }
+  
+  echo "</tbody>";
     ?>
     </table>
 </div>
