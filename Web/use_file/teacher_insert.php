@@ -19,14 +19,12 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   $pdo = dbcon();
 
     // 変数代入
-if(isset($_POST['NAME_UP']))$name_up = $_POST['NAME_UP'];
-if(isset($_POST['NAME_DOWN']))$name_down = $_POST['NAME_DOWN'];
-if(isset($_POST['T_NO']))$t_no = $_POST['T_NO'];
-if(isset($_POST['PASSWD']))$pass = $_POST['PASSWD'];
-if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
+    if(isset($_POST['NAME']))$name = $_POST['NAME'];
+    if(isset($_POST['T_NO']))$t_no = $_POST['T_NO'];
+    if(isset($_POST['PASSWD']))$pass = $_POST['PASSWD'];
+    if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
 
   // なければnull
-  if(empty($_POST['NAME_UP']))$name_up = null;
   if(empty($_POST['NAME_DOWN']))$name_down = null;
   if(empty($_POST['T_NO']))$t_no = null;
   if(empty($_POST['PASSWD']))$pass = null;
@@ -41,14 +39,13 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
 
  if(isset($_POST['登録'])){
      // すべての入力項目が記入されていると実効
-   if((!empty($name_up))&&(!empty($name_down))&&(!empty($t_no))&&(!empty($pass))&&(!empty($authority))){
+   if((!empty($name))&&(!empty($t_no))&&(!empty($pass))&&(!empty($authority))){
    $sql = "SELECT COUNT(*) AS cnt FROM ${tbl} WHERE 教員番号 = :t_no";
    $stmt = $pdo->prepare($sql);
    $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
    $stmt->execute();
    $cnt = $stmt->fetchColumn();
    if($cnt == 0){
-    $name = $name_up. " " . $name_down;
     $sql = "INSERT INTO ${tbl}(名前,教員番号,パスワード,権限) VALUES (:name,:t_no,:pass,:authority)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(":name", $name, PDO::PARAM_STR);
@@ -90,12 +87,9 @@ if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
     <section id="input_form">
 <ul>
-    <!--苗字-->
-    <li><lavel><span style="color: red">*必須  </span><span class="item">性</span>
-    <input class="inputbox" type="text" name="NAME_UP"  autofocus placeholder="例：山田"></lavel></li>
     <!--名前-->
-    <li><lavel><span style="color: red">*必須  </span><span class="item">名</span>
-    <input class="inputbox" type="text" name="NAME_DOWN"  placeholder="例：太郎"></lavel></li>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">名前</span>
+    <input class="inputbox" type="text" name="NAME"  placeholder="例：山田太郎"></lavel></li>
     <!--教員番号-->
     <li></lavel><span style="color: red">*必須  </span><span class="item">教員番号</span>
     <input class="inputbox" type="text" name="T_NO" pattern="(^t\d{2}[a-z]\d{3}$)" title="学籍番号はtを含む正規の形で入力してください。" placeholder="例：t00n00"></lavel></li>
