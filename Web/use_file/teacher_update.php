@@ -17,21 +17,20 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   // MySQLデータベースに接続する
     $pdo = dbcon();
 
-    if(isset($_POST['WORD'])) $word = $_POST['WORD'];
-    if(empty($_POST['WORD'])) $word = null;
+    
   // 変数代入
-  if(isset($_POST['NAME_UP']))$name_up = $_POST['NAME_UP'];
-  if(isset($_POST['NAME_DOWN']))$name_down = $_POST['NAME_DOWN'];
+  if(isset($_POST['WORD'])) $word = $_POST['WORD'];
+  if(isset($_POST['NAME']))$name = $_POST['NAME'];
   if(isset($_POST['T_NO']))$t_no = $_POST['T_NO'];
   if(isset($_POST['PASSWD']))$pass = $_POST['PASSWD'];
   if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
   
-    // なければnull
-    if(empty($_POST['NAME_UP']))$name_up = null;
-    if(empty($_POST['NAME_DOWN']))$name_down = null;
-    if(empty($_POST['T_NO']))$t_no = null;
-    if(empty($_POST['PASSWD']))$pass = null;
-    if(empty($_POST['AUTHORITY']))$authority = null;
+  // なければnull
+  if(empty($_POST['WORD'])) $word = null;
+  if(empty($_POST['NAME']))$name = null;
+  if(empty($_POST['T_NO']))$t_no = null;
+  if(empty($_POST['PASSWD']))$pass = null;
+  if(empty($_POST['AUTHORITY']))$authority = null;
 
 
   // 検索
@@ -55,14 +54,11 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row){
-       $names  = $row["名前"];
+       $name  = $row["名前"];
        $t_no = $row["教員番号"];
        $pass = $row['パスワード'];
        $authority = $row["権限"];
     }
-    $name=explode(" ",$names);
-    $name_up=$name[0];
-    $name_down=$name[1];
 
     // ダウンリストに検索の結果を反映させる
     if($row['権限'] == 0) {$admin_selects="selected";$general_selects="";$assistant_selects="";}
@@ -71,20 +67,12 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 }
 
     // 更新
-if(isset($_POST['変更'])){
+if(isset($_POST['変更']) && (!empty($name))||(!empty($t_no))||(!empty($authority))||(!empty($pass))){
     $admin_selects="";
     $general_selects="";
     $assistant_selects="";
-    $name = $name_up." ".$name_down;
     $mode = $_COOKIE['mode'];
     $word = $_COOKIE['word'];
-    var_dump($word);
-    var_dump($mode);
-    var_dump($name);
-    var_dump($t_no);
-    var_dump($authority);
-    var_dump($pass);
-    var_dump($_POST['PASSWD']);
     $sql = "UPDATE ${tbl} SET ";
 
     if(!empty($name)){
@@ -107,14 +95,17 @@ if(isset($_POST['変更'])){
 
     if($mode == "名前"){$sql .= "WHERE 名前 = :word";}
     else if($mode == "教員番号"){$sql .= "WHERE 教員番号 = :word";}
-    var_dump($sql);
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(":word", $word, PDO::PARAM_STR);
     if(!empty($name)) $stmt->bindValue(":name", $name, PDO::PARAM_STR);
     if(!empty($t_no)) $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
-    if(!empty($authority)) $stmt->bindValue(":authority", $authority, PDO::PARAM_INT);
+    if(!empty($authority)) $stmt->bindValue(":authority", $authority, PDO::PARAM_STR);
     if(!empty($pass)) $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
-    $stmt->excute();
+    $stmt->execute();
+    $name="";
+    $t_no="";
+    $authority="";
+    $pass="";
     }
     
 ?>
@@ -158,12 +149,9 @@ if(isset($_POST['変更'])){
 <form id="formmain" action="" method="post" >
     <section id="input_form">
 <ul>
-    <!--苗字-->
-    <li><lavel><span class="item">性</span>
-    <input class="inputbox" type="text" value="<?=$name_up?>" name="NAME_UP"  placeholder="例：山田"></lavel></li>
     <!--名前-->
-    <li><lavel><span class="item">名</span>
-    <input class="inputbox" type="text" value="<?=$name_down?>" name="NAME_DOWN" placeholder="例：太郎"></lavel></li>
+    <li><lavel><span class="item">名前</span>
+    <input class="inputbox" type="text" value="<?=$name?>" name="NAME" placeholder="例：山田太郎"></lavel></li>
     <!--教員番号-->
     <li><lavel><span class="item">教員番号</span>
     <input class="inputbox" type="text" value="<?=$t_no?>" name="T_NO"></lavel></li>

@@ -4,16 +4,9 @@ session_start();
 require_once "server_config.php";
 require_once "lib.php";
 
-$pdo = dbcon();
-
 $gobackURL="teacher_list.php";
 $tbl="management.teacher";
 
-if(empty($_POST['NAME'])) $name = null;
-if(empty($_POST['T_NO'])) $t_no = null;
-if(empty($_POST['PASSWD'])) $pass = null;
-if(empty($_POST['AUTHORITY'])) $authority = null;
-  
 // セッションの代入
 if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     header("Location:{$gobackURL}");
@@ -21,14 +14,28 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   $session_name = $_SESSION['名前'];
   $session_level = $_SESSION['権限'];
   }
-
+  // MySQLデータベースに接続する
+  $pdo = dbcon();
   
+// 変数代入
+if(isset($_POST['WORD'])) $word = $_POST['WORD'];
+if(isset($_POST['NAME']))$name = $_POST['NAME'];
+if(isset($_POST['T_NO']))$t_no = $_POST['T_NO'];
+if(isset($_POST['PASSWD']))$pass = $_POST['PASSWD'];
+if(isset($_POST['AUTHORITY']))$authority = $_POST['AUTHORITY'];
+
+// なければnull
+if(empty($_POST['WORD'])) $word = null;
+if(empty($_POST['NAME']))$name = null;
+if(empty($_POST['T_NO']))$t_no = null;
+if(empty($_POST['PASSWD']))$pass = null;
+if(empty($_POST['AUTHORITY']))$authority = null;
+
 
   if(isset($_POST['検索'])){
-    if(isset($_POST['word'])) $word = $_POST['word'];
-    if(isset($_POST['word']) && $_POST['mode'] == "名前"){
+    if(isset($_POST['WORD']) && $_POST['MODE'] == "名前"){
     $sql = "select * from ${tbl} where 名前 = :word";
-        }else if(isset($_POST['word']) && $_POST['mode'] == "教員番号"){
+        }else if(isset($_POST['WORD']) && $_POST['MODE'] == "教員番号"){
             $sql = "select * from ${tbl} where 教員番号 = :word";
     }
     $stmt = $pdo->prepare($sql);
@@ -44,11 +51,7 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 }
 
     if(isset($_POST['削除'])){
-        $name = $_POST['NAME'];
-        $t_no = $_POST['T_NO'];
-        $pass = $_POST['PASSWD'];
-        $authority = $_POST['AUTHORITY'];
-        $sql = "delete from ${tbl} where 名前 = :name and 教員番号 = :t_no and パスワード = :pass and 権限 = :authority";
+    $sql = "delete from ${tbl} where 名前 = :name and 教員番号 = :t_no and パスワード = :pass and 権限 = :authority";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(":name", $name, PDO::PARAM_STR);
     $stmt->bindValue(":t_no", $t_no, PDO::PARAM_STR);
@@ -99,13 +102,13 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 <form id ="form_search" action="" method="post">
     <!--検索条件指定-->
     <ul>
-    <li><select id="input1" name="mode" required >
+    <li><select id="input1" name="MODE" required >
         <option value="" selected>条件を指定してください</option>
         <option value="名前">名前</option>
         <option value="教員番号">教員番号</option>
     </select></li>
     <!--検索条件入力-->
-    <li><input id="input1" type="text" name="word" autofocus autocomplete="off"></li>
+    <li><input id="input1" type="text" name="WORD" autofocus autocomplete="off"></li>
     <!--検索ボタン-->
     <li><input id="button" type="submit" value="検索" name="検索"></li>
     </ul>
@@ -115,7 +118,7 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     <section id="input_form">
 <ul>
     <!--名前-->
-    <li><lavel><span class="item">お名前</span><input class="inputbox" type="text" readonly value="<?=$name?>" name="NAME" required></lavel></li>
+    <li><lavel><span class="item">名前</span><input class="inputbox" type="text" readonly value="<?=$name?>" name="NAME" required></lavel></li>
     <!--教員番号-->
     <li><lavel><span class="item">教員番号</span><input class="inputbox" type="text" readonly value="<?=$t_no?>" name="T_NO" required></lavel></li>
     <!--パスワード-->
