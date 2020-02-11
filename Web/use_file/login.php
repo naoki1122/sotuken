@@ -20,8 +20,8 @@ if (!isset($row['名前'])) {
   <meta http-equiv="refresh" content=" 2; url=teacher_signup.html">
   <?php
 }
-//パスワード確認後sessionにメールアドレスを渡す　password_verify
-if ($_POST['パスワード']==$row['パスワード']) {
+//パスワード確認後sessionにメールアドレスを渡す password_verify
+if ($_POST['パスワード']===$row['パスワード']) {
   session_regenerate_id(true); //session_idを新しく生成し、置き換える
   $_SESSION['名前'] = $row['名前'];
   $_SESSION['権限'] = $row['権限'];
