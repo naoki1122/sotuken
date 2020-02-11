@@ -18,8 +18,7 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   $pdo = dbcon();
 
   // 変数代入
-if(isset($_POST['NAME_UP']))$name_up = $_POST['NAME_UP'];
-if(isset($_POST['NAME_DOWN']))$name_down = $_POST['NAME_DOWN'];
+if(isset($_POST['NAME']))$name = $_POST['NAME'];
 if(isset($_POST['HURI']))$huri = $_POST['HURI'];
 if(isset($_POST['S_NO']))$s_no = $_POST['S_NO'];
 if(isset($_POST['PASSWD']))$pass = $_POST['PASSWD'];
@@ -32,8 +31,7 @@ if(isset($_POST['TRAIN1']))$train1 = $_POST['TRAIN1'];
 if(isset($_POST['TRAIN2']))$train2 = $_POST['TRAIN2'];
 if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
   // なければnull
-  if(empty($_POST['NAME_UP']))$name_up = null;
-  if(empty($_POST['NAME_DOWN']))$name_down = null;
+  if(empty($_POST['NAME']))$name = null;
   if(empty($_POST['HURI']))$huri = null;
   if(empty($_POST['S_NO']))$s_no = null;
   if(empty($_POST['PASSWD']))$pass = null;
@@ -47,7 +45,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
   if(empty($_POST['TRAIN3']))$train3 = null;
 
   if(isset($_POST['登録'])){
-   if((!empty($name_up))&&(!empty($name_down))&&(!empty($huri))&&(!empty($s_no))
+   if((!empty($name))&&(!empty($huri))&&(!empty($s_no))
    &&(!empty($pass))&&(!empty($year))&&(!empty($class))&&(!empty($subject))){
     $sql = "SELECT COUNT(*) AS cnt FROM ${tbl} WHERE 学籍番号 = :s_no";
     $stmt = $pdo->prepare($sql);
@@ -56,7 +54,6 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
     $cnt = $stmt->fetchColumn();
     if($cnt == 0){ 
     // 変数代入
-    $name = $name_up. " " . $name_down;
     $sql = "INSERT INTO ${tbl}(名前,フリガナ,学籍番号,パスワード,学年,クラス,学科";
     // 任意で登録するもの
     if(!empty($mail)) $sql .= ",メールアドレス";
@@ -122,12 +119,9 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
 <form id="formmain" action="" method="post" onSubmit="return checksubmit()">
     <section id="input_form">
 <ul>
-    <!--苗字-->
-    <li><lavel><span style="color: red">*必須  </span><span class="item">性</span>
-    <input class="inputbox" type="text" name="NAME_UP" required autofocus placeholder="例：山田"></lavel></li>
     <!--名前-->
-    <li><lavel><span style="color: red">*必須  </span><span class="item">名</span>
-    <input class="inputbox" type="text" name="NAME_DOWN" required placeholder="例：太郎"></lavel></li>
+    <li><lavel><span style="color: red">*必須  </span><span class="item">名前</span>
+    <input class="inputbox" type="text" name="NAME" required placeholder="例：山田太郎"></lavel></li>
     <!--フリガナ-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">フリガナ</span>
     <input class="inputbox" type="text" name="HURI" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" title="フリガナはカタカナで入力してください。" required placeholder="例：ヤマダタロウ"></lavel></li>
