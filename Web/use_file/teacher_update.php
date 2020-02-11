@@ -44,7 +44,6 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
       // 教員番号検索
     }else if(!empty($word) && $_POST['MODE'] == "教員番号"){
         $mode = "教員番号";
-        $word = $_POST['WORD'];
         setcookie("word",$_POST['WORD']);
         setcookie("mode",$_POST['MODE']);
         $sql = "select 名前,教員番号,パスワード,権限 from ${tbl} where 教員番号 = :word";
@@ -67,7 +66,7 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
 }
 
     // 更新
-if(isset($_POST['変更']) && (!empty($name))||(!empty($t_no))||(!empty($authority))||(!empty($pass))){
+if(isset($_POST['変更']) && (isset($_POST))){
     $admin_selects="";
     $general_selects="";
     $assistant_selects="";
@@ -82,14 +81,12 @@ if(isset($_POST['変更']) && (!empty($name))||(!empty($t_no))||(!empty($authori
         if(!empty($name)){$sql .= ", ";}
         $sql .= "教員番号 = :t_no ";
     }
-
     if(!empty($authority)){
-        if((!empty($name)) || (!empty($t_no))){$sql .= ", ";}
+        if((!empty($name))||(!empty($t_no))){$sql .= ", ";}
         $sql .= "権限 = :authority ";
     }
-
     if(!empty($pass)){
-        if((!empty($name)) || (!empty($t_no)) || (!empty($authority))){$sql .= ", ";}
+        if((!empty($name))||(!empty($t_no))||(!empty($authority))){$sql .= ", ";}
         $sql .= "パスワード = :pass ";
     }
 
