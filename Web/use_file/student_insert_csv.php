@@ -11,51 +11,56 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
   $session_level = $_SESSION['権限'];
 }
 
-if(isset($_POST['NAME_UP']))$name_up = $_POST['NAME_UP'];
-if(isset($_POST['NAME_DOWN']))$name_down = $_POST['NAME_DOWN'];
-if(isset($_POST['HURI']))$huri = $_POST['HURI'];
-if(isset($_POST['S_NO']))$s_no = $_POST['S_NO'];
-if(isset($_POST['PASSWD']))$pass = $_POST['PASSWD'];
-if(isset($_POST['YEAR']))$year = $_POST['YEAR'];
-if(isset($_POST['CLASS']))$class = $_POST['CLASS'];
-if(isset($_POST['SUBJECT']))$subject = $_POST['SUBJECT'];
-if(isset($_POST['MAIL']))$mail = $_POST['MAIL'];
-if(isset($_POST['TEL']))$tel = $_POST['TEL'];
-if(isset($_POST['TRAIN1']))$train1 = $_POST['TRAIN1'];
-if(isset($_POST['TRAIN2']))$train2 = $_POST['TRAIN2'];
-if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
+// ファイルが選択してあれば$fileにファイル名を代入
+if(!empty($_FILES))$file = $_FILES['filename']['name'];
 
-if(isset($_POST['表示'])){
+// ファイルを選択した状態で表示ボタンを押した処理
+if((isset($_POST['表示']))&&(!empty($file))||(!empty($_COOKIE["file"]))){
 setlocale(LC_ALL, 'ja_JP.UTF-8');
 
-$file = 'csv_inport.csv';
-$data = file_get_contents($file);
-$data = mb_convert_encoding($data, 'UTF-8', 'auto');
+
+if(!empty($file)){ // ファイルが選択されていたら
+  setcookie("file",$file);
+  $data = file_get_contents($file);
+}elseif(!empty($_COOKIE["file"])){ // ファイルが選択してない、クッキーがある
+  $data = file_get_contents($_COOKIE["file"]);
+}
+
+$data = mb_convert_encoding($data, 'UTF-8', 'auto'); // 文字コード変換処理
 $temp = tmpfile();
 $csv  = array();
-
 fwrite($temp, $data);
 rewind($temp);
 
+ // ファイル内のデータを$csv[]に格納
 while (($data = fgetcsv($temp, 0, ",")) !== FALSE) {
     $csv[] = $data;
 }
 fclose($temp);
-
+}elseif(empty($file)){
+  echo "
+    <script>
+        alert('ファイルを選択してください'); 
+    </script>";
 }
 
-if(isset($_POST['登録'])){
+if((isset($_POST['登録']))&&(!empty($_COOKIE["file"]))){
   setlocale(LC_ALL, 'ja_JP.UTF-8');
 
-$file = 'csv_inport.csv';
-$data = file_get_contents($file);
-$data = mb_convert_encoding($data, 'UTF-8', 'auto');
-$temp = tmpfile();
-$csv  = array();
 
-fwrite($temp, $data);
-rewind($temp);
-
+  if(!empty($file)){ // ファイルが選択されていたら
+    setcookie("file",$file);
+    $data = file_get_contents($file);
+  }elseif(!empty($_COOKIE["file"])){ // ファイルが選択してない、クッキーがある
+    $data = file_get_contents($_COOKIE["file"]);
+  }
+  
+  $data = mb_convert_encoding($data, 'UTF-8', 'auto'); // 文字コード変換処理
+  $temp = tmpfile();
+  $csv  = array();
+  fwrite($temp, $data);
+  rewind($temp);
+  
 while (($data = fgetcsv($temp, 0, ",")) !== FALSE) {
     $csv[] = $data;
 }
@@ -63,42 +68,35 @@ fclose($temp);
 
   $tbl ="management.student";
   $pdo = dbcon();
-  $sql = "INSERT INTO ${tbl}(学籍番号,学年,クラス,学科,名前,フリガナ,メールアドレス,電話番号,路線1,路線2,路線3)
-          VALUES (:s_no,:year,:class,:subject,:name,:huri,:mail,:tel,:train1,:train2,:train3)";
+  $sql = "INSERT INTO ${tbl}(学籍番号,学年,クラス,学科,名前,フリガナ,メールアドレス,電話番号,路線1,路線2,路線3) VALUES (:s_no,:year,:class,:subject,:name,:huri,:mail,:tel,:train1,:train2,:train3)";
   $stmt = $pdo->prepare($sql);
-  if(!empty($s_no))$stmt->bindValue(":s_no", $s_no, PDO::PARAM_STR);
-  if(!empty($year))$stmt->bindValue(":year", $year, PDO::PARAM_INT);
-  if(!empty($class))$stmt->bindValue(":class", $class, PDO::PARAM_INT);
-  if(!empty($subject))$stmt->bindValue(":subject", $subject, PDO::PARAM_STR);
-  if(!empty($name))$stmt->bindValue(":name", $name, PDO::PARAM_STR);
-  if(!empty($huri))$stmt->bindValue(":huri", $huri, PDO::PARAM_STR);
-  if(!empty($mail))$stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
-  if(!empty($tel))$stmt->bindValue(":tel", $tel, PDO::PARAM_STR);
-  if(!empty($train1))$stmt->bindValue(":train1", $train1, PDO::PARAM_STR);
-  if(!empty($train2))$stmt->bindValue(":train2", $train2, PDO::PARAM_STR);
-  if(!empty($train3))$stmt->bindValue(":train3", $train3, PDO::PARAM_STR);
-
+  $pdo->beginTransaction();
   foreach ($csv as $row) { 
-    
-     foreach($row as $v){
-    $name =$v;
-    $huri =$v;
-    $s_no =$v;
-    $pass =$v;
-    $year =$v;
-    $class =$v;
-    $subject =$v;
-    $mail =$v;
-    $tel =$v;
-    $train1 =$v;
-    $train2 =$v;
-    $train3 =$v;
+    $stmt->bindValue(":s_no", $row[0], PDO::PARAM_STR);
+    $stmt->bindValue(":year", $row[1], PDO::PARAM_INT);
+    $stmt->bindValue(":class", $row[2], PDO::PARAM_INT);
+    $stmt->bindValue(":subject", $row[3], PDO::PARAM_STR);
+    $stmt->bindValue(":name", $row[4], PDO::PARAM_STR);
+    $stmt->bindValue(":huri", $row[5], PDO::PARAM_STR);
+    $stmt->bindValue(":mail", $row[6], PDO::PARAM_STR);
+    $stmt->bindValue(":tel", $row[7], PDO::PARAM_STR);
+    $stmt->bindValue(":train1", $row[8], PDO::PARAM_STR);
+    $stmt->bindValue(":train2", $row[9], PDO::PARAM_STR);
+    $stmt->bindValue(":train3", $row[10], PDO::PARAM_STR);
     $stmt->execute();
-   }
-
   }
-  $pdo = null;
-}
+  echo "
+    <script>
+        alert('登録完了です'); 
+    </script>";
+  $pdo->commit();
+    $pdo = null;
+// }elseif(empty($file)){
+//   echo "
+//     <script>
+//         alert('ファイルを選択してください'); 
+//     </script>";
+ }
 ?>
 
 <!DOCTYPE html>
@@ -120,10 +118,12 @@ fclose($temp);
 <H1>CSV生徒取り込み</H1><br>
 <!--ファイル取り込みボックス（ファイルをCSVに指定）-->
 <form action="" method="post" enctype="multipart/form-data">
-<input type="file" name="filename" accept=".csv">
+<input type="file" value="filename" name="filename" accept=".csv">
 <input id="button" type="submit" value="表示" name="表示" >
 <input id="button" type="submit" value="登録" name="登録">
+<p>選択中 <?= $_COOKIE["file"];?></p>
 </form><br>
+
     <?php
 
   
