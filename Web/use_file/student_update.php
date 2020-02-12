@@ -252,6 +252,7 @@ if(isset($_POST['変更']) && (isset($_POST))){
         <option value="ITエンジニア科4年制">ITエンジニア科4年制</option>
         <option value="ITエンジニア科3年制">ITエンジニア科3年制</option>
         <option value="情報処理科">情報処理科</option>
+        <option value="ビジネスライセンス科">ビジネスライセンス科</option>
         <option value="情報ネットワーク科">情報ネットワーク科</option>
         <option value="WEBクリエーター科">WEBクリエーター科</option>
         <option value="こども学科">こども学科</option>
