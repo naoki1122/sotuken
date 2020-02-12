@@ -148,13 +148,13 @@ if(isset($_POST['変更']) && (isset($_POST))){
 <ul>
     <!--名前-->
     <li><lavel><span class="item">名前</span>
-    <input class="inputbox" type="text" value="<?=$name?>" name="NAME" placeholder="例：山田太郎" required></lavel></li>
+    <input class="inputbox" type="text" value="<?=$name?>" name="NAME" placeholder="例：山田太郎" required autocomplete="off"></lavel></li>
     <!--教員番号-->
     <li><lavel><span class="item">教員番号</span>
-    <input class="inputbox" type="text" value="<?=$t_no?>" name="T_NO" pattern="(^t\d{2}[a-z]\d{3}$)" title="学籍番号はtを含む正規の形で入力してください。" required></lavel></li>
+    <input class="inputbox" type="text" value="<?=$t_no?>" name="T_NO" pattern="(^t\d{2}[a-z]\d{3}$)" title="学籍番号はtを含む正規の形で入力してください。" required autocomplete="off"></lavel></li>
     <!--パスワード-->
     <li><lavel><span class="item">パスワード</span>
-    <input class="inputbox" type="password" value="<?=$pass?>" name="PASSWD" required></lavel></li>
+    <input class="inputbox" type="password" value="<?=$pass?>" name="PASSWD" required autocomplete="off"></lavel></li>
     <!--権限選択-->
     <li><lavel><span class="item">権限</span>
     <select class="inputbox" name="AUTHORITY" value="<?=$authority?>" required>

@@ -121,16 +121,16 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
 <ul>
     <!--名前-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">名前</span>
-    <input class="inputbox" type="text" name="NAME" required placeholder="例：山田太郎"></lavel></li>
+    <input class="inputbox" type="text" name="NAME" required placeholder="例：山田太郎" autocomplete="off"></lavel></li>
     <!--フリガナ-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">フリガナ</span>
-    <input class="inputbox" type="text" name="HURI" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" title="フリガナはカタカナで入力してください。" required placeholder="例：ヤマダタロウ"></lavel></li>
+    <input class="inputbox" type="text" name="HURI" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" title="フリガナはカタカナで入力してください。" required placeholder="例：ヤマダタロウ" autocomplete="off"></lavel></li>
     <!--学籍番号-->
     <li></lavel><span style="color: red">*必須  </span><span class="item">学籍番号</span>
-    <input class="inputbox" type="text" name="S_NO" pattern="(^x\d{2}[a-z]\d{3}$)" title="学籍番号はxを含む正規の形で入力してください。" required placeholder="例：x00n000"></lavel></li>
+    <input class="inputbox" type="text" name="S_NO" pattern="(^x\d{2}[a-z]\d{3}$)" title="学籍番号はxを含む正規の形で入力してください。" required placeholder="例：x00n000" autocomplete="off"></lavel></li>
     <!--パスワード-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">パスワード</span>
-    <input class="inputbox" type="password" name="PASSWD" required placeholder="abcd1234"></lavel></li>
+    <input class="inputbox" type="password" name="PASSWD" required placeholder="abcd1234" autocomplete="off"></lavel></li>
     <!--学年-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">学年</span>
     <input class="inputbox" type="number" name="YEAR" min="1" max="4" value="1" required placeholder="1"></lavel></li>
@@ -151,10 +151,10 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
     </select></lavel></li>
     <!--メールアドレス-->
     <li><lavel><span style="color: black">*任意  </span><span class="item">メールアドレス</span>
-    <input class="inputbox" type="email" name="MAIL"></lavel></li>
+    <input class="inputbox" type="email" name="MAIL" autocomplete="off"></lavel></li>
     <!--電話番号-->
     <li><lavel><span style="color: black">*任意  </span><span class="item">電話番号</span>
-    <input class="inputbox" type="tel" name="TEL" placeholder="ハイフンあり" pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。"></lavel></li>
+    <input class="inputbox" type="tel" name="TEL" placeholder="ハイフンあり" pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。" autocomplete="off"></lavel></li>
     <!-- 使用路線1 -->
     <li><lavel><span style="color: black">*任意  </span><span class="item">使用路線</span>
     <select class="inputbox" name="TRAIN1" >
