@@ -124,6 +124,7 @@ if(isset($_POST['変更']) && (isset($_POST))){
         if((!empty($s_no))||(!empty($name))||(!empty($huri))||(!empty($year))||(!empty($class))||(!empty($subject))||(!empty($mail))||(!empty($tel))||(!empty($pass))){$sql .= ", ";}
         $sql .= "路線1 = :train1 ";
     }
+    // 路線が同じになる問題が残っています 詳しくは箱崎に
     if((!empty($train2))){
         if((!empty($s_no))||(!empty($name))||(!empty($huri))||(!empty($year))||(!empty($class))||(!empty($subject))||(!empty($mail))||(!empty($tel))||(!empty($pass))||(!empty($train1))){$sql .= ", ";}
         if(empty($train1)){

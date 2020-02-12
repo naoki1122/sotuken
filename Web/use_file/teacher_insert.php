@@ -92,7 +92,7 @@ if(empty($_SESSION['名前'])&&empty($_SESSION['権限'])){
     <input class="inputbox" type="text" name="NAME" placeholder="例：山田太郎" required></lavel></li>
     <!--教員番号-->
     <li></lavel><span style="color: red">*必須  </span><span class="item">教員番号</span>
-    <input class="inputbox" type="text" name="T_NO" pattern="(^t\d{2}[a-z]\d{3}$)" title="学籍番号はtを含む正規の形で入力してください。" placeholder="例：t00n00" required></lavel></li>
+    <input class="inputbox" type="text" name="T_NO" pattern="(^t\d{2}[a-z]\d{3}$)" title="学籍番号はtを含む正規の形で入力してください。" placeholder="例：t00n000"></lavel></li>
     <!--パスワード-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">パスワード</span>
     <input class="inputbox" type="password" name="PASSWD"  placeholder="abcd1234" required></lavel></li>
