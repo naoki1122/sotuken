@@ -148,16 +148,16 @@ if(isset($_POST['変更']) && (isset($_POST))){
 <ul>
     <!--名前-->
     <li><lavel><span class="item">名前</span>
-    <input class="inputbox" type="text" value="<?=$name?>" name="NAME" placeholder="例：山田太郎"></lavel></li>
+    <input class="inputbox" type="text" value="<?=$name?>" name="NAME" placeholder="例：山田太郎" required></lavel></li>
     <!--教員番号-->
     <li><lavel><span class="item">教員番号</span>
-    <input class="inputbox" type="text" value="<?=$t_no?>" name="T_NO"></lavel></li>
+    <input class="inputbox" type="text" value="<?=$t_no?>" name="T_NO" pattern="(^t\d{2}[a-z]\d{3}$)" title="学籍番号はtを含む正規の形で入力してください。" required></lavel></li>
     <!--パスワード-->
     <li><lavel><span class="item">パスワード</span>
-    <input class="inputbox" type="password" value="<?=$pass?>" name="PASSWD"></lavel></li>
+    <input class="inputbox" type="password" value="<?=$pass?>" name="PASSWD" required></lavel></li>
     <!--権限選択-->
     <li><lavel><span class="item">権限</span>
-    <select class="inputbox" name="AUTHORITY" value="<?=$authority?>">
+    <select class="inputbox" name="AUTHORITY" value="<?=$authority?>" required>
         <option value="" selected>権限を選択し直してください</option>
         <option value="0"<?=$admin_selects?>>管理者</option>
         <option value="1"<?=$general_selects?>>一般教員</option>

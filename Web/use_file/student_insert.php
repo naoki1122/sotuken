@@ -144,6 +144,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
         <option value="ITエンジニア科4年制">ITエンジニア科4年制</option>
         <option value="ITエンジニア科3年制">ITエンジニア科3年制</option>
         <option value="情報処理科">情報処理科</option>
+        <option value="ビジネスライセンス科">ビジネスライセンス科</option>
         <option value="情報ネットワーク科">情報ネットワーク科</option>
         <option value="WEBクリエーター科">WEBクリエーター科</option>
         <option value="こども学科">こども学科</option>
@@ -153,7 +154,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
     <input class="inputbox" type="email" name="MAIL"></lavel></li>
     <!--電話番号-->
     <li><lavel><span style="color: black">*任意  </span><span class="item">電話番号</span>
-    <input class="inputbox" type="number" name="TEL" placeholder="ハイフンなし"></lavel></li>
+    <input class="inputbox" type="tel" name="TEL" placeholder="ハイフンあり" pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。"></lavel></li>
     <!-- 使用路線1 -->
     <li><lavel><span style="color: black">*任意  </span><span class="item">使用路線</span>
     <select class="inputbox" name="TRAIN1" >
@@ -162,7 +163,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
         <option value="京成千葉線">京成千葉線</option>
         <option value="新京成">新京成</option>
         <option value="芝山鉄道">芝山鉄道</option>
-        <option value="東武アーバンパークライン">東武アーバンパークライン</option>
+        <option value="東武アーバンパークライン">東武アーバンパークライン(野田線)</option>
         <option value="常総線">常総線</option>
         <option value="総武線快速">総武線各停</option>
         <option value="総武線各停">総武線快速</option>
@@ -180,7 +181,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
         <option value="京成千葉線">京成千葉線</option>
         <option value="新京成">新京成</option>
         <option value="芝山鉄道">芝山鉄道</option>
-        <option value="東武アーバンパークライン">東武アーバンパークライン</option>
+        <option value="東武アーバンパークライン">東武アーバンパークライン(野田線)</option>
         <option value="常総線">常総線</option>
         <option value="総武線快速">総武線各停</option>
         <option value="総武線各停">総武線快速</option>
@@ -198,7 +199,7 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
         <option value="京成千葉線">京成千葉線</option>
         <option value="新京成">新京成</option>
         <option value="芝山鉄道">芝山鉄道</option>
-        <option value="東武アーバンパークライン">東武アーバンパークライン</option>
+        <option value="東武アーバンパークライン">東武アーバンパークライン(野田線)</option>
         <option value="常総線">常総線</option>
         <option value="総武線快速">総武線各停</option>
         <option value="総武線各停">総武線快速</option>
