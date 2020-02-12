@@ -229,10 +229,10 @@ if(isset($_POST['変更']) && (isset($_POST))){
     <input class="inputbox" type="text" value="<?=$name?>" name="NAME" required  placeholder="例：山田太郎"></lavel></li>
     <!--フリガナ-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">フリガナ</span>
-    <input class="inputbox" type="text" value="<?=$huri?>" name="HURI" required placeholder="例：ヤマダタロウ"></lavel></li>
+    <input class="inputbox" type="text" value="<?=$huri?>" name="HURI" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" title="フリガナはカタカナで入力してください。" required placeholder="例：ヤマダタロウ"></lavel></li>
     <!--学籍番号-->
     <li></lavel><span style="color: red">*必須  </span><span class="item">学籍番号</span>
-    <input class="inputbox" type="text" value="<?=$s_no?>" name="S_NO" required placeholder="例：x00n000"></lavel></li>
+    <input class="inputbox" type="text" value="<?=$s_no?>" name="S_NO" pattern="(^x\d{2}[a-z]\d{3}$)" title="学籍番号はxを含む正規の形で入力してください。" required placeholder="例：x00n000"></lavel></li>
     <!--パスワード-->
     <li><lavel><span style="color: red">*必須  </span><span class="item">パスワード</span>
     <input class="inputbox" type="password" value="<?=$pass?>" name="PASSWD" required placeholder="abcd1234"></lavel></li>
@@ -262,7 +262,7 @@ if(isset($_POST['変更']) && (isset($_POST))){
     <input class="inputbox" type="email" value="<?=$mail?>" name="MAIL"></lavel></li>
     <!--電話番号-->
     <li><lavel><span style="color: black">*任意  </span><span class="item">電話番号</span>
-    <input class="inputbox" type="number" value="<?=$tel?>" name="TEL" placeholder="ハイフンなし"></lavel></li>
+    <input class="inputbox" type="tel" value="<?=$tel?>" name="TEL" placeholder="ハイフンあり" pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。"></lavel></li>
     <!-- 使用路線1 -->
     <li><lavel><span style="color: black">*任意  </span><span class="item">使用路線</span>
     <select class="inputbox" value="<?=$train1?>" name="TRAIN1" >
