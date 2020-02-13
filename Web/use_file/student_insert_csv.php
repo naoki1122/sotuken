@@ -85,6 +85,8 @@ fclose($temp);
     $stmt->bindValue(":train3", $row[10], PDO::PARAM_STR);
     $stmt->execute();
   }
+  $csv="";
+  unset($_COOKIE['file']);
   echo "
     <script>
         alert('登録完了です'); 
@@ -121,7 +123,8 @@ fclose($temp);
 <input type="file" value="filename" name="filename" accept=".csv">
 <input id="button" type="submit" value="表示" name="表示" >
 <input id="button" type="submit" value="登録" name="登録">
-<p>選択中 <?= $_COOKIE["file"];?></p>
+<p>選択中 <?php if(!empty($file)){echo $file;}
+              elseif(!empty($_COOKIE["file"])){echo $_COOKIE["file"];}?></p>
 </form><br>
 
     <?php
