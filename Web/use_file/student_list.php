@@ -30,7 +30,7 @@ $level = $_SESSION['権限'];
     <?php
 try{
   $dbh = new PDO(DSN, DB_USER, DB_PASS);
-  $sql = 'select * from student';
+  $sql = 'select * from student order by クラス ASC,学籍番号 ASC';
 ?>
 <!-- <input id="input1" type="text" value size="100"> -->
 <div class='scroll-table'>
