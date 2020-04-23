@@ -103,6 +103,14 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
     <meta charset="UTF-8">
     <link href="form.css" rel="stylesheet" media="all">
     <title>生徒登録</title>
+    <script>
+    function Line(){
+    var line =["京成本線","京成千葉線","新京成","芝山鉄道","東武アーバンパークライン",
+    "常総線","総武線快速","総武線各停","内房線","成田線","常磐線各停","常磐線快速"];
+    for(var i = 0; i <= line.length-1;i++){
+        document.write("<option value=" + line[i] + ">" + line[i] + "</option>");
+    }}
+    </script>
 </head>
 <body id="wrap">
 <header id="header">
@@ -159,55 +167,19 @@ if(isset($_POST['TRAIN3']))$train3 = $_POST['TRAIN3'];
     <li><lavel><span style="color: black">*任意  </span><span class="item">使用路線</span>
     <select class="inputbox" name="TRAIN1" >
         <option value="" selected>路線(1路線目)を選んでください</option>
-        <option value="京成本線">京成本線</option>
-        <option value="京成千葉線">京成千葉線</option>
-        <option value="新京成">新京成</option>
-        <option value="芝山鉄道">芝山鉄道</option>
-        <option value="東武アーバンパークライン">東武アーバンパークライン(野田線)</option>
-        <option value="常総線">常総線</option>
-        <option value="総武線快速">総武線各停</option>
-        <option value="総武線各停">総武線快速</option>
-        <option value="外房線">内房線</option>
-        <option value="内房線">外房線</option>
-        <option value="成田線">成田線</option>
-        <option value="常磐線">常磐線各停</option>
-        <option value="常磐線">常磐線快速</option>
+        <script>Line();</script>
     </select></lavel></li>
     <!-- 使用路線2 -->
     <li><lavel><span style="color: black">*任意  </span><span class="item">使用路線</span>
     <select class="inputbox" name="TRAIN2" >
         <option value="" selected>路線(2路線目)を選んでください</option>
-        <option value="京成本線">京成本線</option>
-        <option value="京成千葉線">京成千葉線</option>
-        <option value="新京成">新京成</option>
-        <option value="芝山鉄道">芝山鉄道</option>
-        <option value="東武アーバンパークライン">東武アーバンパークライン(野田線)</option>
-        <option value="常総線">常総線</option>
-        <option value="総武線快速">総武線各停</option>
-        <option value="総武線各停">総武線快速</option>
-        <option value="外房線">内房線</option>
-        <option value="内房線">外房線</option>
-        <option value="成田線">成田線</option>
-        <option value="常磐線">常磐線各停</option>
-        <option value="常磐線">常磐線快速</option>
+        <script>Line()</script>
     </select></lavel></li>
     <!-- 使用路線1 -->
     <li><lavel><span style="color: black">*任意  </span><span class="item">使用路線</span>
     <select class="inputbox" name="TRAIN3" >
         <option value="" selected>路線(3路線目)を選んでください</option>
-        <option value="京成本線">京成本線</option>
-        <option value="京成千葉線">京成千葉線</option>
-        <option value="新京成">新京成</option>
-        <option value="芝山鉄道">芝山鉄道</option>
-        <option value="東武アーバンパークライン">東武アーバンパークライン(野田線)</option>
-        <option value="常総線">常総線</option>
-        <option value="総武線快速">総武線各停</option>
-        <option value="総武線各停">総武線快速</option>
-        <option value="外房線">内房線</option>
-        <option value="内房線">外房線</option>
-        <option value="成田線">成田線</option>
-        <option value="常磐線">常磐線各停</option>
-        <option value="常磐線">常磐線快速</option>
+        <script>Line();</script>
     </select></lavel></li>
 </ul>
     <!--登録ボタン-->

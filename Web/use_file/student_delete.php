@@ -22,12 +22,14 @@ $session_level = $_SESSION['権限'];
 }
 
 
-if(isset($_POST['WORD'])) $word = $_POST['WORD'];
-if(isset($_POST['検索']) && !empty($word)){
-  if(isset($_POST['WORD']) && $_POST['MODE'] == "名前"){
-  $sql = "select 名前,学籍番号,学科,学年,クラス from ${tbl} where 名前 = :word";
-      }else if(isset($_POST['WORD']) && $_POST['MODE'] == "学籍番号"){
-          $sql = "select 名前,学籍番号,学科,学年,クラス from ${tbl} where 学籍番号 = :word";
+// 検索ボタンを押した後の処理
+if(isset($_POST['検索']) && isset($_POST['WORD'])){
+  $word = $_POST['WORD'];
+  $sql = "select 名前,学籍番号,学科,学年,クラス from ${tbl} where ";
+  if($_POST['MODE'] == "名前"){
+  $sql .= "名前 = :word";
+      }else if($_POST['MODE'] == "学籍番号"){
+          $sql .= "学籍番号 = :word";
   }
   $stmt = $pdo->prepare($sql);
   $stmt->bindValue(":word", $word, PDO::PARAM_STR);
@@ -40,6 +42,7 @@ if(isset($_POST['検索']) && !empty($word)){
      $room = $row["学年"]."-".$row['クラス'];
   }
 }
+
   if(isset($_POST['削除'])){
     $name = $_POST['NAME'];
     $s_no = $_POST['S_NO'];
@@ -53,10 +56,7 @@ if(isset($_POST['検索']) && !empty($word)){
     <script>
         alert('削除完了です'); 
     </script>";
-    $name  = "";
-     $s_no = "";
-     $subject = "";
-     $room = "";
+    $name  = "";$s_no = "";$subject = "";$room = "";
 }
 ?>
 
@@ -98,7 +98,7 @@ if(isset($_POST['検索']) && !empty($word)){
   <section id="input_form">
     <ul>
     <!--名前-->
-    <li><lavel><span class="item">名前</span><input class="inputbox" type="text" readonly value="<?=$name?> "name="NAME" required></lavel></li>
+    <li><lavel><span class="item">名前</span><input class="inputbox" type="text" readonly value="<?=$name?>"name="NAME" required></lavel></li>
     <!--学籍番号-->
     <li><lavel><span class="item">学籍番号</span><input class="inputbox" type="text" readonly="readonly" value="<?=$s_no?> "name="S_NO" required></lavel></li>
     <!--学科-->
